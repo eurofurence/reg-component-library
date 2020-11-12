@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import Card from '../surfaces/card'
+
+<Meta
+	title="Surfaces/Card"
+	component={Card}
+	parameters={{
+		backgrounds: {
+			default: 'blue gray',
+			values: [{
+				name: 'blue gray',
+				value: 'var(--color-blue-gray)',
+			}],
+		},
+	}}
+/>
+
+# Card
+
+A `Card` is a raised surface intended to contain information about an isolated item,
+akin to a physical information card.
+
+## Baseline
+
+<Canvas>
+	<Story name="Baseline">
+		<Card width="300px">
+			This card contains information about something.
+		</Card>
+	</Story>
+</Canvas>
+
+## Headers and footers
+
+A `<header/>` or `<footer/>` element can be added to the children of any `Card`.
+The header or footer will then be automatically styled correctly.
+
+<Canvas>
+	<Story name="Header">
+		<Card width="300px">
+			<header>A header</header>
+			This card contains information about something.
+		</Card>
+	</Story>
+	<Story name="Footer">
+		<Card width="300px">
+			This card contains information about something.
+			<footer>A footer</footer>
+		</Card>
+	</Story>
+	<Story name="Header and Footer">
+		<Card width="300px">
+			<header>A header</header>
+			This card contains information about something.
+			<footer>A footer</footer>
+		</Card>
+	</Story>
+</Canvas>
