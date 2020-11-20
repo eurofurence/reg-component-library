@@ -20,12 +20,12 @@ const Caption = styled.h1`
 	line-height: 1.2em;
 	letter-spacing: 0.01em;
 	text-transform: uppercase;
-	color: var(--color-greys-300)
+	color: var(--color-grays-300)
 `
 
 const DisplayCharacter = styled.div`
 	display: inline-flex;
-	background-color: var(--color-greys-000);
+	background-color: var(--color-grays-000);
 	color: var(--color-brand-2-500);
 	border-radius: 0.2em;
 	width: 1.5em;

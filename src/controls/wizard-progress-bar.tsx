@@ -23,7 +23,7 @@ const bubbleStateStyle = (state: StepState) => {
 				background-color: var(--color-brand-1-400);
 				font-family: Roboto;
 				font-weight: 700;
-				color: var(--color-greys-000);
+				color: var(--color-grays-000);
 			`
 		case 'completed':
 			return css`
@@ -31,8 +31,8 @@ const bubbleStateStyle = (state: StepState) => {
 			`
 		case 'remaining':
 			return css`
-				border-color: var(--color-greys-400);
-				color: var(--color-greys-500);
+				border-color: var(--color-grays-400);
+				color: var(--color-grays-500);
 			`
 	}
 }
@@ -53,7 +53,7 @@ const Bubble = styled.div<{ state: StepState }>`
 
 const Caption = styled.div<{ state: StepState }>`
 	grid-area: caption;
-	color: ${({ state }) => state === 'current' ? 'var(--color-greys-900)' : 'var(--color-greys-400)'};
+	color: ${({ state }) => state === 'current' ? 'var(--color-grays-900)' : 'var(--color-grays-400)'};
 `
 
 const Connector = styled.div<{ state: StepState }>`
@@ -66,7 +66,7 @@ const Connector = styled.div<{ state: StepState }>`
 		content: "";
 		flex: 1;
 		height: 2px;
-		background-color: ${({ state }) => state === 'completed' ? 'var(--color-brand-1-400)' : 'var(--color-greys-200)'};
+		background-color: ${({ state }) => state === 'completed' ? 'var(--color-brand-1-400)' : 'var(--color-grays-200)'};
 	}
 `
 
@@ -83,7 +83,7 @@ const IndicatorContainer = styled.div<{ state: StepState }>`
 	}
 
 	&:not(:first-of-type)::before {
-		background-color: ${({ state }) => state === 'remaining' ? 'var(--color-greys-200)' : 'var(--color-brand-1-400)'};
+		background-color: ${({ state }) => state === 'remaining' ? 'var(--color-grays-200)' : 'var(--color-brand-1-400)'};
 		height: 2px;
 	}
 
@@ -93,7 +93,7 @@ const IndicatorContainer = styled.div<{ state: StepState }>`
 	}
 
 	&:not(:last-of-type)::after {
-		background-color: ${({ state }) => state === 'completed' ? 'var(--color-brand-1-400)' : 'var(--color-greys-200)'};
+		background-color: ${({ state }) => state === 'completed' ? 'var(--color-brand-1-400)' : 'var(--color-grays-200)'};
 		height: 2px;
 	}
 `
