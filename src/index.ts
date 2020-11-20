@@ -1,6 +1,7 @@
 import './stylesheets/reset.css'
 import './stylesheets/colors.css'
 import './stylesheets/typography.css'
+import './stylesheets/globals.css'
 
 export { default as Display } from './controls/display'
 export { default as WizardProgressBar } from './controls/wizard-progress-bar'
