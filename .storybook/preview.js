@@ -3,6 +3,7 @@
 import '../src/stylesheets/reset.css'
 import '../src/stylesheets/colors.css'
 import '../src/stylesheets/typography.css'
+import '../src/stylesheets/globals.css'
 import { useEffect } from 'react'
 import { css } from '@emotion/react'
 
