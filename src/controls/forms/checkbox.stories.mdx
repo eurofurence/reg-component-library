@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import Checkbox from './checkbox'
+
+<Meta title="Controls/Forms/Checkbox" component={Checkbox} argTypes={{ onChange: {} }}/>
+
+# Checkbox
+
+The `Checkbox` component represents a checkbox in a form.
+
+## Baseline
+
+<Canvas>
+	<Story name="Baseline" args={{
+		label: 'I am a furry.',
+		checked: true,
+	}}>
+		{args => <Checkbox {...args}/>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Baseline"/>
+
+## Labelless
+
+It is possible to create a checkbox without a label. This changes the structure in the DOM. The `input` will not be nested in a `label` node.
+
+<Canvas>
+	<Story name="Labelless" args={{
+		showLabel: true,
+	}}>
+		{({ showLabel }) => <Checkbox value="example" label={showLabel ? 'Now you see me' : undefined}/>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Labelless"/>
