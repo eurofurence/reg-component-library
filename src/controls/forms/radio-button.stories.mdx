@@ -1,0 +1,147 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import { RadioGroup, RadioItem } from './radio-button'
+import Card from '../../surfaces/card'
+
+<Meta title="Controls/Forms/RadioButton" component={RadioGroup} argTypes={{ onChange: {} }}/>
+
+# RadioButton
+
+The `RadioGroup` and `RadioItem` components can be used to create a set of radio buttons in a form.
+
+## Baseline
+
+<Canvas>
+	<Story name="Baseline" args={{
+		title: 'Who is the best fox?',
+	}}>
+		{({ onChange, ...args }) => <RadioGroup name="popularity-contest" {...args}>
+			<RadioItem value="robin-hood" label="Robin Hood" onChange={onChange}/>
+			<RadioItem value="nick-wilde" label="Nick Wilde" onChange={onChange}/>
+			<RadioItem value="fox-mccloud" label="Fox McCloud" onChange={onChange}/>
+		</RadioGroup>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Baseline"/>
+
+## Labelless
+
+It is possible to create a radio button without a label. This changes the structure in the DOM. The `input` will not be nested in a `label` node.
+
+<Canvas>
+	<Story name="Labelless" args={{
+		showLabel: true,
+	}}>
+		{({ showLabel }) => <RadioGroup name="example">
+			<RadioItem value="example" label={showLabel ? 'Now you see me' : undefined}/>
+		</RadioGroup>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Labelless"/>
+
+## Custom usage
+
+The `RadioGroup` and `RadioItem` do not have to be nested directly, allowing you to create more advanced, custom radio setups.
+`RadioGroup` does not have a real DOM tree representation, so it does not mess up your DOM for complex HTML like tables.
+
+<Canvas>
+	<Story name="Advanced Setup">
+		<h1>Rate your experience!</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>Category</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<RadioGroup name="events">
+					<tr>
+						<td>Events</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+				<RadioGroup name="panels">
+					<tr>
+						<td>Panels</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+				<RadioGroup name="art-show">
+					<tr>
+						<td>Art Show</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+				<RadioGroup name="dealers-den">
+					<tr>
+						<td>Dealer's Den</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+				<RadioGroup name="accessibility">
+					<tr>
+						<td>Accessibility</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+				<RadioGroup name="registration-process">
+					<tr>
+						<td>Registration Process</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+				<RadioGroup name="rooms">
+					<tr>
+						<td>Rooms</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+				<RadioGroup name="elevator-waiting-times">
+					<tr>
+						<td>Elevator Waiting Times</td>
+						<td><RadioItem value={1}/></td>
+						<td><RadioItem value={2}/></td>
+						<td><RadioItem value={3}/></td>
+						<td><RadioItem value={4}/></td>
+						<td><RadioItem value={5}/></td>
+					</tr>
+				</RadioGroup>
+			</tbody>
+		</table>
+	</Story>
+</Canvas>
+
