@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEvent } from 'react'
+import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
 import styled from '@emotion/styled'
 import FormHeader from './form-header'
 
@@ -17,7 +17,15 @@ const Input = styled.input`
 	}
 `
 
-export default ({ label, placeholder, onChange }: { label: string, placeholder: string, onChange?: (event: ChangeEvent<HTMLInputElement>) => void }) => <label>
+export interface TextFieldProps {
+	label: string
+	placeholder: string
+	onChange?: ChangeEventHandler<HTMLInputElement>
+}
+
+const TextField = forwardRef(({ label, placeholder, onChange }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <label>
 	<FormHeader>{label}</FormHeader>
-	<Input placeholder={placeholder} onChange={onChange}/>
-</label>
+	<Input placeholder={placeholder} onChange={onChange} ref={ref}/>
+</label>)
+
+export default TextField

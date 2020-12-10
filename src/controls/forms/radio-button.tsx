@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { ReactElement, createContext, useContext, ChangeEvent } from 'react'
+import { Fragment, ReactElement, createContext, useContext, ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
 import styled from '@emotion/styled'
 import FormHeader from './form-header'
 import FormLabel from './form-label'
@@ -23,9 +23,15 @@ const Input = styled.input`
 	}
 `
 
-export const RadioItem = ({ label, value, onChange }: { label?: string, value: string, onChange?: (event: ChangeEvent<HTMLInputElement>) => void }) => {
+export interface RadioItemProps {
+	label?: string
+	value: string
+	onChange?: ChangeEventHandler<HTMLInputElement>
+}
+
+export const RadioItem = forwardRef(({ label, value, onChange }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
 	const name = useContext(NameContext)
-	const input = <Input name={name} type="radio" value={value} onChange={onChange}/>
+	const input = <Input name={name} type="radio" value={value} onChange={onChange} ref={ref}/>
 
 	return label == null
 		? input
@@ -33,14 +39,14 @@ export const RadioItem = ({ label, value, onChange }: { label?: string, value: s
 			{input}
 			{label}
 		</FormLabel>
-}
+})
 
-export const RadioGroup = ({ name, title, children }: { name: string, title?: string, children: ReactElement }) => <>
+export const RadioGroup = ({ name, title, children }: { name: string, title?: string, children: ReactElement }) => <Fragment>
 	{title == null ? null : <FormHeader>{title}</FormHeader>}
 	<NameContext.Provider value={name}>
 		{children}
 	</NameContext.Provider>
-</>
+</Fragment>
 
 RadioGroup.Item = RadioItem
 

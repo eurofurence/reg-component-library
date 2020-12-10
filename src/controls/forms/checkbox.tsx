@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEvent } from 'react'
+import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
 import styled from '@emotion/styled'
 import FormLabel from './form-label'
 
@@ -16,8 +16,15 @@ const Input = styled.input`
 	}
 `
 
-const Checkbox = ({ name, label, checked, onChange }: { name: string, label?: string, checked: boolean, onChange?: (event: ChangeEvent<HTMLInputElement>) => void }) => {
-	const input = <Input name={name} type="checkbox" checked={checked} onChange={onChange}/>
+export interface CheckboxProps {
+	name: string
+	label?: string
+	checked: boolean
+	onChange?: ChangeEventHandler<HTMLInputElement>
+}
+
+const Checkbox = forwardRef(({ name, label, checked, onChange }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) => {
+	const input = <Input name={name} type="checkbox" checked={checked} onChange={onChange} ref={ref}/>
 
 	return label == null
 		? input
@@ -25,6 +32,6 @@ const Checkbox = ({ name, label, checked, onChange }: { name: string, label?: st
 			{input}
 			{label}
 		</FormLabel>
-}
+})
 
 export default Checkbox
