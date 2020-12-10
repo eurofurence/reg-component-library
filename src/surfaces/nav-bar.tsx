@@ -9,4 +9,9 @@ export default styled.header`
 	display: flex;
 	align-items: center;
 	padding: 2em;
+
+	font-family: Roboto;
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-height: 150%;
 `
