@@ -19,16 +19,18 @@ const Input = styled.input`
 export interface CheckboxProps {
 	name: string
 	label?: string
-	checked: boolean
+	checked?: boolean
+	defaultChecked?: boolean
+	gridSpan?: number
 	onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-const Checkbox = forwardRef(({ name, label, checked, onChange }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) => {
-	const input = <Input name={name} type="checkbox" checked={checked} onChange={onChange} ref={ref}/>
+const Checkbox = forwardRef(({ name, label, checked, defaultChecked, gridSpan, onChange }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) => {
+	const input = <Input name={name} type="checkbox" checked={checked} defaultChecked={defaultChecked} onChange={onChange} ref={ref}/>
 
 	return label == null
 		? input
-		: <FormLabel>
+		: <FormLabel gridSpan={gridSpan}>
 			{input}
 			{label}
 		</FormLabel>

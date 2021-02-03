@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 
-import { Fragment, ReactElement, createContext, useContext, ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
+import { Fragment, ReactNode, createContext, useContext, ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
 import styled from '@emotion/styled'
-import FormHeader from './form-header'
 import FormLabel from './form-label'
+import FieldSet from './field-set'
 
 const NameContext = createContext<string>('unknown')
 
@@ -26,28 +26,37 @@ const Input = styled.input`
 export interface RadioItemProps {
 	label?: string
 	value: string
+	checked?: boolean
+	defaultChecked?: boolean
 	onChange?: ChangeEventHandler<HTMLInputElement>
+	gridSpan?: number
 }
 
-export const RadioItem = forwardRef(({ label, value, onChange }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const RadioItem = forwardRef(({ label, value, checked, defaultChecked, onChange, gridSpan }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
 	const name = useContext(NameContext)
-	const input = <Input name={name} type="radio" value={value} onChange={onChange} ref={ref}/>
+	const input = <Input name={name} type="radio" value={value} checked={checked} defaultChecked={defaultChecked} onChange={onChange} ref={ref}/>
 
 	return label == null
 		? input
-		: <FormLabel>
+		: <FormLabel gridSpan={gridSpan}>
 			{input}
 			{label}
 		</FormLabel>
 })
 
-export const RadioGroup = ({ name, title, children }: { name: string, title?: string, children: ReactElement }) => <Fragment>
-	{title == null ? null : <FormHeader>{title}</FormHeader>}
+export const RadioGroup = ({ name, children }: { name: string, children: ReactNode }) => <Fragment>
 	<NameContext.Provider value={name}>
 		{children}
 	</NameContext.Provider>
 </Fragment>
 
+export const RadioSet = ({ name, gridSpan, legend, children }: { name: string, gridSpan?: number, legend: string, children: ReactNode }) => <FieldSet legend={legend} gridSpan={gridSpan}>
+	<RadioGroup name={name}>
+		{children}
+	</RadioGroup>
+</FieldSet>
+
 RadioGroup.Item = RadioItem
+RadioSet.Item = RadioItem
 
 export default RadioGroup
