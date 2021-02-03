@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import styled from '@emotion/styled'
 
 export default styled.article(({ width, height }: { width: string, height: string }) => `
