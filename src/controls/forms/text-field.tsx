@@ -1,10 +1,12 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEvent } from 'react'
+import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
 import styled from '@emotion/styled'
 import FormHeader from './form-header'
+import formControlStyle from './form-control'
 
 const Input = styled.input`
+	width: 100%;
 	height: 3em;
 	border: 1px solid var(--color-grays-300);
 	border-radius: 0.1875em;
@@ -17,7 +19,21 @@ const Input = styled.input`
 	}
 `
 
-export default ({ label, placeholder, onChange }: { label: string, placeholder: string, onChange?: (event: ChangeEvent<HTMLInputElement>) => void }) => <label>
+const Label = styled.label<{ gridSpan?: number }>`
+	${formControlStyle}
+`
+
+export interface TextFieldProps {
+	name: string
+	label: string
+	placeholder: string
+	gridSpan?: number
+	onChange?: ChangeEventHandler<HTMLInputElement>
+}
+
+const TextField = forwardRef(({ name, label, placeholder, gridSpan, onChange }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <Label gridSpan={gridSpan}>
 	<FormHeader>{label}</FormHeader>
-	<Input placeholder={placeholder} onChange={onChange}/>
-</label>
+	<Input name={name} placeholder={placeholder} onChange={onChange} ref={ref}/>
+</Label>)
+
+export default TextField

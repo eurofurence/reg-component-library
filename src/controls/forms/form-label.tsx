@@ -1,10 +1,21 @@
 import styled from '@emotion/styled'
+import formControlStyle from './form-control'
 
 export default styled.label`
 	display: flex;
 	align-items: center;
 
-	margin: 0.75em 0em;
+	line-height: 0em;
+
+	${formControlStyle}
+
+	fieldset > &:not(:last-of-type) {
+		margin-bottom: 0.75em;
+	}
+
+	fieldset > &:not(:first-of-type) {
+		margin-top: 0.75em;
+	}
 
 	& > input {
 		margin-right: 0.5em;

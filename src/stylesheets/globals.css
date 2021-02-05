@@ -8,6 +8,14 @@ body {
 	letter-spacing: 0.0125em;
 }
 
+body h1 {
+	font-family: Rubik;
+	font-size: 3em;
+	font-weight: 400;
+	line-height: 150%;
+	letter-spacing: 0.0125em;
+}
+
 p:not(:first-child) {
 	margin-top: 1em;
 }
