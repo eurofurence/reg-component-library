@@ -11,7 +11,7 @@ const Container = styled.section`
 	font-family: Inter;
 	font-size: 1.6rem;
 	font-weight: 400;
-	line-height: 1.9rem;
+	line-height: 1.1875;
 `
 
 type StepState = 'completed' | 'current' | 'remaining'

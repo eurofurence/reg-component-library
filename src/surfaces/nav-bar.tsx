@@ -11,5 +11,5 @@ export default styled.header`
 	font-family: Roboto;
 	font-weight: 400;
 	font-size: 1.6rem;
-	line-height: 150%;
+	line-height: 1.5;
 `
