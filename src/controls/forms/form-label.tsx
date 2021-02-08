@@ -5,7 +5,7 @@ export default styled.label`
 	display: flex;
 	align-items: center;
 
-	line-height: 0em;
+	line-height: 0;
 
 	${formControlStyle}
 

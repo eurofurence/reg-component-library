@@ -13,5 +13,5 @@ export default styled.article(() => `
 	font-family: Inter;
 	font-weight: 400;
 	font-size: 1.6rem;
-	line-height: 150%;
+	line-height: 1.5;
 `)

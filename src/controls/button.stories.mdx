@@ -1,0 +1,20 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
+import Button from './button'
+
+<Meta title="Controls/Button" component={Button} argTypes={{ onClick: {} }}/>
+
+# Button
+
+A button.
+
+## Baseline
+
+<Canvas>
+	<Story name="Baseline" args={{
+		content: 'Click me!',
+	}}>
+		{args => <Button>Click me!</Button>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Baseline"/>

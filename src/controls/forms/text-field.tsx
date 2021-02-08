@@ -2,8 +2,7 @@
 
 import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
 import styled from '@emotion/styled'
-import FormHeader from './form-header'
-import formControlStyle from './form-control'
+import FormHeaderLabel from './form-header-label'
 
 const Input = styled.input`
 	width: 100%;
@@ -19,10 +18,6 @@ const Input = styled.input`
 	}
 `
 
-const Label = styled.label<{ gridSpan?: number }>`
-	${formControlStyle}
-`
-
 export interface TextFieldProps {
 	name: string
 	label: string
@@ -31,9 +26,8 @@ export interface TextFieldProps {
 	onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-const TextField = forwardRef(({ name, label, placeholder, gridSpan, onChange }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <Label gridSpan={gridSpan}>
-	<FormHeader>{label}</FormHeader>
+const TextField = forwardRef(({ name, label, placeholder, gridSpan, onChange }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
 	<Input name={name} placeholder={placeholder} onChange={onChange} ref={ref}/>
-</Label>)
+</FormHeaderLabel>)
 
 export default TextField

@@ -15,7 +15,7 @@ export default styled.article(({ width, height }: { width: string, height: strin
 	font-family: Inter;
 	font-weight: 400;
 	font-size: 1.6rem;
-	line-height: 150%;
+	line-height: 1.5;
 
 	& > header {
 		border-bottom: solid 1px var(--color-grays-200);

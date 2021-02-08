@@ -18,7 +18,7 @@ const Caption = styled.h1`
 	font-family: Inter;
 	font-weight: 700;
 	font-size: 1.0rem;
-	line-height: 1.2em;
+	line-height: 1.2;
 	letter-spacing: 0.01em;
 	text-transform: uppercase;
 	color: var(--color-grays-300)
@@ -37,7 +37,7 @@ const DisplayCharacter = styled.div`
 	font-family: Roboto;
 	font-weight: 700;
 	font-size: 2.0rem;
-	line-height: 1.15em;
+	line-height: 1.15;
 
 	&:not(:last-child) {
 		margin-right: 0.2em;
