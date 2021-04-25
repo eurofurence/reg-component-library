@@ -19,11 +19,11 @@ const Input = styled.input`
 `
 
 export interface TextFieldProps {
-	name: string
-	label: string
-	placeholder: string
-	gridSpan?: number
-	onChange?: ChangeEventHandler<HTMLInputElement>
+	readonly name: string
+	readonly label: string
+	readonly placeholder: string
+	readonly gridSpan?: number
+	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
 const TextField = forwardRef(({ name, label, placeholder, gridSpan, onChange }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>

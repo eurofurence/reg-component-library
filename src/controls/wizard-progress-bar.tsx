@@ -37,7 +37,7 @@ const bubbleStateStyle = (state: StepState) => {
 	}
 }
 
-const Bubble = styled.div<{ state: StepState }>`
+const Bubble = styled.div<{ readonly state: StepState }>`
 	grid-area: bubble;
 	box-sizing: border-box;
 	width: 2em;
@@ -51,12 +51,12 @@ const Bubble = styled.div<{ state: StepState }>`
 	${({ state }) => bubbleStateStyle(state)}
 `
 
-const Caption = styled.div<{ state: StepState }>`
+const Caption = styled.div<{ readonly state: StepState }>`
 	grid-area: caption;
 	color: ${({ state }) => state === 'current' ? 'var(--color-grays-900)' : 'var(--color-grays-400)'};
 `
 
-const Connector = styled.div<{ state: StepState }>`
+const Connector = styled.div<{ readonly state: StepState }>`
 	height: 2em;
 	flex: 1;
 	display: flex;
@@ -70,7 +70,7 @@ const Connector = styled.div<{ state: StepState }>`
 	}
 `
 
-const IndicatorContainer = styled.div<{ state: StepState }>`
+const IndicatorContainer = styled.div<{ readonly state: StepState }>`
 	display: grid;
 	grid-template: "line-left bubble  line-right" min-content
 						"caption   caption caption   " min-content / 1fr min-content 1fr;
@@ -98,12 +98,12 @@ const IndicatorContainer = styled.div<{ state: StepState }>`
 	}
 `
 
-const Indicator = ({ state, idx, caption }: { state: StepState, idx: number, caption: string }) => <IndicatorContainer state={state}>
+const Indicator = ({ state, idx, caption }: Readonly<{ state: StepState, idx: number, caption: string }>) => <IndicatorContainer state={state}>
 	<Bubble state={state}>{idx + 1}</Bubble>
 	<Caption state={state}>{caption}</Caption>
 </IndicatorContainer>
 
-const WizardProgressBar = ({ steps, currentStep }: { steps: string[], currentStep: number }) => <Container>
+const WizardProgressBar = ({ steps, currentStep }: Readonly<{ steps: readonly string[], currentStep: number }>) => <Container>
 	{times(i => <React.Fragment key={i}>
 		<Indicator state="completed" idx={i} caption={steps[i]}/>
 		<Connector state="completed"/>

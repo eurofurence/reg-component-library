@@ -9,7 +9,7 @@ const FSet = styled.fieldset`
 	${formControlStyle}
 `
 
-const FieldSet = ({ legend, gridSpan, children }: { legend?: string, gridSpan?: number, children: ReactNode }) => <FSet gridSpan={gridSpan}>
+const FieldSet = ({ legend, gridSpan, children }: Readonly<{ legend?: string, gridSpan?: number, children: ReactNode }>) => <FSet gridSpan={gridSpan}>
 	{legend == null ? null : <FormHeader as="legend">{legend}</FormHeader>}
 	{children}
 </FSet>

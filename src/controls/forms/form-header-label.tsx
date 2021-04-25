@@ -9,7 +9,7 @@ const Label = styled.label<{ gridSpan?: number }>`
 	${formControlStyle}
 `
 
-const FormHeaderLabel = ({ label, gridSpan, children }: { label: string, gridSpan?: number, children: ReactNode }) => <Label gridSpan={gridSpan}>
+const FormHeaderLabel = ({ label, gridSpan, children }: Readonly<{ label: string, gridSpan?: number, children: ReactNode }>) => <Label gridSpan={gridSpan}>
 	<FormHeader>{label}</FormHeader>
 	{children}
 </Label>

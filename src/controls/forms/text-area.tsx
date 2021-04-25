@@ -20,12 +20,12 @@ const TArea = styled.textarea<{ height?: string }>`
 `
 
 export interface TextAreaProps {
-	name: string
-	label: string
-	height?: string
-	placeholder: string
-	gridSpan?: number
-	onChange?: ChangeEventHandler<HTMLTextAreaElement>
+	readonly name: string
+	readonly label: string
+	readonly height?: string
+	readonly placeholder: string
+	readonly gridSpan?: number
+	readonly onChange?: ChangeEventHandler<HTMLTextAreaElement>
 }
 
 const TextArea = forwardRef(({ name, label, height, placeholder, gridSpan, onChange }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>

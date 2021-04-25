@@ -24,12 +24,12 @@ const Input = styled.input`
 `
 
 export interface RadioItemProps {
-	label?: string
-	value: string
-	checked?: boolean
-	defaultChecked?: boolean
-	onChange?: ChangeEventHandler<HTMLInputElement>
-	gridSpan?: number
+	readonly label?: string
+	readonly value: string
+	readonly checked?: boolean
+	readonly defaultChecked?: boolean
+	readonly onChange?: ChangeEventHandler<HTMLInputElement>
+	readonly gridSpan?: number
 }
 
 export const RadioItem = forwardRef(({ label, value, checked, defaultChecked, onChange, gridSpan }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
@@ -44,13 +44,13 @@ export const RadioItem = forwardRef(({ label, value, checked, defaultChecked, on
 		</FormLabel>
 })
 
-export const RadioGroup = ({ name, children }: { name: string, children: ReactNode }) => <Fragment>
+export const RadioGroup = ({ name, children }: Readonly<{ name: string, children: ReactNode }>) => <Fragment>
 	<NameContext.Provider value={name}>
 		{children}
 	</NameContext.Provider>
 </Fragment>
 
-export const RadioSet = ({ name, gridSpan, legend, children }: { name: string, gridSpan?: number, legend: string, children: ReactNode }) => <FieldSet legend={legend} gridSpan={gridSpan}>
+export const RadioSet = ({ name, gridSpan, legend, children }: Readonly<{ name: string, gridSpan?: number, legend: string, children: ReactNode }>) => <FieldSet legend={legend} gridSpan={gridSpan}>
 	<RadioGroup name={name}>
 		{children}
 	</RadioGroup>
