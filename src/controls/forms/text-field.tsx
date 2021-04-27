@@ -26,8 +26,8 @@ export interface TextFieldProps {
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-const TextField = forwardRef(({ name, label, placeholder, gridSpan, onChange }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
-	<Input name={name} placeholder={placeholder} onChange={onChange} ref={ref}/>
+const TextField = forwardRef(({ label, gridSpan, ...rest }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
+	<Input {...rest} ref={ref}/>
 </FormHeaderLabel>)
 
 export default TextField
