@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea renders correctly 1`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="񹇁򆙳"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 2`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    񱧄'񁠓,
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="1󲸽"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 3`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="+0"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 4`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="𬋍񜩢򜲜򤭯癠􀎶󰹉"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 5`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    􏿱
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="󠫫"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 6`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    娱񹮗𛗃𳟁
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="𘓃"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 7`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="񬩹񐮋򤓞񽴂"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 8`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="򌺛􂂿𴩈𯰤򽰺𦜘𬸀"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 9`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="򭮀񯧠򷉄򚣙򜜼󷒛񊂳"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 10`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    􏿵
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder=""
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 11`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="𮙊񢛬󯨦򷗸󺳍𚡆𤶮򉸋"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 12`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    ,񠠳𩿥 򡀴􏿳򋑟򄬢􃑖
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="񭕽𧔤򛖱􏿿񬵂򡷢􍬵"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 13`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    񈯾
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="󐶻Ի󢙟򛪰󇍨"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 14`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    )􏿽󱝤!𧻴񐩷􌡙􏿴*򺡘
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder=""
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 15`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    򭺩󄌄󺨚󁒲󬁀񠩹ㄝ󚛈򃋮󇉠
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="򛣩𧶏%*"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 16`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    ﳽ򔬞󯦱򿯑𷍘򘃵򷥹򏸍󂒏󗰟
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder=""
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 17`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    􏿳$
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="󖭒򠔗𩩯𹪙񋽢򸗭񥕆􂶛󌤋"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 18`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    񣧺򧕾𓞆󷣄𴚏񮋟𙽮򳭆
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="񗧫􏿺'񡩧􉌲򔭋􆓀񺍎񅇡"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 19`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    󫂄񂺛
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="􏿼"
+  />
+</label>
+`;
+
+exports[`TextArea renders correctly 20`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    󕚱󤐀𔖢󾲳򯀯󒟽򾄢􃄂񂑟򡝴
+  </div>
+  <textarea
+    className="css-jxx9sy"
+    name="comments"
+    placeholder="򊞄􌽑򷔫󄱗𸝩􇡫􎶊𯴏"
+  />
+</label>
+`;

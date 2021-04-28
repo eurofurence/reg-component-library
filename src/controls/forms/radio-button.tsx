@@ -29,6 +29,7 @@ export interface RadioItemProps {
 	readonly checked?: boolean
 	readonly defaultChecked?: boolean
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
+	readonly readOnly?: boolean
 	readonly gridSpan?: number
 }
 

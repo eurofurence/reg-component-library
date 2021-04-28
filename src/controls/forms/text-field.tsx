@@ -22,8 +22,11 @@ export interface TextFieldProps {
 	readonly name: string
 	readonly label: string
 	readonly placeholder: string
+	readonly value?: string
+	readonly defaultValue?: string
 	readonly gridSpan?: number
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
+	readonly readOnly?: boolean
 }
 
 const TextField = forwardRef(({ label, gridSpan, ...rest }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>

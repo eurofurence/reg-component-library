@@ -24,8 +24,11 @@ export interface TextAreaProps {
 	readonly label: string
 	readonly height?: string
 	readonly placeholder: string
+	readonly value?: string
+	readonly defaultValue?: string
 	readonly gridSpan?: number
 	readonly onChange?: ChangeEventHandler<HTMLTextAreaElement>
+	readonly readOnly?: boolean
 }
 
 const TextArea = forwardRef(({ label, gridSpan, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
