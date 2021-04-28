@@ -2,7 +2,6 @@
 env:
   browser: true
   es2021: true
-  jest: true
 extends:
   - eslint:recommended
   - plugin:@typescript-eslint/recommended
@@ -23,6 +22,10 @@ parserOptions:
 settings:
   react:
     version: '17'
+overrides:
+  - files: src/**/*.test.{ts,tsx}
+    env:
+      jest: true
 rules:
   array-bracket-newline: [error, consistent]
   array-bracket-spacing: [error, never]
