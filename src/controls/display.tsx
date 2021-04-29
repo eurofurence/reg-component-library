@@ -45,11 +45,11 @@ const DisplayCharacter = styled.div`
 `
 
 export interface DisplayProps {
-	content: string
-	caption?: string
-	size?: number
-	padding?: string
-	align?: AlignMethod
+	readonly content: string
+	readonly caption?: string
+	readonly size?: number
+	readonly padding?: string
+	readonly align?: AlignMethod
 }
 
 const Display = ({ content, caption, size, padding = ' ', align = 'right' }: DisplayProps) => {

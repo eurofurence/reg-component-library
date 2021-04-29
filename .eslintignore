@@ -3,3 +3,5 @@ dist/
 node_modules/
 .snapshots/
 *.min.js
+/src/react-app-env.d.ts
+/jest.config.js

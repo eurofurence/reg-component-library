@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export default styled.article(({ width, height }: { width: string, height: string }) => `
+export default styled.article(({ width, height }: Readonly<{ width: string, height: string }>) => `
 	display: block;
 	background-color: var(--color-grays-000);
 	color: var(--color-grays-500);

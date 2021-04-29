@@ -5,11 +5,11 @@ import ReactSelect, { OptionsType, OptionTypeBase } from 'react-select'
 import FormHeaderLabel from './form-header-label'
 
 interface SelectProps {
-	name: string
-	label: string
-	gridSpan?: number
-	isMulti?: boolean
-	options: OptionsType<OptionTypeBase>
+	readonly name: string
+	readonly label: string
+	readonly gridSpan?: number
+	readonly isMulti?: boolean
+	readonly options: OptionsType<Readonly<OptionTypeBase>>
 }
 
 const Select = forwardRef(({ name, label, gridSpan, isMulti, options }: SelectProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
