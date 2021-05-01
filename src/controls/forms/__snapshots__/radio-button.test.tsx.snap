@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioItem renders correctly 1`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  򆙳$
+</label>
+`;
+
+exports[`RadioItem renders correctly 2`] = `
+<input
+  checked={true}
+  className="css-1unmrkn"
+  name="popularity-contest"
+  type="radio"
+  value="nick-wilde"
+/>
+`;
+
+exports[`RadioItem renders correctly 3`] = `
+<input
+  checked={false}
+  className="css-1unmrkn"
+  name="popularity-contest"
+  type="radio"
+  value="nick-wilde"
+/>
+`;
+
+exports[`RadioItem renders correctly 4`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  𬋍4'
+</label>
+`;
+
+exports[`RadioItem renders correctly 5`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  󈨆
+</label>
+`;
+
+exports[`RadioItem renders correctly 6`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  񹮗𛗃𳟁򓬪򜕛󩸰􍤽𘓃񆠟򘲐
+</label>
+`;
+
+exports[`RadioItem renders correctly 7`] = `
+<input
+  checked={false}
+  className="css-1unmrkn"
+  name="popularity-contest"
+  type="radio"
+  value="nick-wilde"
+/>
+`;
+
+exports[`RadioItem renders correctly 8`] = `
+<input
+  checked={false}
+  className="css-1unmrkn"
+  name="popularity-contest"
+  type="radio"
+  value="nick-wilde"
+/>
+`;
+
+exports[`RadioItem renders correctly 9`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  4򜜼񊂳񾁸򥩂􏿫-
+</label>
+`;
+
+exports[`RadioItem renders correctly 10`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  񨻠
+</label>
+`;
+
+exports[`RadioItem renders correctly 11`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  𢊠𮙊񢛬󯨦򷗸󺳍
+</label>
+`;
+
+exports[`RadioItem renders correctly 12`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  򪎄񼼐𒿑৅񠠳󒸺𩿥񌇉笉
+</label>
+`;
+
+exports[`RadioItem renders correctly 13`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  򔙷񜸆󐶻Ի󢙟򛪰
+</label>
+`;
+
+exports[`RadioItem renders correctly 14`] = `
+<input
+  checked={true}
+  className="css-1unmrkn"
+  name="popularity-contest"
+  type="radio"
+  value="nick-wilde"
+/>
+`;
+
+exports[`RadioItem renders correctly 15`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  
+</label>
+`;
+
+exports[`RadioItem renders correctly 16`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  򔬞󯦱򿯑
+</label>
+`;
+
+exports[`RadioItem renders correctly 17`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  􋠦$񕴼
+</label>
+`;
+
+exports[`RadioItem renders correctly 18`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  󷣄
+</label>
+`;
+
+exports[`RadioItem renders correctly 19`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  /􏿼􏿸񵴏
+</label>
+`;
+
+exports[`RadioItem renders correctly 20`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-1unmrkn"
+    name="popularity-contest"
+    type="radio"
+    value="nick-wilde"
+  />
+  󾲳󒟽􃄂򡝴򲅍􌽑󄱗
+</label>
+`;

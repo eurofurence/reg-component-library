@@ -24,12 +24,15 @@ export interface TextAreaProps {
 	readonly label: string
 	readonly height?: string
 	readonly placeholder: string
+	readonly value?: string
+	readonly defaultValue?: string
 	readonly gridSpan?: number
 	readonly onChange?: ChangeEventHandler<HTMLTextAreaElement>
+	readonly readOnly?: boolean
 }
 
-const TextArea = forwardRef(({ name, label, height, placeholder, gridSpan, onChange }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
-	<TArea name={name} placeholder={placeholder} height={height} onChange={onChange} ref={ref}/>
+const TextArea = forwardRef(({ label, gridSpan, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
+	<TArea {...rest} ref={ref}/>
 </FormHeaderLabel>)
 
 export default TextArea

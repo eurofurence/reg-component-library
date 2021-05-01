@@ -23,10 +23,11 @@ export interface CheckboxProps {
 	readonly defaultChecked?: boolean
 	readonly gridSpan?: number
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
+	readonly readOnly?: boolean
 }
 
-const Checkbox = forwardRef(({ name, label, checked, defaultChecked, gridSpan, onChange }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) => {
-	const input = <Input name={name} type="checkbox" checked={checked} defaultChecked={defaultChecked} onChange={onChange} ref={ref}/>
+const Checkbox = forwardRef(({ label, gridSpan, ...rest }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) => {
+	const input = <Input {...rest} type="checkbox" ref={ref} />
 
 	return label == null
 		? input

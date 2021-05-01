@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField renders correctly 1`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="񹇁򆙳"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 2`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    񱧄'񁠓,
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="1󲸽"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 3`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="+0"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 4`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="𬋍񜩢򜲜򤭯癠􀎶󰹉"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 5`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    􏿱
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="󠫫"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 6`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    娱񹮗𛗃𳟁
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="𘓃"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 7`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="񬩹񐮋򤓞񽴂"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 8`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="򌺛􂂿𴩈𯰤򽰺𦜘𬸀"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 9`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="򭮀񯧠򷉄򚣙򜜼󷒛񊂳"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 10`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    􏿵
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder=""
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 11`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="𮙊񢛬󯨦򷗸󺳍𚡆𤶮򉸋"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 12`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    ,񠠳𩿥 򡀴􏿳򋑟򄬢􃑖
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="񭕽𧔤򛖱􏿿񬵂򡷢􍬵"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 13`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    񈯾
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="󐶻Ի󢙟򛪰󇍨"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 14`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    )􏿽󱝤!𧻴񐩷􌡙􏿴*򺡘
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder=""
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 15`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    򭺩󄌄󺨚󁒲󬁀񠩹ㄝ󚛈򃋮󇉠
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="򛣩𧶏%*"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 16`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    ﳽ򔬞󯦱򿯑𷍘򘃵򷥹򏸍󂒏󗰟
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder=""
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 17`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    􏿳$
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="󖭒򠔗𩩯𹪙񋽢򸗭񥕆􂶛󌤋"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 18`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    񣧺򧕾𓞆󷣄𴚏񮋟𙽮򳭆
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="񗧫􏿺'񡩧􉌲򔭋􆓀񺍎񅇡"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 19`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    󫂄񂺛
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="􏿼"
+  />
+</label>
+`;
+
+exports[`TextField renders correctly 20`] = `
+<label
+  className="css-1kmqlxg"
+>
+  <div
+    className="css-1wds400"
+  >
+    󕚱󤐀𔖢󾲳򯀯󒟽򾄢􃄂񂑟򡝴
+  </div>
+  <input
+    className="css-18fybqd"
+    name="username"
+    placeholder="򊞄􌽑򷔫󄱗𸝩􇡫􎶊𯴏"
+  />
+</label>
+`;

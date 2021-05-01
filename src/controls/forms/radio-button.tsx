@@ -29,12 +29,13 @@ export interface RadioItemProps {
 	readonly checked?: boolean
 	readonly defaultChecked?: boolean
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
+	readonly readOnly?: boolean
 	readonly gridSpan?: number
 }
 
-export const RadioItem = forwardRef(({ label, value, checked, defaultChecked, onChange, gridSpan }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const RadioItem = forwardRef(({ label, gridSpan, ...rest }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
 	const name = useContext(NameContext)
-	const input = <Input name={name} type="radio" value={value} checked={checked} defaultChecked={defaultChecked} onChange={onChange} ref={ref}/>
+	const input = <Input {...rest} name={name} type="radio" ref={ref}/>
 
 	return label == null
 		? input

@@ -1,0 +1,254 @@
+/** @jsxImportSource @emotion/react */
+
+import { RadioGroup, RadioItem, RadioSet } from './radio-button'
+import renderer from 'react-test-renderer'
+import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import * as fc from 'fast-check'
+
+describe('RadioItem', () => {
+	it('renders correctly', () => {
+		fc.assert(fc.property(fc.option(fc.fullUnicodeString(), { nil: undefined }), fc.boolean(), (label, checked) => {
+			const tree = renderer
+				.create(<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label={label} checked={checked}/>
+				</RadioGroup>)
+				.toJSON()
+
+			expect(tree).toMatchSnapshot()
+		}), { numRuns: 20, seed: 2562346 })
+	})
+
+	it('has a label if one is provided', () => {
+		const { queryByLabelText } = render(
+			<RadioGroup name="popularity-contest">
+				<RadioItem value="nick-wilde" label="Nick Wilde"/>
+			</RadioGroup>,
+		)
+
+		expect(queryByLabelText('Nick Wilde')).toBeTruthy()
+	})
+
+	it('does not have a label if none is provided', () => {
+		const { container } = render(
+			<RadioGroup name="popularity-contest">
+				<RadioItem value="nick-wilde"/>
+			</RadioGroup>,
+		)
+
+		expect(container.querySelector('label')).toBeFalsy()
+	})
+
+	describe('when controlled', () => {
+		it('reflects the input value at all times (true)', () => {
+			const onChange = jest.fn()
+			const { getByRole } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" checked={true} onChange={onChange}/>
+				</RadioGroup>,
+			)
+
+			const radio = getByRole('radio')
+
+			expect(radio).toBeChecked()
+
+			userEvent.click(radio)
+
+			expect(radio).toBeChecked()
+		})
+
+		it('reflects the input value at all times (false)', () => {
+			const onChange = jest.fn()
+			const { getByRole } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" checked={false} onChange={onChange}/>
+				</RadioGroup>,
+			)
+
+			const radio = getByRole('radio')
+
+			expect(radio).not.toBeChecked()
+
+			userEvent.click(radio)
+
+			expect(radio).not.toBeChecked()
+		})
+
+		it('raises onChange events when clicked directly', () => {
+			const onChange = jest.fn()
+			const { getByRole } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" checked={false} onChange={onChange}/>
+				</RadioGroup>,
+			)
+
+			const radio = getByRole('radio')
+
+			userEvent.click(radio)
+
+			expect(onChange).toHaveBeenCalled()
+		})
+
+		it('raises onChange events when clicked indirectly', () => {
+			const onChange = jest.fn()
+			const { getByText } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" checked={false} onChange={onChange}/>
+				</RadioGroup>,
+			)
+
+			const radio = getByText('Nick Wilde')
+
+			userEvent.click(radio)
+
+			expect(onChange).toHaveBeenCalled()
+		})
+	})
+
+	describe('when uncontrolled', () => {
+		it('toggles when clicked directly', () => {
+			const { getByRole } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde"/>
+				</RadioGroup>,
+			)
+
+			const radio = getByRole('radio')
+
+			expect(radio).not.toBeChecked()
+
+			userEvent.click(radio)
+
+			expect(radio).toBeChecked()
+		})
+
+		it('toggles when clicked through label', () => {
+			const { getByRole, getByText } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde"/>
+				</RadioGroup>,
+			)
+
+			const label = getByText('Nick Wilde')
+			const radio = getByRole('radio')
+
+			expect(radio).not.toBeChecked()
+
+			userEvent.click(label)
+
+			expect(radio).toBeChecked()
+		})
+
+
+		it('reflects the defaultChecked value (true) originally', () => {
+			const { getByRole } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" defaultChecked={true}/>
+				</RadioGroup>,
+			)
+
+			expect(getByRole('radio')).toBeChecked()
+		})
+
+		it('reflects the defaultChecked value (false) originally', () => {
+			const { getByRole } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" defaultChecked={false}/>
+				</RadioGroup>,
+			)
+
+			expect(getByRole('radio')).not.toBeChecked()
+		})
+
+		it('raises onChange events when toggled directly', () => {
+			const onChange = jest.fn()
+			const { getByRole } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" onChange={onChange}/>
+				</RadioGroup>,
+			)
+
+			const radio = getByRole('radio')
+
+			userEvent.click(radio)
+
+			expect(onChange).toHaveBeenCalled()
+		})
+
+		it('raises onChange events when toggled indirectly', () => {
+			const onChange = jest.fn()
+			const { getByText } = render(
+				<RadioGroup name="popularity-contest">
+					<RadioItem value="nick-wilde" label="Nick Wilde" onChange={onChange}/>
+				</RadioGroup>,
+			)
+
+			const radio = getByText('Nick Wilde')
+
+			userEvent.click(radio)
+
+			expect(onChange).toHaveBeenCalled()
+		})
+	})
+})
+
+describe('RadioGroup', () => {
+	it('groups radio buttons together', () => {
+		const onChange = jest.fn()
+		const { getByLabelText } = render(
+			<RadioGroup name="popularity-contest">
+				<RadioItem value="robin-hood" label="Robin Hood" onChange={onChange}/>
+				<RadioItem value="nick-wilde" label="Nick Wilde" onChange={onChange}/>
+				<RadioItem value="fox-mccloud" label="Fox McCloud" onChange={onChange}/>
+			</RadioGroup>,
+		)
+
+		const robinHood = getByLabelText('Robin Hood')
+		const nickWilde = getByLabelText('Nick Wilde')
+
+		userEvent.click(robinHood)
+
+		expect(robinHood).toBeChecked()
+
+		userEvent.click(nickWilde)
+
+		expect(robinHood).not.toBeChecked()
+	})
+})
+
+describe('RadioSet', () => {
+	it('groups radio buttons together', () => {
+		const onChange = jest.fn()
+		const { getByLabelText } = render(
+			<RadioSet name="popularity-contest" legend="Who is best fox?">
+				<RadioItem value="robin-hood" label="Robin Hood" onChange={onChange}/>
+				<RadioItem value="nick-wilde" label="Nick Wilde" onChange={onChange}/>
+				<RadioItem value="fox-mccloud" label="Fox McCloud" onChange={onChange}/>
+			</RadioSet>,
+		)
+
+		const robinHood = getByLabelText('Robin Hood')
+		const nickWilde = getByLabelText('Nick Wilde')
+
+		userEvent.click(robinHood)
+
+		expect(robinHood).toBeChecked()
+
+		userEvent.click(nickWilde)
+
+		expect(robinHood).not.toBeChecked()
+	})
+
+	it('adds a legend', () => {
+		const onChange = jest.fn()
+		const { queryByText } = render(
+			<RadioSet name="popularity-contest" legend="Who is best fox?">
+				<RadioItem value="robin-hood" label="Robin Hood" onChange={onChange}/>
+				<RadioItem value="nick-wilde" label="Nick Wilde" onChange={onChange}/>
+				<RadioItem value="fox-mccloud" label="Fox McCloud" onChange={onChange}/>
+			</RadioSet>,
+		)
+
+		expect(queryByText('Who is best fox?')).toBeTruthy()
+	})
+})

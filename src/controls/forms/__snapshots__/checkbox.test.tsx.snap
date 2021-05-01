@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly 1`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  򆙳$
+</label>
+`;
+
+exports[`Checkbox renders correctly 2`] = `
+<input
+  checked={true}
+  className="css-kfehg9"
+  name="am-furry"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox renders correctly 3`] = `
+<input
+  checked={false}
+  className="css-kfehg9"
+  name="am-furry"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox renders correctly 4`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  𬋍4'
+</label>
+`;
+
+exports[`Checkbox renders correctly 5`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  󈨆
+</label>
+`;
+
+exports[`Checkbox renders correctly 6`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  񹮗𛗃𳟁򓬪򜕛󩸰􍤽𘓃񆠟򘲐
+</label>
+`;
+
+exports[`Checkbox renders correctly 7`] = `
+<input
+  checked={false}
+  className="css-kfehg9"
+  name="am-furry"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox renders correctly 8`] = `
+<input
+  checked={false}
+  className="css-kfehg9"
+  name="am-furry"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox renders correctly 9`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  4򜜼񊂳񾁸򥩂􏿫-
+</label>
+`;
+
+exports[`Checkbox renders correctly 10`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  񨻠
+</label>
+`;
+
+exports[`Checkbox renders correctly 11`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  𢊠𮙊񢛬󯨦򷗸󺳍
+</label>
+`;
+
+exports[`Checkbox renders correctly 12`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  򪎄񼼐𒿑৅񠠳󒸺𩿥񌇉笉
+</label>
+`;
+
+exports[`Checkbox renders correctly 13`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  򔙷񜸆󐶻Ի󢙟򛪰
+</label>
+`;
+
+exports[`Checkbox renders correctly 14`] = `
+<input
+  checked={true}
+  className="css-kfehg9"
+  name="am-furry"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox renders correctly 15`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  
+</label>
+`;
+
+exports[`Checkbox renders correctly 16`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  򔬞󯦱򿯑
+</label>
+`;
+
+exports[`Checkbox renders correctly 17`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  􋠦$񕴼
+</label>
+`;
+
+exports[`Checkbox renders correctly 18`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  󷣄
+</label>
+`;
+
+exports[`Checkbox renders correctly 19`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  /􏿼􏿸񵴏
+</label>
+`;
+
+exports[`Checkbox renders correctly 20`] = `
+<label
+  className="css-1v0xqcf"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  󾲳󒟽􃄂򡝴򲅍􌽑󄱗
+</label>
+`;
