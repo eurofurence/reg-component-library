@@ -1,25 +1,33 @@
 /** @jsxImportSource @emotion/react */
 
 import { forwardRef, ForwardedRef } from 'react'
-import ReactSelect, { OptionsType, OptionTypeBase } from 'react-select'
+import ReactSelect, { Options } from 'react-select'
 import FormHeaderLabel from './form-header-label'
 
-interface SelectProps {
+declare module 'react' {
+	/* eslint-disable */
+	function forwardRef<T, P = {}>(
+	  render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
+	): (props: P & React.RefAttributes<T>) => React.ReactElement | null
+	/* eslint-enable */
+}
+
+interface SelectProps<Option> {
 	readonly name: string
 	readonly label: string
 	readonly gridSpan?: number
 	readonly isMulti?: boolean
-	readonly options: OptionsType<Readonly<OptionTypeBase>>
+	readonly options: Options<Option>
 }
 
-const Select = forwardRef(({ name, label, gridSpan, isMulti, options }: SelectProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
+const Select = forwardRef(<Option,>({ name, label, gridSpan, isMulti, options }: SelectProps<Option>, _ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
 	<ReactSelect
 		name={name}
 		isMulti={isMulti}
 		isClearable={false}
 		// onChange={onChange}
-		options={options}
-		innerRef={ref}
+		options={options} // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+		// innerRef={ref}
 		components={{
 			DropdownIndicator: null,
 		}}

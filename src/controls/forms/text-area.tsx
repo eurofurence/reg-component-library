@@ -4,7 +4,7 @@ import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
 import styled from '@emotion/styled'
 import FormHeaderLabel from './form-header-label'
 
-const TArea = styled.textarea<{ height?: string }>`
+const TArea = styled.textarea<{ readonly height?: string }>`
 	min-width: 100%;
 	max-width: 100%;
 	height: ${({ height }) => height != null ? height : '6.25em'};
