@@ -26,25 +26,31 @@ const Label = styled.h1`
 	margin-left: 0.4em;
 `
 
-const CheckableCard = styled(Card)(({ checked }: { readonly checked: boolean }) => checked ? `
-	cursor: pointer;
-	border-color: var(--color-semantic-info);
+const CheckableCard = styled(Card)(({ checked }: { readonly checked: boolean }) =>
+	checked
+		? `
+			cursor: pointer;
+			user-select: none;
+			border-color: var(--color-semantic-info);
 
-	> header {
-		border-bottom-color: var(--color-semantic-info);
-		color: var(--color-semantic-info);
+			> header {
+				border-bottom-color: var(--color-semantic-info);
+				color: var(--color-semantic-info);
 
-		> h1 {
-			color: var(--color-semantic-info);
-		}
-	}
+				> h1 {
+					color: var(--color-semantic-info);
+				}
+			}
 
-	> footer {
-		border-top-color: var(--color-semantic-info);
-	}
-` : `
-	cursor: pointer;
-`)
+			> footer {
+				border-top-color: var(--color-semantic-info);
+			}
+		`
+		: `
+			cursor: pointer;
+			user-select: none;
+		`,
+)
 
 const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
 	if (checked == null) {
