@@ -11,6 +11,7 @@ export { default as Card } from './surfaces/card'
 export { default as Paper } from './surfaces/paper'
 
 export { default as Button } from './controls/button'
+export { default as Dropdown } from './controls/dropdown'
 export { default as Display } from './controls/display'
 export { default as WizardProgressBar } from './controls/wizard-progress-bar'
 export { default as TextArea } from './controls/forms/text-area'
