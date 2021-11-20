@@ -180,7 +180,16 @@ rules:
   '@typescript-eslint/ban-types': off
   '@typescript-eslint/brace-style': [error, 1tbs]
   '@typescript-eslint/class-literal-property-style': off
-  '@typescript-eslint/comma-dangle': [error, always-multiline]
+  '@typescript-eslint/comma-dangle':
+    - error
+    - arrays: always-multiline
+      objects: always-multiline
+      imports: always-multiline
+      exports: always-multiline
+      functions: always-multiline
+      enums: always-multiline
+      tuples: always-multiline
+      generics: ignore # This helps with avoiding generics ambiguity with JSX tags
   '@typescript-eslint/comma-spacing': [error, { before: false, after: true }]
   '@typescript-eslint/consistent-indexed-object-style': off
   '@typescript-eslint/consistent-type-assertions': [error, { assertionStyle: 'as', objectLiteralTypeAssertions: 'never' }]

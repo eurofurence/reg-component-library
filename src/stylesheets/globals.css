@@ -1,5 +1,6 @@
 body {
-	background-color: var(--color-blue-gray);
+	background-color: var(--color-grays-000);
+	color: var(--color-grays-500);
 
 	font-family: Inter;
 	font-size: 1.6rem;
@@ -9,9 +10,21 @@ body {
 }
 
 body h1 {
-	font-family: Rubik;
+	color: var(--color-brand-2-900);
+
+	font-family: Manrope;
 	font-size: 3em;
-	font-weight: 400;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.0125em;
+}
+
+body h3 {
+	color: var(--color-brand-2-900);
+
+	font-family: Manrope;
+	font-size: 1.75em;
+	font-weight: 700;
 	line-height: 1.5;
 	letter-spacing: 0.0125em;
 }
