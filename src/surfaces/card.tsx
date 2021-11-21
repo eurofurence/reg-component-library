@@ -5,7 +5,8 @@ export default styled.article<{
 	readonly height?: string
 	readonly isLink?: boolean
 }>`
-	display: block;
+	display: flex;
+	flex-direction: column;
 	background-color: var(--color-grays-000);
 	color: var(--color-grays-500);
 	padding: 2em;
@@ -20,10 +21,21 @@ export default styled.article<{
 	font-size: 1.6rem;
 	line-height: 1.5;
 
+	> * {
+		flex: 1;
+
+		&:not(:first-child) {
+			padding-top: 2.2rem;
+			border-top: solid 1px var(--color-grays-300);
+		}
+
+		&:not(:last-child) {
+			padding-bottom: 2.2rem;
+		}
+	}
+
 	> header {
-		border-bottom: solid 1px var(--color-grays-300);
-		padding-bottom: 1.8rem;
-		margin-bottom: 2.2rem;
+		flex: none;
 
 		> h1 {
 			font-family: Manrope;
@@ -34,8 +46,6 @@ export default styled.article<{
 	}
 
 	> footer {
-		border-top: solid 1px var(--color-grays-300);
-		padding-top: 1.8rem;
-		margin-top: 2.2rem;
+		flex: none;
 	}
 `
