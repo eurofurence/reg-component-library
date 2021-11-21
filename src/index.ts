@@ -21,3 +21,15 @@ export { default as RadioCard } from './controls/forms/radio-card'
 export { default as Checkbox } from './controls/forms/checkbox'
 export { default as FieldSet } from './controls/forms/field-set'
 export { default as Select } from './controls/forms/select'
+
+// Export some props types
+
+export type { DisplayProps } from './controls/display'
+export type { WizardProgressBarProps } from './controls/wizard-progress-bar'
+export type { TextAreaProps } from './controls/forms/text-area'
+export type { TextFieldProps } from './controls/forms/text-field'
+export type { RadioGroupProps, RadioItemProps, RadioSetProps } from './controls/forms/radio-button'
+export type { RadioCardProps } from './controls/forms/radio-card'
+export type { CheckboxProps } from './controls/forms/checkbox'
+export type { FieldSetProps } from './controls/forms/field-set'
+export type { SelectProps } from './controls/forms/select'

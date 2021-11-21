@@ -9,7 +9,13 @@ const FSet = styled.fieldset`
 	${formControlStyle}
 `
 
-const FieldSet = ({ legend, gridSpan, children }: Readonly<{ legend?: string, gridSpan?: number, children: ReactNode }>) => <FSet gridSpan={gridSpan}>
+export interface FieldSetProps {
+	readonly legend?: string
+	readonly gridSpan?: number
+	readonly children: ReactNode
+}
+
+const FieldSet = ({ legend, gridSpan, children }: FieldSetProps) => <FSet gridSpan={gridSpan}>
 	{legend == null ? null : <FormHeader as="legend">{legend}</FormHeader>}
 	{children}
 </FSet>

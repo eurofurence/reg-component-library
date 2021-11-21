@@ -12,7 +12,7 @@ declare module 'react' {
 	/* eslint-enable */
 }
 
-interface SelectProps<Option> {
+export interface SelectProps<Option> {
 	readonly name: string
 	readonly label: string
 	readonly gridSpan?: number
