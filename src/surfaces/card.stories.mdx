@@ -20,12 +20,18 @@ import Card from '../surfaces/card'
 A `Card` is a raised surface intended to contain information about an isolated item,
 akin to a physical information card.
 
+Note that all content must be contained in true HTML elements (tags) to make the flexbox setup work correctly.
+You cannot have naked text nodes as children of this component.
+
+All children will be separated with a horizontal bar. To prevent this from happening with e.g. a set of sequential `p` tags,
+wrap them in a `div`.
+
 ## Baseline
 
 <Canvas>
 	<Story name="Baseline">
 		<Card width="300px">
-			This card contains information about something.
+			<p>This card contains information about something.</p>
 		</Card>
 	</Story>
 </Canvas>
@@ -33,25 +39,25 @@ akin to a physical information card.
 ## Headers and footers
 
 A `<header/>` or `<footer/>` element can be added to the children of any `Card`.
-The header or footer will then be automatically styled correctly.
+The header or footer will then be automatically styled correctly, and the elements will not stretch like the other elements.
 
 <Canvas>
 	<Story name="Header">
 		<Card width="300px">
 			<header>A header</header>
-			This card contains information about something.
+			<p>This card contains information about something.</p>
 		</Card>
 	</Story>
 	<Story name="Footer">
 		<Card width="300px">
-			This card contains information about something.
+			<p>This card contains information about something.</p>
 			<footer>A footer</footer>
 		</Card>
 	</Story>
 	<Story name="Header and Footer">
 		<Card width="300px">
 			<header>A header</header>
-			This card contains information about something.
+			<p>This card contains information about something.</p>
 			<footer>A footer</footer>
 		</Card>
 	</Story>
