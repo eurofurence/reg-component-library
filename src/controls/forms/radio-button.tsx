@@ -45,13 +45,25 @@ export const RadioItem = forwardRef(({ label, gridSpan, ...rest }: RadioItemProp
 		</FormLabel>
 })
 
-export const RadioGroup = ({ name, children }: Readonly<{ name: string, children: ReactNode }>) => <Fragment>
+export interface RadioGroupProps {
+	readonly name: string
+	readonly children: ReactNode
+}
+
+export const RadioGroup = ({ name, children }: RadioGroupProps) => <Fragment>
 	<NameContext.Provider value={name}>
 		{children}
 	</NameContext.Provider>
 </Fragment>
 
-export const RadioSet = ({ name, gridSpan, legend, children }: Readonly<{ name: string, gridSpan?: number, legend: string, children: ReactNode }>) => <FieldSet legend={legend} gridSpan={gridSpan}>
+export interface RadioSetProps {
+	readonly name: string
+	readonly gridSpan?: number
+	readonly legend: string
+	readonly children: ReactNode
+}
+
+export const RadioSet = ({ name, gridSpan, legend, children }: RadioSetProps) => <FieldSet legend={legend} gridSpan={gridSpan}>
 	<RadioGroup name={name}>
 		{children}
 	</RadioGroup>

@@ -44,7 +44,12 @@ const Caption = styled.div`
 	margin-top: 1em;
 `
 
-const WizardProgressBar = ({ steps, currentStep }: Readonly<{ steps: readonly string[], currentStep: number }>) => <section>
+export interface WizardProgressBarProps {
+	readonly steps: readonly string[]
+	readonly currentStep: number
+}
+
+const WizardProgressBar = ({ steps, currentStep }: WizardProgressBarProps) => <section>
 	<IndicatorsContainer>
 		{times(i => <Indicator key={i} state="completed" />, currentStep)}
 		<Indicator state="current"/>

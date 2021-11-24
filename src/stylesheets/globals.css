@@ -40,3 +40,7 @@ p:not(:last-child) {
 a {
 	color: var(--color-semantic-info);
 }
+
+strong {
+	font-weight: 700;
+}
