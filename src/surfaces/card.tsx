@@ -3,15 +3,22 @@ import styled from '@emotion/styled'
 export default styled.article<{
 	readonly width?: string
 	readonly height?: string
-	readonly isLink?: boolean
+	readonly inverted?: boolean
 }>`
 	display: flex;
 	flex-direction: column;
-	background-color: var(--color-grays-000);
-	color: var(--color-grays-500);
+	background-color: ${({ inverted = false }) => inverted ? 'var(--color-brand-2-500)' : 'var(--color-grays-000)'};
+	color: ${({ inverted = false }) => inverted ? 'var(--color-grays-000)' : 'var(--color-grays-500)'};
 	padding: 2em;
-	border: solid 2px var(--color-grays-300);
+	border: ${({ inverted = false }) => inverted ? 'unset' : 'solid 2px var(--color-grays-300)'};
 	border-radius: 1rem;
+
+	${({ inverted = false }) =>
+		inverted
+			? `h1 {
+				color: unset;
+			}`
+			: ``}
 
 	${({ width = 'unset' }) => ({ width })}
 	${({ height = 'unset' }) => ({ height })}
@@ -26,7 +33,7 @@ export default styled.article<{
 
 		&:not(:first-child) {
 			padding-top: 2.2rem;
-			border-top: solid 1px var(--color-grays-300);
+			border-top: solid 1px ${({ inverted = false }) => inverted ? 'var(--color-brand-2-100)' : 'var(--color-grays-300)'};
 		}
 
 		&:not(:last-child) {
