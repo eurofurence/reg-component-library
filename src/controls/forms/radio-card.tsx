@@ -83,7 +83,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			cardRef.current!.closest('form')!.addEventListener('change', e => setInputChecked(e.target === inputRef.current!))
 		}, [])
 
-		return <CheckableCard as="label" isLink={true} {...inputChecked ? { 'data-checked': '' } : {}} checked={inputChecked} width={width} height={height} ref={cardRef}>
+		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} checked={inputChecked} width={width} height={height} ref={cardRef}>
 			<Header>
 				<RadioItem {...rest} defaultChecked={defaultChecked} ref={inputRef}/>
 				<Label>{label}</Label>
@@ -91,7 +91,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			{children}
 		</CheckableCard>
 	} else {
-		return <CheckableCard as="label" isLink={true} {...checked ? { 'data-checked': '' } : {}} checked={checked} width={width} height={height}>
+		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} checked={checked} width={width} height={height}>
 			<Header>
 				<RadioItem {...rest} checked={checked} defaultChecked={defaultChecked} ref={ref}/>
 				<Label>{label}</Label>
