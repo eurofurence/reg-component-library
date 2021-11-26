@@ -7,7 +7,7 @@ import FormHeaderLabel from './form-header-label'
 const Input = styled.input`
 	width: 100%;
 	height: 3em;
-	border: 1px solid var(--color-grays-300);
+	border: 2px solid var(--color-grays-300);
 	border-radius: 0.1875em;
 	padding: 0.75em 1em;
 
