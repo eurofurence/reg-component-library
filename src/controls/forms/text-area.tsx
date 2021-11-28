@@ -8,7 +8,7 @@ const TArea = styled.textarea<{ readonly height?: string }>`
 	min-width: 100%;
 	max-width: 100%;
 	height: ${({ height }) => height != null ? height : '6.25em'};
-	border: 1px solid var(--color-grays-300);
+	border: 2px solid var(--color-grays-300);
 	border-radius: 0.1875em;
 	padding: 0.75em 1em 1em 1em;
 
