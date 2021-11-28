@@ -1,24 +1,110 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-export default styled.article<{
+export type CardLayout = 'column' | 'side-by-side'
+
+export interface CardProps {
 	readonly width?: string
 	readonly height?: string
 	readonly inverted?: boolean
-}>`
-	display: flex;
-	flex-direction: column;
+	readonly layout?: CardLayout
+	readonly image?: string
+}
+
+// TODO: don't have the grid in side-by-side be user configurable, somehow do it differently instead
+// e.g. always put images right and other things in the description location
+
+const layoutStyle = ({ layout = 'column', inverted = false, image }: CardProps) => {
+	switch (layout) {
+		case 'column':
+			return css`
+				display: flex;
+				flex-direction: column;
+				padding: 2em;
+
+				${image === undefined ? css`` : css`
+					background-image: url("${image}");
+					background-position: bottom left;
+					background-repeat: no-repeat;
+				`}
+
+				> * {
+					flex: 1;
+
+					&:not(:first-child) {
+						padding-top: 2.2rem;
+						border-top: solid 1px ${inverted ? 'var(--color-brand-2-100)' : 'var(--color-grays-300)'};
+					}
+
+					&:not(:last-child) {
+						padding-bottom: 2.2rem;
+					}
+				}
+
+				> header {
+					flex: none;
+				}
+
+				> footer {
+					flex: none;
+				}
+			`
+		case 'side-by-side':
+			return css`
+				display: grid;
+				grid-template-columns: repeat(14, 1fr);
+				grid-template-rows: repeat(3, min-content);
+				column-gap: 24px;
+				padding: 4em;
+
+				> * {
+					grid-column: 1 / 9;
+					grid-row: 2;
+				}
+
+				> header {
+					grid-column: 1 / 7;
+					grid-row: 1;
+
+					margin-bottom: 1em;
+				}
+
+				> footer {
+					grid-column: 1 / 7;
+					grid-row: 3;
+
+					border-top: solid 1px #E5E5E5;
+					margin-top: 2em;
+					padding-top: 1em;
+				}
+
+				${image === undefined ? css`` : css`
+					&::after {
+						grid-column: 9 / 15;
+						grid-row: 1 / 4;
+						justify-self: center;
+						align-self: center;
+
+						content: url("${image}");
+					}
+				`}
+			`
+	}
+}
+
+export default styled.article<CardProps>`
+	${layoutStyle}
+
 	background-color: ${({ inverted = false }) => inverted ? 'var(--color-brand-2-500)' : 'var(--color-grays-000)'};
 	color: ${({ inverted = false }) => inverted ? 'var(--color-grays-000)' : 'var(--color-grays-500)'};
-	padding: 2em;
 	border: ${({ inverted = false }) => inverted ? 'unset' : 'solid 2px var(--color-grays-300)'};
 	border-radius: 1rem;
 
-	${({ inverted = false }) =>
-		inverted
-			? `h1 {
-				color: unset;
-			}`
-			: ``}
+	${({ inverted = false }) => !inverted ? css`` : css`
+		h1 {
+			color: unset;
+		}
+	`}
 
 	${({ width = 'unset' }) => ({ width })}
 	${({ height = 'unset' }) => ({ height })}
@@ -28,31 +114,12 @@ export default styled.article<{
 	font-size: 1.6rem;
 	line-height: 1.5;
 
-	> * {
-		flex: 1;
-
-		&:not(:first-child) {
-			padding-top: 2.2rem;
-			border-top: solid 1px ${({ inverted = false }) => inverted ? 'var(--color-brand-2-100)' : 'var(--color-grays-300)'};
-		}
-
-		&:not(:last-child) {
-			padding-bottom: 2.2rem;
-		}
-	}
-
 	> header {
-		flex: none;
-
 		> h1 {
 			font-family: Manrope;
 			font-weight: 500;
 			font-size: 1.25em;
 			line-height: 1.5;
 		}
-	}
-
-	> footer {
-		flex: none;
 	}
 `

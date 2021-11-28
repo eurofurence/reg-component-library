@@ -2,18 +2,17 @@
 
 import { ReactNode, ChangeEventHandler, forwardRef, ForwardedRef, useEffect, useRef, useState, useImperativeHandle } from 'react'
 import styled from '@emotion/styled'
-import Card from '../../surfaces/card'
+import { css } from '@emotion/react'
+import Card, { CardLayout, CardProps } from '../../surfaces/card'
 import { RadioItem } from './radio-button'
 
-export interface RadioCardProps {
+export interface RadioCardProps extends CardProps {
 	readonly label?: string
 	readonly value: string
 	readonly checked?: boolean
 	readonly defaultChecked?: boolean
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 	readonly readOnly?: boolean
-	readonly height?: string
-	readonly width?: string
 	readonly children?: ReactNode
 }
 
@@ -26,15 +25,17 @@ const Label = styled.h1`
 	margin-left: 0.4em;
 `
 
-const CheckableCard = styled(Card)(({ checked }: { readonly checked: boolean }) =>
+const CheckableCard = styled(Card)(({ checked, layout }: { readonly checked: boolean, readonly layout?: CardLayout }) =>
 	checked
-		? `
+		? css`
 			cursor: pointer;
 			user-select: none;
 			border-color: var(--color-semantic-info);
 
 			> header {
-				border-bottom-color: var(--color-semantic-info);
+				${layout !== 'column' ? css`` : css`
+					border-bottom-color: var(--color-semantic-info);
+				`}
 				color: var(--color-semantic-info);
 
 				> h1 {
@@ -43,16 +44,18 @@ const CheckableCard = styled(Card)(({ checked }: { readonly checked: boolean }) 
 			}
 
 			> footer {
-				border-top-color: var(--color-semantic-info);
+				${layout !== 'column' ? css`` : css`
+					border-top-color: var(--color-semantic-info);
+				`}
 			}
 		`
-		: `
+		: css`
 			cursor: pointer;
 			user-select: none;
 		`,
 )
 
-const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
+const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, layout, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
 	if (checked == null) {
 		/*
 		* All this is to make the highlight of the Card follow the checked state of the input if it is uncontrolled.
@@ -83,7 +86,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			cardRef.current!.closest('form')!.addEventListener('change', e => setInputChecked(e.target === inputRef.current!))
 		}, [])
 
-		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} checked={inputChecked} width={width} height={height} ref={cardRef}>
+		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} checked={inputChecked} width={width} height={height} layout={layout} ref={cardRef}>
 			<Header>
 				<RadioItem {...rest} defaultChecked={defaultChecked} ref={inputRef}/>
 				<Label>{label}</Label>
@@ -91,7 +94,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			{children}
 		</CheckableCard>
 	} else {
-		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} checked={checked} width={width} height={height}>
+		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} checked={checked} width={width} height={height} layout={layout}>
 			<Header>
 				<RadioItem {...rest} checked={checked} defaultChecked={defaultChecked} ref={ref}/>
 				<Label>{label}</Label>
