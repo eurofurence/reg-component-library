@@ -2,7 +2,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
 import Card from '../surfaces/card'
 
 <Meta
-	title="Surfaces/Card"
+	title="Surfaces/Card/Column Layout"
 	component={Card}
 	parameters={{
 		backgrounds: {
@@ -15,13 +15,9 @@ import Card from '../surfaces/card'
 	}}
 />
 
-# Card
+# Card with column layout
 
-A `Card` is a surface intended to contain information about an isolated item,
-akin to a physical information card.
-
-Note that all content must be contained in true HTML elements (tags) to make the layout work correctly.
-You cannot have naked text nodes as children of this component.
+The `column` layout is the default `Card` layout. It arranges its children below each other in a column.
 
 All children will be separated with a horizontal bar. To prevent this from happening with e.g. a set of sequential `p` tags,
 wrap them in a `div`.
@@ -30,33 +26,44 @@ wrap them in a `div`.
 
 <Canvas>
 	<Story name="Baseline">
-		<Card width="300px">
+		<Card width="300px" layout="column">
 			<p>This card contains information about something.</p>
+			<p>This is some more information.</p>
+		</Card>
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Baseline without subdivision">
+		<Card width="300px" layout="column">
+			<div>
+				<p>This card contains information about something.</p>
+				<p>This extra information stays in the same subdivision because the two sections were wrapped together in a div.</p>
+			</div>
 		</Card>
 	</Story>
 </Canvas>
 
 ## Headers and footers
 
-A `<header/>` or `<footer/>` element can be added to the children of any `Card`.
-The header or footer will then be automatically styled correctly, and the elements will not stretch like the other elements.
+When adding headers or footers to a column-layout `Card`, the elements will not stretch like the other elements.
 
 <Canvas>
 	<Story name="Header">
-		<Card width="300px">
+		<Card width="300px" height="300px" layout="column">
 			<header>A header</header>
 			<p>This card contains information about something.</p>
 		</Card>
 	</Story>
 	<Story name="Footer">
-		<Card width="300px">
+		<Card width="300px" height="300px" layout="column">
 			<p>This card contains information about something.</p>
 			<footer>A footer</footer>
 		</Card>
 	</Story>
 	<Story name="Header and Footer">
-		<Card width="300px">
-			<header><h1>A header with a title inside</h1></header>
+		<Card width="300px" height="300px" layout="column">
+			<header>A header</header>
 			<p>This card contains information about something.</p>
 			<footer>A footer</footer>
 		</Card>
@@ -65,7 +72,7 @@ The header or footer will then be automatically styled correctly, and the elemen
 
 ## Images
 
-An image can be added to a card using the `image` parameter.
+Images in the column layout are used as a background and anchored to the bottom left corner.
 
 <Canvas>
 	<Story name="Image">
