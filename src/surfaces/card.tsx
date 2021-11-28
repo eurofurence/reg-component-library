@@ -11,9 +11,6 @@ export interface CardProps {
 	readonly image?: string
 }
 
-// TODO: don't have the grid in side-by-side be user configurable, somehow do it differently instead
-// e.g. always put images right and other things in the description location
-
 const layoutStyle = ({ layout = 'column', inverted = false, image }: CardProps) => {
 	switch (layout) {
 		case 'column':
