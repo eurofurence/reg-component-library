@@ -63,7 +63,7 @@ rules:
   max-params: [warn, 8]
   max-statements-per-line: [error, { max: 1 }]
   max-statements: [warn, { max: 10 }]
-  multiline-ternary: [error, always-multiline]
+  multiline-ternary: off
   new-parens: error
   newline-per-chained-call: [error, { ignoreChainWithDepth: 3 }]
   no-alert: error
