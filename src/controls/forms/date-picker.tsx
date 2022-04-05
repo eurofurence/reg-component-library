@@ -82,6 +82,7 @@ const Overlay = styled.section`
 
 	.react-datepicker__navigation {
 		position: absolute;
+		cursor: pointer;
 	}
 
 	.react-datepicker__navigation--previous {
@@ -108,6 +109,7 @@ const Overlay = styled.section`
 		color: var(--color-brand-2-900);
 		position: relative;
 		margin-bottom: 36px;
+		cursor: pointer;
 	}
 
 	.react-datepicker__month-year-dropdown {
@@ -116,6 +118,7 @@ const Overlay = styled.section`
 		position: absolute;
 		left: 50%;
 		top: 0px;
+		z-index: 2;
 		transform: translate(-50%);
 		background-color: var(--color-grays-000);
 	}
@@ -123,7 +126,6 @@ const Overlay = styled.section`
 	.react-datepicker__month-container {
 		margin: 36px 24px;
 		text-align: center;
-		cursor: pointer;
 	}
 
 	.react-datepicker__header {
@@ -167,6 +169,8 @@ const Overlay = styled.section`
 		justify-content: space-around;
 
 		position: relative;
+
+		cursor: pointer;
 	}
 
 	.react-datepicker__day--outside-month {
