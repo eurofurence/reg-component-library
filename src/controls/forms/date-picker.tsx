@@ -229,7 +229,7 @@ const RangeDatePicker = ({
 	const [startDate, setStartDate] = useState<Date | null>(new Date())
 	const [endDate, setEndDate] = useState<Date | null>(null)
 
-	const onChange = ([start, end]: readonly [Readonly<Date>, Readonly<Date>]) => {
+	const onChange = ([start, end]: readonly [Readonly<Date | null>, Readonly<Date | null>]) => {
 	  setStartDate(start)
 	  setEndDate(end)
 	}
