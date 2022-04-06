@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { ForwardedRef, useState } from 'react'
+import { ForwardedRef } from 'react'
 import styled from '@emotion/styled'
-import { startOfYear, endOfYear } from 'date-fns'
+import { startOfYear, endOfYear, formatISO } from 'date-fns'
 import FormHeaderLabel from './form-header-label'
 import formControlStyle from './form-control'
 import ReactDatePicker from 'react-datepicker'
@@ -46,15 +46,18 @@ type CommonProps = {
 type InputProps = {
 	readonly inputRef: ForwardedRef<HTMLInputElement>
 	readonly label: string
-	readonly value: string
+	readonly value?: string
 	readonly placeholder?: string
+	readonly onChange?: (date: string) => void
 }
 
 type Prefixed<P extends string, Type> = {
 	readonly [K in keyof Type as `${P}${Capitalize<string & K>}`]: Type[K]
 }
 
-type RangeDatePickerProps = CommonProps & Prefixed<'start' | 'end', InputProps>
+type RangeDatePickerProps = CommonProps & Prefixed<'start' | 'end', InputProps> & {
+	readonly onChange?: ([start, end]: readonly [string, string]) => void
+}
 type SimpleDatePickerProps = CommonProps & InputProps
 
 export type DatePickerProps
@@ -98,11 +101,11 @@ const Overlay = styled.section`
 	}
 
 	.react-datepicker__navigation-icon--previous {
-		content: url("${leftArrow}")
+		content: url("${leftArrow}");
 	}
 
 	.react-datepicker__navigation-icon--next {
-		content: url("${rightArrow}")
+		content: url("${rightArrow}");
 	}
 
 	.react-datepicker__month-year-dropdown-container {
@@ -225,17 +228,31 @@ const RangeDatePicker = ({
 	startLabel,
 	startValue,
 	startPlaceholder,
+	startOnChange,
 	endInputRef,
 	endLabel,
 	endValue,
 	endPlaceholder,
+	endOnChange,
+	onChange,
 }: RangeDatePickerProps) => {
-	const [startDate, setStartDate] = useState<Date | null>(new Date())
-	const [endDate, setEndDate] = useState<Date | null>(null)
+	const realStartValue = startValue !== undefined ? new Date(startValue) : new Date()
 
-	const onChange = ([start, end]: readonly [Readonly<Date | null>, Readonly<Date | null>]) => {
-	  setStartDate(start)
-	  setEndDate(end)
+	const onPickerChange = ([start, end]: readonly [Readonly<Date> | null, Readonly<Date> | null]) => {
+		const startStr = formatISO(start, { representation: 'date' })
+		const endStr = formatISO(end, { representation: 'date' })
+
+		if (startOnChange !== undefined) {
+			startOnChange(startStr)
+		}
+
+		if (endOnChange !== undefined) {
+			endOnChange(endStr)
+		}
+
+		if (onChange !== undefined) {
+			onChange([startStr, endStr])
+		}
 	}
 
 	return <RangeContainer gridSpan={gridSpan}>
@@ -254,10 +271,10 @@ const RangeDatePicker = ({
 				minDate={startOfYear(new Date())}
 				maxDate={endOfYear(new Date())}
 				selectsRange
-				selected={startDate}
-				startDate={startDate}
+				selected={realStartValue}
+				startDate={realStartValue}
 				endDate={endDate}
-				onChange={onChange}
+				onChange={onPickerChange}
 				showMonthYearDropdown
 				renderDayContents={(day: number) => <span className="react-datepicker__day-text">{day}</span>}
 			/>
