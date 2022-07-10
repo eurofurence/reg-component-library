@@ -28,9 +28,9 @@
     "microbundle": "microbundle"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
     "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0"
+    "@emotion/styled": "^11.3.0",
+    "react": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -80,6 +80,7 @@
   "dependencies": {
     "ramda": "^0.27.1",
     "react-datepicker": "^4.6.0",
+    "react-detect-click-outside": "^1.1.7",
     "react-select": "^5.2.1"
   }
 }

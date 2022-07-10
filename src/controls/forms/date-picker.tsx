@@ -1,75 +1,20 @@
 /** @jsxImportSource @emotion/react */
 
-import { ForwardedRef } from 'react'
+import { ChangeEventHandler, ForwardedRef, useState } from 'react'
 import styled from '@emotion/styled'
-import { startOfYear, endOfYear, formatISO } from 'date-fns'
+import { startOfYear, endOfYear, formatISO, isValid } from 'date-fns'
 import FormHeaderLabel from './form-header-label'
 import formControlStyle from './form-control'
 import ReactDatePicker from 'react-datepicker'
 import leftArrow from '../../assets/left-arrow.svg'
 import rightArrow from '../../assets/right-arrow.svg'
+import { useDetectClickOutside } from 'react-detect-click-outside'
 // import 'react-datepicker/dist/react-datepicker.css'
 
-const RangeContainer = styled.section`
+const Container = styled.section`
 	${formControlStyle}
 
 	position: relative;
-`
-
-const Inputs = styled.section`
-	display: flex;
-	gap: 24px;
-
-	> * {
-		flex: 1;
-	}
-`
-
-const Input = styled.input`
-	width: 100%;
-	height: 3em;
-	border: 2px solid var(--color-grays-300);
-	border-radius: 0.1875em;
-	padding: 0.75em 1em;
-
-	color: var(--color-grays-900);
-
-	&::placeholder {
-		color: var(--color-grays-300);
-	}
-`
-
-type CommonProps = {
-	readonly gridSpan: number
-}
-
-type InputProps = {
-	readonly inputRef: ForwardedRef<HTMLInputElement>
-	readonly label: string
-	readonly value?: string
-	readonly placeholder?: string
-	readonly onChange?: (date: string) => void
-}
-
-type Prefixed<P extends string, Type> = {
-	readonly [K in keyof Type as `${P}${Capitalize<string & K>}`]: Type[K]
-}
-
-type RangeDatePickerProps = CommonProps & Prefixed<'start' | 'end', InputProps> & {
-	readonly onChange?: ([start, end]: readonly [string, string]) => void
-}
-type SimpleDatePickerProps = CommonProps & InputProps
-
-export type DatePickerProps
-	= { readonly range: true } & RangeDatePickerProps
-	| { readonly range: false } & SimpleDatePickerProps
-
-const Overlay = styled.section`
-	position: absolute;
-	left: 0px;
-	top: 100%;
-	width: 100%;
-	margin-top: 12px;
 
 	.react-datepicker {
 		width: 100%;
@@ -222,6 +167,84 @@ const Overlay = styled.section`
 	}
 `
 
+const Inputs = styled.section`
+	display: flex;
+	gap: 24px;
+
+	> * {
+		flex: 1;
+	}
+`
+
+const Input = styled.input`
+	width: 100%;
+	height: 3em;
+	border: 2px solid var(--color-grays-300);
+	border-radius: 0.1875em;
+	padding: 0.75em 1em;
+
+	color: var(--color-grays-900);
+
+	&::placeholder {
+		color: var(--color-grays-300);
+	}
+`
+
+type CommonProps = {
+	readonly gridSpan: number
+}
+
+type InputProps = {
+	readonly inputRef: ForwardedRef<HTMLInputElement>
+	readonly label: string
+	readonly value: string
+	readonly placeholder?: string
+	readonly onChange?: (date: string) => void
+}
+
+type Prefixed<P extends string, Type> = {
+	readonly [K in keyof Type as `${P}${Capitalize<string & K>}`]: Type[K]
+}
+
+type RangeDatePickerProps = CommonProps & Prefixed<'start' | 'end', InputProps> & {
+	readonly onChange?: ({ start, end }: { readonly start: string, readonly end: string }) => void
+}
+type SimpleDatePickerProps = CommonProps & InputProps
+
+export type DatePickerProps
+	= { readonly range: true } & RangeDatePickerProps
+	| { readonly range: false } & SimpleDatePickerProps
+
+const Overlay = styled.section<{ isOpen: boolean }>`
+	position: absolute;
+	left: 0px;
+	top: 100%;
+	width: 100%;
+	margin-top: 12px;
+
+	display: ${({ isOpen }) => isOpen ? 'unset' : 'none'};
+`
+
+const useDropdown = () => {
+	const [isOpen, setIsOpen] = useState(false)
+
+	const insideRef = useDetectClickOutside({
+		onTriggered: () => {
+			setIsOpen(false)
+
+			if (document.activeElement != null && document.activeElement instanceof HTMLElement) {
+				document.activeElement.blur()
+			}
+		},
+	})
+
+	return {
+		isOpen,
+		insideRef,
+		open: () => setIsOpen(true),
+	}
+}
+
 const RangeDatePicker = ({
 	gridSpan,
 	startInputRef,
@@ -236,11 +259,39 @@ const RangeDatePicker = ({
 	endOnChange,
 	onChange,
 }: RangeDatePickerProps) => {
-	const realStartValue = startValue !== undefined ? new Date(startValue) : new Date()
+	const dateStartValue = new Date(startValue)
+	const dateEndValue = new Date(endValue)
+
+	const pickerStartValue = isValid(dateStartValue) ? dateStartValue : null
+	const pickerEndValue = isValid(dateEndValue) ? dateEndValue : null
+
+	const onStartInputChange: ChangeEventHandler<HTMLInputElement> = e => {
+		const startStr = e.target.value
+
+		if (startOnChange !== undefined) {
+			startOnChange(startStr)
+		}
+
+		if (onChange !== undefined) {
+			onChange({ start: startStr, end: endValue })
+		}
+	}
+
+	const onEndInputChange: ChangeEventHandler<HTMLInputElement> = e => {
+		const endStr = e.target.value
+
+		if (endOnChange !== undefined) {
+			endOnChange(endStr)
+		}
+
+		if (onChange !== undefined) {
+			onChange({ start: startValue, end: endStr })
+		}
+	}
 
 	const onPickerChange = ([start, end]: readonly [Readonly<Date> | null, Readonly<Date> | null]) => {
-		const startStr = formatISO(start, { representation: 'date' })
-		const endStr = formatISO(end, { representation: 'date' })
+		const startStr = start === null ? '' : formatISO(start, { representation: 'date' })
+		const endStr = end === null ? '' : formatISO(end, { representation: 'date' })
 
 		if (startOnChange !== undefined) {
 			startOnChange(startStr)
@@ -251,45 +302,80 @@ const RangeDatePicker = ({
 		}
 
 		if (onChange !== undefined) {
-			onChange([startStr, endStr])
+			onChange({ start: startStr, end: endStr })
 		}
 	}
 
-	return <RangeContainer gridSpan={gridSpan}>
+	const { isOpen, open, insideRef } = useDropdown()
+
+	return <Container gridSpan={gridSpan} ref={insideRef}>
 		<Inputs>
 			<FormHeaderLabel label={startLabel}>
-				<Input value={startValue} placeholder={startPlaceholder} ref={startInputRef}/>
+				<Input value={startValue} onChange={onStartInputChange} placeholder={startPlaceholder} ref={startInputRef} onFocus={open}/>
 			</FormHeaderLabel>
 			<FormHeaderLabel label={endLabel}>
-				<Input value={endValue} placeholder={endPlaceholder} ref={endInputRef}/>
+				<Input value={endValue} onChange={onEndInputChange} placeholder={endPlaceholder} ref={endInputRef} onFocus={open}/>
 			</FormHeaderLabel>
 		</Inputs>
-		<Overlay>
+		<Overlay isOpen={isOpen}>
 			<ReactDatePicker
 				inline
 				formatWeekDay={(d: string) => d.slice(0, 1)}
 				minDate={startOfYear(new Date())}
 				maxDate={endOfYear(new Date())}
 				selectsRange
-				selected={realStartValue}
-				startDate={realStartValue}
-				endDate={endDate}
+				selected={pickerStartValue}
+				startDate={pickerStartValue}
+				endDate={pickerEndValue}
 				onChange={onPickerChange}
 				showMonthYearDropdown
 				renderDayContents={(day: number) => <span className="react-datepicker__day-text">{day}</span>}
 			/>
 		</Overlay>
-	</RangeContainer>
+	</Container>
 }
 
 const SimpleDatePicker = ({
 	gridSpan,
 	inputRef,
 	label,
+	value,
+	onChange,
 	...rest
-}: SimpleDatePickerProps) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
-	<Input {...rest} ref={inputRef}/>
-</FormHeaderLabel>
+}: SimpleDatePickerProps) => {
+	const dateValue = new Date(value)
+
+	const pickerValue = isValid(dateValue) ? dateValue : null
+
+	const onPickerChange = (v: Readonly<Date> | null) => {
+		const str = v === null ? '' : formatISO(v, { representation: 'date' })
+
+		if (onChange !== undefined) {
+			onChange(str)
+		}
+	}
+
+	const { isOpen, open, insideRef } = useDropdown()
+
+	return <Container ref={insideRef}>
+		<FormHeaderLabel label={label} gridSpan={gridSpan}>
+			<Input {...rest} ref={inputRef} onFocus={open}/>
+			<Overlay isOpen={isOpen}>
+				<ReactDatePicker
+					inline
+					formatWeekDay={(d: string) => d.slice(0, 1)}
+					minDate={startOfYear(new Date())}
+					maxDate={endOfYear(new Date())}
+					selected={pickerValue}
+					onChange={onPickerChange}
+					showMonthYearDropdown
+					renderDayContents={(day: number) => <span className="react-datepicker__day-text">{day}</span>}
+					customInput={<Input {...rest}/>}
+				/>
+			</Overlay>
+		</FormHeaderLabel>
+	</Container>
+}
 
 const DatePicker = (props: DatePickerProps) =>
 	props.range
