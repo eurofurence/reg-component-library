@@ -64,8 +64,14 @@ input, textarea, button {
 	background-color: inherit;
 	color: inherit;
 	font: inherit;
+	padding: 0px;
 }
 
 input:focus, textarea:focus, button:focus {
 	outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
