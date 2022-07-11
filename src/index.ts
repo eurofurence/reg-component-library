@@ -21,6 +21,7 @@ export { default as RadioCard } from './controls/forms/radio-card'
 export { default as Checkbox } from './controls/forms/checkbox'
 export { default as FieldSet } from './controls/forms/field-set'
 export { default as Select } from './controls/forms/select'
+export { default as DatePicker } from './controls/forms/date-picker'
 
 // Export some props types
 
