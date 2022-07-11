@@ -9,7 +9,6 @@ import ReactDatePicker from 'react-datepicker'
 import leftArrow from '../../assets/left-arrow.svg'
 import rightArrow from '../../assets/right-arrow.svg'
 import { useDetectClickOutside } from 'react-detect-click-outside'
-// import 'react-datepicker/dist/react-datepicker.css'
 
 const Container = styled.section`
 	${formControlStyle}
