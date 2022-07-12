@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+/* eslint-disable max-len */
 
 import { ChangeEventHandler, ForwardedRef, useState } from 'react'
 import styled from '@emotion/styled'
@@ -6,8 +7,6 @@ import { startOfYear, endOfYear, formatISO, isValid } from 'date-fns'
 import FormHeaderLabel from './form-header-label'
 import formControlStyle from './form-control'
 import ReactDatePicker from 'react-datepicker'
-import leftArrow from '../../assets/left-arrow.svg'
-import rightArrow from '../../assets/right-arrow.svg'
 import { useDetectClickOutside } from 'react-detect-click-outside'
 
 const Container = styled.section`
@@ -45,11 +44,11 @@ const Container = styled.section`
 	}
 
 	.react-datepicker__navigation-icon--previous {
-		content: url("${leftArrow}");
+		content: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDggMTMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBkPSJNNy40MSAxMS4wOUwyLjgzIDYuNUw3LjQxIDEuOTFMNiAwLjVMMCA2LjVMNiAxMi41TDcuNDEgMTEuMDlaIiBmaWxsPSIjMjk1MkU4Ii8+DQo8L3N2Zz4=");
 	}
 
 	.react-datepicker__navigation-icon--next {
-		content: url("${rightArrow}");
+		content: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDggMTMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQo8cGF0aCBkPSJNMC41ODk4NDQgMTEuMzRMNS4xNjk4NCA2Ljc1TDAuNTg5ODQ0IDIuMTZMMS45OTk4NCAwLjc1TDcuOTk5ODQgNi43NUwxLjk5OTg0IDEyLjc1TDAuNTg5ODQ0IDExLjM0WiIgZmlsbD0iIzI5NTJFOCIvPg0KPC9zdmc+");
 	}
 
 	.react-datepicker__month-year-dropdown-container {
