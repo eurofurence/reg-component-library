@@ -1,15 +1,18 @@
 {
   "name": "@eurofurence/reg-component-library",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "React UI components for the Eurofurence registration tools.",
   "author": "Eurofurence Registration Team",
   "license": "MIT",
-  "repository": "eurofurence/reg-component-library",
+  "repository": "git://github.com/eurofurence/reg-component-library.git",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.ts",
   "engines": {
     "node": ">=10"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "microbundle --no-compress --format modern,cjs --jsxImportSource react",
