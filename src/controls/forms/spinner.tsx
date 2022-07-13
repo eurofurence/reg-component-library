@@ -49,7 +49,7 @@ export interface SpinnerProps {
 }
 
 // If someone knows a better way feel free to change because I feel dirty writing this...
-// eslint-disable-next-line func-style
+// eslint-disable-next-line func-style,@typescript-eslint/prefer-readonly-parameter-types
 function useRefTap<T>(ref: ForwardedRef<T>): [((instance: T | null) => void) | MutableRefObject<T | null>, () => T | null] {
 	if (ref == null) {
 		const newRef = useRef<T>(null)
@@ -70,6 +70,7 @@ function useRefTap<T>(ref: ForwardedRef<T>): [((instance: T | null) => void) | M
 	}
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const Spinner = forwardRef(({ label, gridSpan, ...rest }: SpinnerProps, ref: ForwardedRef<HTMLInputElement>) => {
 	const [newRef, getCurrent] = useRefTap(ref)
 

@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 import formControlStyle from './form-control'
 import FormHeader from './form-header'
+import type { DeepReadonly } from 'ts-essentials'
 
 const FSet = styled.fieldset`
 	${formControlStyle}
@@ -12,7 +13,7 @@ const FSet = styled.fieldset`
 export interface FieldSetProps {
 	readonly legend?: string
 	readonly gridSpan?: number
-	readonly children: ReactNode
+	readonly children: DeepReadonly<ReactNode>
 }
 
 const FieldSet = ({ legend, gridSpan, children }: FieldSetProps) => <FSet gridSpan={gridSpan}>

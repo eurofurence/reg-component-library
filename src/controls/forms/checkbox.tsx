@@ -26,6 +26,7 @@ export interface CheckboxProps {
 	readonly readOnly?: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const Checkbox = forwardRef(({ label, gridSpan, ...rest }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) => {
 	const input = <Input {...rest} type="checkbox" ref={ref} />
 

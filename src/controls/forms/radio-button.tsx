@@ -4,6 +4,7 @@ import { Fragment, ReactNode, createContext, useContext, ChangeEventHandler, for
 import styled from '@emotion/styled'
 import FormLabel from './form-label'
 import FieldSet from './field-set'
+import type { DeepReadonly } from 'ts-essentials'
 
 const NameContext = createContext<string>('unknown')
 
@@ -33,6 +34,7 @@ export interface RadioItemProps {
 	readonly gridSpan?: number
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export const RadioItem = forwardRef(({ label, gridSpan, ...rest }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
 	const name = useContext(NameContext)
 	const input = <Input {...rest} name={name} type="radio" ref={ref}/>
@@ -47,7 +49,7 @@ export const RadioItem = forwardRef(({ label, gridSpan, ...rest }: RadioItemProp
 
 export interface RadioGroupProps {
 	readonly name: string
-	readonly children: ReactNode
+	readonly children: DeepReadonly<ReactNode>
 }
 
 export const RadioGroup = ({ name, children }: RadioGroupProps) => <Fragment>
@@ -60,7 +62,7 @@ export interface RadioSetProps {
 	readonly name: string
 	readonly gridSpan?: number
 	readonly legend: string
-	readonly children: ReactNode
+	readonly children: DeepReadonly<ReactNode>
 }
 
 export const RadioSet = ({ name, gridSpan, legend, children }: RadioSetProps) => <FieldSet legend={legend} gridSpan={gridSpan}>

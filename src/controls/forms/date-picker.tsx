@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 /* eslint-disable max-len */
 
-import { ChangeEventHandler, ForwardedRef, useState } from 'react'
+import { ChangeEventHandler, useState } from 'react'
 import styled from '@emotion/styled'
 import { startOfYear, endOfYear, formatISO, isValid } from 'date-fns'
 import FormHeaderLabel from './form-header-label'
@@ -193,7 +193,6 @@ type CommonProps = {
 }
 
 type InputProps = {
-	readonly inputRef: ForwardedRef<HTMLInputElement>
 	readonly label: string
 	readonly value: string
 	readonly placeholder?: string
@@ -245,12 +244,10 @@ const useDropdown = () => {
 
 const RangeDatePicker = ({
 	gridSpan,
-	startInputRef,
 	startLabel,
 	startValue,
 	startPlaceholder,
 	startOnChange,
-	endInputRef,
 	endLabel,
 	endValue,
 	endPlaceholder,
@@ -309,10 +306,10 @@ const RangeDatePicker = ({
 	return <Container gridSpan={gridSpan} ref={insideRef}>
 		<Inputs>
 			<FormHeaderLabel label={startLabel}>
-				<Input value={startValue} onChange={onStartInputChange} placeholder={startPlaceholder} ref={startInputRef} onFocus={open}/>
+				<Input value={startValue} onChange={onStartInputChange} placeholder={startPlaceholder} onFocus={open}/>
 			</FormHeaderLabel>
 			<FormHeaderLabel label={endLabel}>
-				<Input value={endValue} onChange={onEndInputChange} placeholder={endPlaceholder} ref={endInputRef} onFocus={open}/>
+				<Input value={endValue} onChange={onEndInputChange} placeholder={endPlaceholder} onFocus={open}/>
 			</FormHeaderLabel>
 		</Inputs>
 		<Overlay isOpen={isOpen}>
@@ -335,7 +332,6 @@ const RangeDatePicker = ({
 
 const SimpleDatePicker = ({
 	gridSpan,
-	inputRef,
 	label,
 	value,
 	onChange,
@@ -357,7 +353,7 @@ const SimpleDatePicker = ({
 
 	return <Container ref={insideRef}>
 		<FormHeaderLabel label={label} gridSpan={gridSpan}>
-			<Input {...rest} ref={inputRef} onFocus={open}/>
+			<Input {...rest} onFocus={open}/>
 			<Overlay isOpen={isOpen}>
 				<ReactDatePicker
 					inline

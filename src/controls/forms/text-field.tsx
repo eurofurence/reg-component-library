@@ -29,6 +29,7 @@ export interface TextFieldProps {
 	readonly readOnly?: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const TextField = forwardRef(({ label, gridSpan, ...rest }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
 	<Input {...rest} ref={ref}/>
 </FormHeaderLabel>)

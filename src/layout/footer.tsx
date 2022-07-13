@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
+import type { DeepReadonly } from 'ts-essentials'
 
 const Container = styled.div`
 	display: block;
@@ -21,7 +22,7 @@ const Background = styled.footer`
 	line-height: 1.172;
 `
 
-const Footer = ({ children }: { readonly children?: ReactNode }) => <Background>
+const Footer = ({ children }: { readonly children?: DeepReadonly<ReactNode> }) => <Background>
 	<Container>{children}</Container>
 </Background>
 

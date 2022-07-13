@@ -5,6 +5,7 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import Card, { CardLayout, CardProps } from '../../surfaces/card'
 import { RadioItem } from './radio-button'
+import type { DeepReadonly } from 'ts-essentials'
 
 export interface RadioCardProps extends CardProps {
 	readonly label?: string
@@ -13,7 +14,7 @@ export interface RadioCardProps extends CardProps {
 	readonly defaultChecked?: boolean
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 	readonly readOnly?: boolean
-	readonly children?: ReactNode
+	readonly children?: DeepReadonly<ReactNode>
 }
 
 const Header = styled.header`
@@ -55,6 +56,7 @@ const CheckableCard = styled(Card)(({ checked, layout }: { readonly checked: boo
 		`,
 )
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, layout, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
 	if (checked == null) {
 		/*

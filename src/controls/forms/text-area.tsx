@@ -31,6 +31,7 @@ export interface TextAreaProps {
 	readonly readOnly?: boolean
 }
 
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const TextArea = forwardRef(({ label, gridSpan, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
 	<TArea {...rest} ref={ref}/>
 </FormHeaderLabel>)
