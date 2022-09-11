@@ -21,8 +21,9 @@ const layoutStyle = ({ layout = 'column', inverted = false, image }: CardProps) 
 
 				${image === undefined ? css`` : css`
 					background-image: url("${image}");
-					background-position: bottom left;
+					background-position: bottom center;
 					background-repeat: no-repeat;
+					background-size: contain;
 				`}
 
 				> * {
