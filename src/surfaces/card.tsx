@@ -8,23 +8,15 @@ export interface CardProps {
 	readonly height?: string
 	readonly inverted?: boolean
 	readonly layout?: CardLayout
-	readonly image?: string
 }
 
-const layoutStyle = ({ layout = 'column', inverted = false, image }: CardProps) => {
+const layoutStyle = ({ layout = 'column', inverted = false }: CardProps) => {
 	switch (layout) {
 		case 'column':
 			return css`
 				display: flex;
 				flex-direction: column;
 				padding: 2em;
-
-				${image === undefined ? css`` : css`
-					background-image: url("${image}");
-					background-position: bottom center;
-					background-repeat: no-repeat;
-					background-size: contain;
-				`}
 
 				> * {
 					flex: 1;
@@ -76,16 +68,12 @@ const layoutStyle = ({ layout = 'column', inverted = false, image }: CardProps) 
 					padding-top: 1em;
 				}
 
-				${image === undefined ? css`` : css`
-					&::after {
-						grid-column: 9 / 15;
-						grid-row: 1 / 4;
-						justify-self: center;
-						align-self: center;
-
-						content: url("${image}");
-					}
-				`}
+				> figure {
+					grid-column: 9 / 15;
+					grid-row: 1 / 4;
+					justify-self: center;
+					align-self: center;
+				}
 			`
 	}
 }

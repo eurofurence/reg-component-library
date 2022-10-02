@@ -57,7 +57,7 @@ const CheckableCard = styled(Card)(({ checked, layout }: { readonly checked: boo
 )
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, layout, image, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
+const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, layout, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
 	if (checked == null) {
 		/*
 		* All this is to make the highlight of the Card follow the checked state of the input if it is uncontrolled.
@@ -88,7 +88,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			cardRef.current!.closest('form')!.addEventListener('change', e => setInputChecked(e.target === inputRef.current!))
 		}, [])
 
-		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} checked={inputChecked} width={width} height={height} layout={layout} image={image} ref={cardRef}>
+		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} checked={inputChecked} width={width} height={height} layout={layout} ref={cardRef}>
 			<Header>
 				<RadioItem {...rest} defaultChecked={defaultChecked} ref={inputRef}/>
 				<Label>{label}</Label>
@@ -96,7 +96,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			{children}
 		</CheckableCard>
 	} else {
-		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} checked={checked} width={width} height={height} layout={layout} image={image}>
+		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} checked={checked} width={width} height={height} layout={layout}>
 			<Header>
 				<RadioItem {...rest} checked={checked} defaultChecked={defaultChecked} ref={ref}/>
 				<Label>{label}</Label>
