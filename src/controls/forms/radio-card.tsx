@@ -3,7 +3,7 @@
 import { ReactNode, ChangeEventHandler, forwardRef, ForwardedRef, useEffect, useRef, useState, useImperativeHandle } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import Card, { CardLayout, CardProps } from '../../surfaces/card'
+import Card, { CardProps } from '../../surfaces/card'
 import { RadioItem } from './radio-button'
 import type { DeepReadonly } from 'ts-essentials'
 
@@ -26,38 +26,31 @@ const Label = styled.h1`
 	margin-left: 0.4em;
 `
 
-const CheckableCard = styled(Card)(({ checked, layout }: { readonly checked: boolean, readonly layout?: CardLayout }) =>
-	checked
-		? css`
-			cursor: pointer;
-			user-select: none;
-			border-color: var(--color-semantic-info);
+const CheckableCard = styled(Card)`
+	cursor: pointer;
+	user-select: none;
 
-			> header {
-				${layout !== 'column' ? css`` : css`
-					border-bottom-color: var(--color-semantic-info);
-				`}
+	&[data-checked] {
+		border-color: var(--color-semantic-info);
+
+		${({ layout = 'column' }) => layout !== 'column' ? css`` : css`
+			> *:not(:first-child) {
+				border-top-color: var(--color-semantic-info);
+			}
+		`}
+
+		> header {
+			color: var(--color-semantic-info);
+
+			> h1 {
 				color: var(--color-semantic-info);
-
-				> h1 {
-					color: var(--color-semantic-info);
-				}
 			}
-
-			> footer {
-				${layout !== 'column' ? css`` : css`
-					border-top-color: var(--color-semantic-info);
-				`}
-			}
-		`
-		: css`
-			cursor: pointer;
-			user-select: none;
-		`,
-)
+		}
+	}
+`
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, layout, image, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
+const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height, width, layout, ...rest }: RadioCardProps, ref: ForwardedRef<HTMLInputElement>) => {
 	if (checked == null) {
 		/*
 		* All this is to make the highlight of the Card follow the checked state of the input if it is uncontrolled.
@@ -88,7 +81,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			cardRef.current!.closest('form')!.addEventListener('change', e => setInputChecked(e.target === inputRef.current!))
 		}, [])
 
-		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} checked={inputChecked} width={width} height={height} layout={layout} image={image} ref={cardRef}>
+		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} width={width} height={height} layout={layout} ref={cardRef}>
 			<Header>
 				<RadioItem {...rest} defaultChecked={defaultChecked} ref={inputRef}/>
 				<Label>{label}</Label>
@@ -96,7 +89,7 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			{children}
 		</CheckableCard>
 	} else {
-		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} checked={checked} width={width} height={height} layout={layout} image={image}>
+		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} width={width} height={height} layout={layout}>
 			<Header>
 				<RadioItem {...rest} checked={checked} defaultChecked={defaultChecked} ref={ref}/>
 				<Label>{label}</Label>
