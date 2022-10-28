@@ -5,6 +5,7 @@ import './stylesheets/globals.css'
 
 export { default as Form } from './layout/form'
 export { default as Page } from './layout/page'
+export { default as Splash } from './layout/splash'
 export { default as NavBar } from './layout/nav-bar'
 export { default as Footer } from './layout/footer'
 export { default as Card } from './surfaces/card'
