@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { Fragment, ReactNode, createContext, useContext, ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
+import { Fragment, ReactNode, createContext, useContext, ChangeEventHandler, forwardRef } from 'react'
 import styled from '@emotion/styled'
-import FormLabel from './form-label'
+import { withFormLabel } from './form-label'
 import FieldSet from './field-set'
 import type { DeepReadonly } from 'ts-essentials'
 
@@ -25,27 +25,19 @@ const Input = styled.input`
 `
 
 export interface RadioItemProps {
-	readonly label?: string
 	readonly value: string
 	readonly checked?: boolean
 	readonly defaultChecked?: boolean
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 	readonly readOnly?: boolean
-	readonly gridSpan?: number
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const RadioItem = forwardRef(({ label, gridSpan, ...rest }: RadioItemProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const RadioItem = withFormLabel<HTMLInputElement, RadioItemProps>(forwardRef<HTMLInputElement, RadioItemProps>((props, ref) => {
 	const name = useContext(NameContext)
-	const input = <Input {...rest} name={name} type="radio" ref={ref}/>
 
-	return label == null
-		? input
-		: <FormLabel gridSpan={gridSpan}>
-			{input}
-			{label}
-		</FormLabel>
-})
+	return <Input {...props} name={name} type="radio" ref={ref}/>
+}))
 
 export interface RadioGroupProps {
 	readonly name: string
