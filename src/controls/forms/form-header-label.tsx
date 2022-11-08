@@ -24,16 +24,18 @@ const FormHeaderLabel = ({ label, gridSpan, children }: FormHeaderLabelProps) =>
 export default FormHeaderLabel
 
 
-export type WithFormHeaderLabelProps<P> = P & ({} | {
+export type WithFormHeaderLabelProps<P> = P | P & {
 	readonly label: string
 	readonly gridSpan?: number
-})
+}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const withFormHeaderLabel = <T, P>(ChildComponent: FC<P>) => forwardRef<T, WithFormHeaderLabelProps<P>>((props, ref) => {
+export const withFormHeaderLabel = <T, P>(ChildComponent: FC<Omit<P, 'label' | 'gridSpan'>>) => forwardRef<T, WithFormHeaderLabelProps<P>>((props, ref) => {
 	if ('label' in props) {
-		return <FormHeaderLabel label={props.label} gridSpan={props.gridSpan}>
-			<ChildComponent {...props} ref={ref}/>
+		const { label, gridSpan, ...rest } = props
+
+		return <FormHeaderLabel label={label} gridSpan={gridSpan}>
+			<ChildComponent {...rest} ref={ref}/>
 		</FormHeaderLabel>
 	} else {
 		return <ChildComponent {...props} ref={ref}/>

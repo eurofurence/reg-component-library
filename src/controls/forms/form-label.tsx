@@ -30,20 +30,21 @@ const FormLabel = styled.label`
 
 export default FormLabel
 
-
-export type WithFormLabelProps<P> = P & ({} | {
+export type WithFormLabelProps<P> = P | P & {
 	readonly label: string
 	readonly children?: DeepReadonly<ReactNode>
 	readonly gridSpan?: number
-})
+}
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const withFormLabel = <T, P>(ChildComponent: FC<P>) => forwardRef<T, WithFormLabelProps<P>>((props, ref) => {
+export const withFormLabel = <T, P>(ChildComponent: FC<Omit<P, 'label' | 'gridSpan' | 'children'>>) => forwardRef<T, WithFormLabelProps<P>>((props, ref) => {
 	if ('label' in props) {
-		return <FormLabel gridSpan={props.gridSpan}>
-			<ChildComponent {...{ ...props, children: undefined }} ref={ref}/>
-			{props.label}
-			{props.children}
+		const { label, gridSpan, children, ...rest } = props
+
+		return <FormLabel gridSpan={gridSpan}>
+			<ChildComponent {...rest} ref={ref}/>
+			{label}
+			{children}
 		</FormLabel>
 	} else {
 		return <ChildComponent {...props} ref={ref}/>
