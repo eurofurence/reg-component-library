@@ -8,7 +8,8 @@
     ],
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "jsxFactory": null,
+    "jsxFactory": null, // This line and the one below it are only here to override default configs from microbundle.
+		"jsxFragmentFactory": null,
     "sourceMap": true,
     "declaration": true,
     "esModuleInterop": true,
