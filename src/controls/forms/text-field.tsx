@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
+import { ChangeEventHandler, forwardRef } from 'react'
 import styled from '@emotion/styled'
-import FormHeaderLabel from './form-header-label'
+import { withFormHeaderLabel } from './form-header-label'
 
 const Input = styled.input`
 	width: 100%;
@@ -18,20 +18,18 @@ const Input = styled.input`
 	}
 `
 
-export interface TextFieldProps {
+export type TextFieldProps = {
 	readonly name: string
-	readonly label: string
 	readonly placeholder: string
 	readonly value?: string
 	readonly defaultValue?: string
-	readonly gridSpan?: number
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 	readonly readOnly?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const TextField = forwardRef(({ label, gridSpan, ...rest }: TextFieldProps, ref: ForwardedRef<HTMLInputElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
-	<Input {...rest} ref={ref}/>
-</FormHeaderLabel>)
+const InnerTextField = withFormHeaderLabel<HTMLInputElement, TextFieldProps>(forwardRef<HTMLInputElement, TextFieldProps>((props, ref) =>
+	<Input {...props} ref={ref}/>,
+))
 
-export default TextField
+export default InnerTextField

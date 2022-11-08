@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import { RadioSet, RadioGroup, RadioItem } from './radio-button'
+import TextField from './text-field'
 import Form from '../../layout/form'
 
 <Meta title="Controls/Forms/RadioButton" component={RadioGroup} argTypes={{ onChange: {} }}/>
@@ -31,6 +32,30 @@ Because of the surrounding `FieldSet`, `RadioSet` components adhere to the form 
 </Canvas>
 
 <ArgsTable story="Baseline"/>
+
+## Complex content
+
+The labeled version of the radio button can be loaded with complex content. It will be shown below the label.
+
+<Canvas>
+	<Story name="Complex content" args={{
+		label: 'Other:',
+		checked: true,
+	}}>
+		{({ onChange, ...args }) => <Form>
+			<RadioSet name="popularity-contest" {...args}>
+				<RadioItem value="robin-hood" label="Robin Hood" onChange={onChange}/>
+				<RadioItem value="nick-wilde" label="Nick Wilde" onChange={onChange}/>
+				<RadioItem value="fox-mccloud" label="Fox McCloud" onChange={onChange}/>
+				<RadioItem value="other" label="Other:" onChange={onChange}>
+					<TextField/>
+				</RadioItem>
+			</RadioSet>
+		</Form>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Complex content"/>
 
 ## RadioGroup
 

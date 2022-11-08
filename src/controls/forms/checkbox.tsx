@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
+import { ChangeEventHandler, forwardRef } from 'react'
 import styled from '@emotion/styled'
-import FormLabel from './form-label'
+import { withFormLabel } from './form-label'
 
 const Input = styled.input`
 	width: 1.125em;
@@ -18,24 +18,15 @@ const Input = styled.input`
 
 export interface CheckboxProps {
 	readonly name: string
-	readonly label?: string
 	readonly checked?: boolean
 	readonly defaultChecked?: boolean
-	readonly gridSpan?: number
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 	readonly readOnly?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const Checkbox = forwardRef(({ label, gridSpan, ...rest }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) => {
-	const input = <Input {...rest} type="checkbox" ref={ref} />
-
-	return label == null
-		? input
-		: <FormLabel gridSpan={gridSpan}>
-			{input}
-			{label}
-		</FormLabel>
-})
+const Checkbox = withFormLabel<HTMLInputElement, CheckboxProps>(forwardRef<HTMLInputElement, CheckboxProps>((props, ref) =>
+	<Input {...props} type="checkbox" ref={ref} />,
+))
 
 export default Checkbox

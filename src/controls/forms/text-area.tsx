@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEventHandler, forwardRef, ForwardedRef } from 'react'
+import { ChangeEventHandler, forwardRef } from 'react'
 import styled from '@emotion/styled'
-import FormHeaderLabel from './form-header-label'
+import { withFormHeaderLabel } from './form-header-label'
 
 const TArea = styled.textarea<{ readonly height?: string }>`
 	min-width: 100%;
@@ -21,19 +21,17 @@ const TArea = styled.textarea<{ readonly height?: string }>`
 
 export interface TextAreaProps {
 	readonly name: string
-	readonly label: string
 	readonly height?: string
 	readonly placeholder: string
 	readonly value?: string
 	readonly defaultValue?: string
-	readonly gridSpan?: number
 	readonly onChange?: ChangeEventHandler<HTMLTextAreaElement>
 	readonly readOnly?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const TextArea = forwardRef(({ label, gridSpan, ...rest }: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) => <FormHeaderLabel label={label} gridSpan={gridSpan}>
-	<TArea {...rest} ref={ref}/>
-</FormHeaderLabel>)
+const TextArea = withFormHeaderLabel<HTMLInputElement, TextAreaProps>(forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) =>
+	<TArea {...props} ref={ref}/>,
+))
 
 export default TextArea

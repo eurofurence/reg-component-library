@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import Form from '../../layout/form'
 import Checkbox from './checkbox'
+import TextField from './text-field'
 
 <Meta title="Controls/Forms/Checkbox" component={Checkbox} argTypes={{ onChange: {} }}/>
 
@@ -24,6 +25,26 @@ When labeled, this component adheres to the form grid.
 </Canvas>
 
 <ArgsTable story="Baseline"/>
+
+## Complex content
+
+The labeled version of the checkbox can be loaded with complex content. It will be shown below the label.
+
+<Canvas>
+	<Story name="Complex content" args={{
+		label: 'Other:',
+		checked: true,
+	}}>
+		{args => <Form>
+			<Checkbox {...args}>
+				<TextField label="First name"/>
+				<TextField label="Last name"/>
+			</Checkbox>
+		</Form>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Complex content"/>
 
 ## Labelless
 
