@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import ReactSelect, { Props } from 'react-select'
-import { withFormHeaderLabel } from './form-header-label'
+import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
 
 type PassthroughProps
 	= 'name'
@@ -76,7 +76,7 @@ export function BaseSelect<Option = unknown, IsMulti extends boolean = false>(pr
 }
 
 // eslint-disable-next-line func-style
-function Select<Option = unknown, IsMulti extends boolean = false>(props: SelectProps<Option, IsMulti>) {
+function Select<Option = unknown, IsMulti extends boolean = false>(props: WithFormHeaderLabelProps<SelectProps<Option, IsMulti>>) {
 	const BSelect = withFormHeaderLabel<never, SelectProps<Option, IsMulti>>(BaseSelect<Option, IsMulti>)
 
 	return <BSelect {...props}/>

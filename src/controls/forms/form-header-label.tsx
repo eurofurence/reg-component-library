@@ -24,7 +24,7 @@ const FormHeaderLabel = ({ label, gridSpan, children }: FormHeaderLabelProps) =>
 export default FormHeaderLabel
 
 
-type WithFormHeaderLabelProps<P> = P & ({} | {
+export type WithFormHeaderLabelProps<P> = P & ({} | {
 	readonly label: string
 	readonly gridSpan?: number
 })

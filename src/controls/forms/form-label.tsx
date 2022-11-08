@@ -31,7 +31,7 @@ const FormLabel = styled.label`
 export default FormLabel
 
 
-type WithFormLabelProps<P> = P & ({} | {
+export type WithFormLabelProps<P> = P & ({} | {
 	readonly label: string
 	readonly children?: DeepReadonly<ReactNode>
 	readonly gridSpan?: number
