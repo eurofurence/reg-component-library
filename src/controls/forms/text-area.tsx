@@ -2,7 +2,7 @@
 
 import { ChangeEventHandler, forwardRef } from 'react'
 import styled from '@emotion/styled'
-import { withFormHeaderLabel } from './form-header-label'
+import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
 
 const TArea = styled.textarea<{ readonly height?: string }>`
 	min-width: 100%;
@@ -19,7 +19,7 @@ const TArea = styled.textarea<{ readonly height?: string }>`
 	}
 `
 
-export interface TextAreaProps {
+interface PlainTextAreaProps {
 	readonly name: string
 	readonly height?: string
 	readonly placeholder: string
@@ -29,8 +29,10 @@ export interface TextAreaProps {
 	readonly readOnly?: boolean
 }
 
+export type TextAreaProps = WithFormHeaderLabelProps<PlainTextAreaProps>
+
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const TextArea = withFormHeaderLabel<HTMLInputElement, TextAreaProps>(forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) =>
+const TextArea = withFormHeaderLabel<HTMLInputElement, PlainTextAreaProps>(forwardRef<HTMLTextAreaElement, PlainTextAreaProps>((props, ref) =>
 	<TArea {...props} ref={ref}/>,
 ))
 

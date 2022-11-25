@@ -2,7 +2,7 @@
 
 import { ChangeEventHandler, forwardRef } from 'react'
 import styled from '@emotion/styled'
-import { withFormHeaderLabel } from './form-header-label'
+import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
 
 const Input = styled.input`
 	width: 100%;
@@ -18,7 +18,7 @@ const Input = styled.input`
 	}
 `
 
-export type TextFieldProps = {
+type PlainTextFieldProps = {
 	readonly name: string
 	readonly placeholder: string
 	readonly value?: string
@@ -26,6 +26,8 @@ export type TextFieldProps = {
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 	readonly readOnly?: boolean
 }
+
+export type TextFieldProps = WithFormHeaderLabelProps<PlainTextFieldProps>
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 const InnerTextField = withFormHeaderLabel<HTMLInputElement, TextFieldProps>(forwardRef<HTMLInputElement, TextFieldProps>((props, ref) =>
