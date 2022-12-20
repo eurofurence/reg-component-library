@@ -3,7 +3,7 @@
 
 import { ChangeEventHandler, forwardRef, ForwardedRef, useRef, useCallback, MutableRefObject } from 'react'
 import styled from '@emotion/styled'
-import { withFormHeaderLabel } from './form-header-label'
+import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
 
 const Input = styled.input`
 	width: 100%;
@@ -37,7 +37,7 @@ const Control = styled.button<{ side: 'left' | 'right' }>`
 	justify-content: space-around;
 `
 
-export interface SpinnerProps {
+interface PlainSpinnerProps {
 	readonly name: string
 	readonly placeholder: string
 	readonly value?: string
@@ -68,7 +68,9 @@ function useRefTap<T>(ref: ForwardedRef<T>): [((instance: T | null) => void) | M
 	}
 }
 
-const Spinner = withFormHeaderLabel<HTMLInputElement, SpinnerProps>(forwardRef<HTMLInputElement, SpinnerProps>((props, ref) => {
+export type SpinnerProps = WithFormHeaderLabelProps<PlainSpinnerProps>
+
+const Spinner = withFormHeaderLabel<HTMLInputElement, PlainSpinnerProps>(forwardRef<HTMLInputElement, PlainSpinnerProps>((props, ref) => {
 	const [newRef, getCurrent] = useRefTap(ref)
 
 	return <Container>

@@ -2,7 +2,7 @@
 
 import { Fragment, ReactNode, createContext, useContext, ChangeEventHandler, forwardRef } from 'react'
 import styled from '@emotion/styled'
-import { withFormLabel } from './form-label'
+import { withFormLabel, WithFormLabelProps } from './form-label'
 import FieldSet from './field-set'
 import type { DeepReadonly } from 'ts-essentials'
 
@@ -24,7 +24,7 @@ const Input = styled.input`
 	}
 `
 
-export interface RadioItemProps {
+interface PlainRadioItemProps {
 	readonly value: string
 	readonly checked?: boolean
 	readonly defaultChecked?: boolean
@@ -32,8 +32,10 @@ export interface RadioItemProps {
 	readonly readOnly?: boolean
 }
 
+export type RadioItemProps = WithFormLabelProps<PlainRadioItemProps>
+
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const RadioItem = withFormLabel<HTMLInputElement, RadioItemProps>(forwardRef<HTMLInputElement, RadioItemProps>((props, ref) => {
+export const RadioItem = withFormLabel<HTMLInputElement, PlainRadioItemProps>(forwardRef<HTMLInputElement, PlainRadioItemProps>((props, ref) => {
 	const name = useContext(NameContext)
 
 	return <Input {...props} name={name} type="radio" ref={ref}/>

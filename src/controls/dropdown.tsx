@@ -9,7 +9,7 @@ export default styled.button`
 	border-radius: 3px;
 	padding: 0em 1em;
 
-	cursor: pointer
+	cursor: pointer;
 
 	// line-height: 1.1875em;
 

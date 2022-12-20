@@ -21,10 +21,10 @@ type PassthroughProps
 	| 'tabIndex'
 	| 'value'
 
-export type SelectProps<Option, IsMulti extends boolean = false> = Readonly<Pick<Props<Option, IsMulti>, PassthroughProps>>
+type PlainSelectProps<Option, IsMulti extends boolean = false> = Readonly<Pick<Props<Option, IsMulti>, PassthroughProps>>
 
 // eslint-disable-next-line func-style
-export function BaseSelect<Option = unknown, IsMulti extends boolean = false>(props: SelectProps<Option, IsMulti>) {
+function BaseSelect<Option = unknown, IsMulti extends boolean = false>(props: PlainSelectProps<Option, IsMulti>) {
 	return <ReactSelect
 		{...props}
 		isClearable={false}
@@ -75,9 +75,11 @@ export function BaseSelect<Option = unknown, IsMulti extends boolean = false>(pr
 	/>
 }
 
+export type SelectProps<Option, IsMulti extends boolean = false> = WithFormHeaderLabelProps<PlainSelectProps<Option, IsMulti>>
+
 // eslint-disable-next-line func-style
-function Select<Option = unknown, IsMulti extends boolean = false>(props: WithFormHeaderLabelProps<SelectProps<Option, IsMulti>>) {
-	const BSelect = withFormHeaderLabel<never, SelectProps<Option, IsMulti>>(BaseSelect<Option, IsMulti>)
+function Select<Option = unknown, IsMulti extends boolean = false>(props: WithFormHeaderLabelProps<PlainSelectProps<Option, IsMulti>>) {
+	const BSelect = withFormHeaderLabel<never, PlainSelectProps<Option, IsMulti>>(BaseSelect<Option, IsMulti>)
 
 	return <BSelect {...props}/>
 }
