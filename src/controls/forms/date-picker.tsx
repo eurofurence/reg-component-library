@@ -20,6 +20,7 @@ const Container = styled.section`
 		border-radius: 0.1875em;
 		user-select: none;
 		line-height: 1.171875;
+		background-color: var(--color-grays-000);
 	}
 
 	.react-datepicker__current-month {
@@ -189,7 +190,7 @@ const Input = styled.input`
 `
 
 type CommonProps = {
-	readonly gridSpan: number
+	readonly gridSpan?: number
 }
 
 type InputProps = {
@@ -218,6 +219,7 @@ const Overlay = styled.section<{ isOpen: boolean }>`
 	top: 100%;
 	width: 100%;
 	margin-top: 12px;
+	z-index: 1;
 
 	display: ${({ isOpen }) => isOpen ? 'unset' : 'none'};
 `
@@ -341,6 +343,14 @@ const SimpleDatePicker = ({
 
 	const pickerValue = isValid(dateValue) ? dateValue : null
 
+	const onInputChange: ChangeEventHandler<HTMLInputElement> = e => {
+		const valueStr = e.target.value
+
+		if (onChange !== undefined) {
+			onChange(valueStr)
+		}
+	}
+
 	const onPickerChange = (v: Readonly<Date> | null) => {
 		const str = v === null ? '' : formatISO(v, { representation: 'date' })
 
@@ -353,7 +363,7 @@ const SimpleDatePicker = ({
 
 	return <Container ref={insideRef}>
 		<FormHeaderLabel label={label} gridSpan={gridSpan}>
-			<Input {...rest} onFocus={open}/>
+			<Input value={value} onChange={onInputChange} {...rest} onFocus={open}/>
 			<Overlay isOpen={isOpen}>
 				<ReactDatePicker
 					inline

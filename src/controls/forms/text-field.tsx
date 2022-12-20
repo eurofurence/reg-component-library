@@ -20,6 +20,7 @@ const Input = styled.input`
 
 type PlainTextFieldProps = {
 	readonly name: string
+	readonly type?: 'date' | 'datetime' | 'datetime-local' | 'email' | 'month' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week'
 	readonly placeholder: string
 	readonly value?: string
 	readonly defaultValue?: string
