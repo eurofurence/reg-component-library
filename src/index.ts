@@ -23,6 +23,7 @@ export { default as Checkbox } from './controls/forms/checkbox'
 export { default as FieldSet } from './controls/forms/field-set'
 export { default as Select } from './controls/forms/select'
 export { default as DatePicker } from './controls/forms/date-picker'
+export { default as ErrorMessage } from './controls/forms/error-message'
 
 // Export some props types
 
@@ -35,3 +36,4 @@ export type { RadioCardProps } from './controls/forms/radio-card'
 export type { CheckboxProps } from './controls/forms/checkbox'
 export type { FieldSetProps } from './controls/forms/field-set'
 export type { SelectProps } from './controls/forms/select'
+export type { ErrorMessageProps } from './controls/forms/error-message'

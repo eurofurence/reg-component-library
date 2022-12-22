@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
 import { ChangeEventHandler, forwardRef } from 'react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
+import { withFormHeaderLabel, WithFormHeaderLabelProps, WithFormHeaderLabelWrappedComponentProps } from './form-header-label'
 
-const Input = styled.input`
+const Input = styled.input<{ readonly invalid?: boolean }>`
 	width: 100%;
 	height: 3em;
 	border: 2px solid var(--color-grays-300);
@@ -13,8 +14,16 @@ const Input = styled.input`
 
 	color: var(--color-grays-900);
 
+	${({ invalid = false }) => !invalid ? css`` : css`
+		border-color: var(--color-semantic-error);
+	`}
+
 	&::placeholder {
 		color: var(--color-grays-300);
+	}
+
+	&:invalid {
+		border-color: var(--color-semantic-error);
 	}
 `
 
@@ -31,7 +40,7 @@ type PlainTextFieldProps = {
 export type TextFieldProps = WithFormHeaderLabelProps<PlainTextFieldProps>
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const InnerTextField = withFormHeaderLabel<HTMLInputElement, TextFieldProps>(forwardRef<HTMLInputElement, TextFieldProps>((props, ref) =>
+const InnerTextField = withFormHeaderLabel<HTMLInputElement, TextFieldProps>(forwardRef<HTMLInputElement, WithFormHeaderLabelWrappedComponentProps<TextFieldProps>>((props, ref) =>
 	<Input {...props} ref={ref}/>,
 ))
 

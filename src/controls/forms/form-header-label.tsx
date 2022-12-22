@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import { ReactNode, FC, forwardRef } from 'react'
 import FormHeader from './form-header'
 import formControlStyle from './form-control'
+import ErrorMessage from './error-message'
 import type { DeepReadonly } from 'ts-essentials'
 
 export interface FormHeaderLabelProps {
@@ -23,21 +24,30 @@ const FormHeaderLabel = ({ label, gridSpan, children }: FormHeaderLabelProps) =>
 
 export default FormHeaderLabel
 
-
-export type WithFormHeaderLabelProps<P> = P | P & {
-	readonly label: string
-	readonly gridSpan?: number
+export type WithFormHeaderLabelWrappedComponentProps<P> = Omit<P, 'label' | 'gridSpan' | 'error'> & {
+	readonly invalid?: boolean
 }
 
+export type WithFormHeaderLabelProps<P> = {
+	readonly error?: string
+} & (P | P & {
+	readonly label: string
+	readonly gridSpan?: number
+})
+
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-export const withFormHeaderLabel = <T, P>(ChildComponent: FC<Omit<P, 'label' | 'gridSpan'>>) => forwardRef<T, WithFormHeaderLabelProps<P>>((props, ref) => {
+export const withFormHeaderLabel = <T, P>(ChildComponent: FC<WithFormHeaderLabelWrappedComponentProps<P>>) => forwardRef<T, WithFormHeaderLabelProps<P>>((props, ref) => {
 	if ('label' in props) {
-		const { label, gridSpan, ...rest } = props
+		const { label, gridSpan, error, ...rest } = props
 
 		return <FormHeaderLabel label={label} gridSpan={gridSpan}>
-			<ChildComponent {...rest} ref={ref}/>
+			<ChildComponent invalid={Boolean(error)} {...rest} ref={ref}/>
+			{error === undefined ? undefined : <ErrorMessage>{error}</ErrorMessage>}
 		</FormHeaderLabel>
 	} else {
-		return <ChildComponent {...props} ref={ref}/>
+		const { error, ...rest } = props
+
+		// @ts-expect-error There is a problem here because 'label' and 'gridSpan' are removed in WithFormHeaderLabelWrappedComponentProps. Should fix later.
+		return <ChildComponent invalid={Boolean(error)} {...rest} ref={ref}/>
 	}
 })

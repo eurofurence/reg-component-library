@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import ReactSelect, { Props } from 'react-select'
-import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
+import { withFormHeaderLabel, WithFormHeaderLabelProps, WithFormHeaderLabelWrappedComponentProps } from './form-header-label'
 
 type PassthroughProps
 	= 'name'
@@ -24,7 +24,7 @@ type PassthroughProps
 type PlainSelectProps<Option, IsMulti extends boolean = false> = Readonly<Pick<Props<Option, IsMulti>, PassthroughProps>>
 
 // eslint-disable-next-line func-style
-function BaseSelect<Option = unknown, IsMulti extends boolean = false>(props: PlainSelectProps<Option, IsMulti>) {
+function BaseSelect<Option = unknown, IsMulti extends boolean = false>({ invalid = false, ...props }: WithFormHeaderLabelWrappedComponentProps<PlainSelectProps<Option, IsMulti>>) {
 	return <ReactSelect
 		{...props}
 		isClearable={false}
@@ -36,7 +36,7 @@ function BaseSelect<Option = unknown, IsMulti extends boolean = false>(props: Pl
 				...defs,
 				borderRadius: state.menuIsOpen ? '3px 3px 0px 0px' : '3px',
 				borderWidth: '2px',
-				borderColor: 'var(--color-grays-300)',
+				borderColor: invalid ? 'var(--color-semantic-error)' : 'var(--color-grays-300)',
 				backgroundColor: 'var(--color-grays-000)',
 				minHeight: '3em',
 			}),
