@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 
 import { ChangeEventHandler, forwardRef } from 'react'
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
+import { withFormHeaderLabel, WithFormHeaderLabelProps, WithFormHeaderLabelWrappedComponentProps } from './form-header-label'
 
-const TArea = styled.textarea<{ readonly height?: string }>`
+const TArea = styled.textarea<{ readonly height?: string, readonly invalid?: boolean }>`
 	min-width: 100%;
 	max-width: 100%;
 	height: ${({ height }) => height != null ? height : '6.25em'};
@@ -14,8 +15,16 @@ const TArea = styled.textarea<{ readonly height?: string }>`
 
 	color: var(--color-grays-900);
 
+	${({ invalid = false }) => !invalid ? css`` : css`
+		border-color: var(--color-semantic-error);
+	`}
+
 	&::placeholder {
 		color: var(--color-grays-300);
+	}
+
+	&:invalid {
+		border-color: var(--color-semantic-error);
 	}
 `
 
@@ -32,7 +41,7 @@ interface PlainTextAreaProps {
 export type TextAreaProps = WithFormHeaderLabelProps<PlainTextAreaProps>
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const TextArea = withFormHeaderLabel<HTMLInputElement, PlainTextAreaProps>(forwardRef<HTMLTextAreaElement, PlainTextAreaProps>((props, ref) =>
+const TextArea = withFormHeaderLabel<HTMLInputElement, PlainTextAreaProps>(forwardRef<HTMLTextAreaElement, WithFormHeaderLabelWrappedComponentProps<PlainTextAreaProps>>((props, ref) =>
 	<TArea {...props} ref={ref}/>,
 ))
 
