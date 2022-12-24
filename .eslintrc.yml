@@ -26,6 +26,8 @@ overrides:
   - files: src/**/*.test.{ts,tsx}
     env:
       jest: true
+    rules:
+      '@typescript-eslint/no-magic-numbers': off
 rules:
   array-bracket-newline: [error, consistent]
   array-bracket-spacing: [error, never]

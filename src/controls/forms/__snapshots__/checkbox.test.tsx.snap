@@ -2,39 +2,34 @@
 
 exports[`Checkbox renders correctly 1`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
-    checked={false}
+    checked={true}
     className="css-kfehg9"
     name="am-furry"
     type="checkbox"
   />
-  򆙳$
+  񗏈&
 </label>
 `;
 
 exports[`Checkbox renders correctly 2`] = `
-<input
-  checked={true}
-  className="css-kfehg9"
-  name="am-furry"
-  type="checkbox"
-/>
+<label
+  className="css-4rm6ig"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+</label>
 `;
 
 exports[`Checkbox renders correctly 3`] = `
-<input
-  checked={false}
-  className="css-kfehg9"
-  name="am-furry"
-  type="checkbox"
-/>
-`;
-
-exports[`Checkbox renders correctly 4`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={false}
@@ -42,13 +37,26 @@ exports[`Checkbox renders correctly 4`] = `
     name="am-furry"
     type="checkbox"
   />
-  𬋍4'
+</label>
+`;
+
+exports[`Checkbox renders correctly 4`] = `
+<label
+  className="css-4rm6ig"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  񜩢􏿸#
 </label>
 `;
 
 exports[`Checkbox renders correctly 5`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={true}
@@ -62,7 +70,7 @@ exports[`Checkbox renders correctly 5`] = `
 
 exports[`Checkbox renders correctly 6`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={false}
@@ -75,26 +83,34 @@ exports[`Checkbox renders correctly 6`] = `
 `;
 
 exports[`Checkbox renders correctly 7`] = `
-<input
-  checked={false}
-  className="css-kfehg9"
-  name="am-furry"
-  type="checkbox"
-/>
+<label
+  className="css-4rm6ig"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+</label>
 `;
 
 exports[`Checkbox renders correctly 8`] = `
-<input
-  checked={false}
-  className="css-kfehg9"
-  name="am-furry"
-  type="checkbox"
-/>
+<label
+  className="css-4rm6ig"
+>
+  <input
+    checked={false}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+</label>
 `;
 
 exports[`Checkbox renders correctly 9`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={true}
@@ -102,27 +118,27 @@ exports[`Checkbox renders correctly 9`] = `
     name="am-furry"
     type="checkbox"
   />
-  4򜜼񊂳񾁸򥩂􏿫-
+  valueOf
 </label>
 `;
 
 exports[`Checkbox renders correctly 10`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
-    checked={true}
+    checked={false}
     className="css-kfehg9"
     name="am-furry"
     type="checkbox"
   />
-  񨻠
+  󴊃
 </label>
 `;
 
 exports[`Checkbox renders correctly 11`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={false}
@@ -136,7 +152,7 @@ exports[`Checkbox renders correctly 11`] = `
 
 exports[`Checkbox renders correctly 12`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={true}
@@ -150,7 +166,7 @@ exports[`Checkbox renders correctly 12`] = `
 
 exports[`Checkbox renders correctly 13`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={false}
@@ -163,17 +179,21 @@ exports[`Checkbox renders correctly 13`] = `
 `;
 
 exports[`Checkbox renders correctly 14`] = `
-<input
-  checked={true}
-  className="css-kfehg9"
-  name="am-furry"
-  type="checkbox"
-/>
+<label
+  className="css-4rm6ig"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+</label>
 `;
 
 exports[`Checkbox renders correctly 15`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={false}
@@ -181,13 +201,12 @@ exports[`Checkbox renders correctly 15`] = `
     name="am-furry"
     type="checkbox"
   />
-  
 </label>
 `;
 
 exports[`Checkbox renders correctly 16`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
     checked={false}
@@ -201,7 +220,35 @@ exports[`Checkbox renders correctly 16`] = `
 
 exports[`Checkbox renders correctly 17`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  𓓰%􏿷
+</label>
+`;
+
+exports[`Checkbox renders correctly 18`] = `
+<label
+  className="css-4rm6ig"
+>
+  <input
+    checked={true}
+    className="css-kfehg9"
+    name="am-furry"
+    type="checkbox"
+  />
+  𴚏
+</label>
+`;
+
+exports[`Checkbox renders correctly 19`] = `
+<label
+  className="css-4rm6ig"
 >
   <input
     checked={false}
@@ -209,48 +256,20 @@ exports[`Checkbox renders correctly 17`] = `
     name="am-furry"
     type="checkbox"
   />
-  􋠦$񕴼
-</label>
-`;
-
-exports[`Checkbox renders correctly 18`] = `
-<label
-  className="css-1v0xqcf"
->
-  <input
-    checked={true}
-    className="css-kfehg9"
-    name="am-furry"
-    type="checkbox"
-  />
-  󷣄
-</label>
-`;
-
-exports[`Checkbox renders correctly 19`] = `
-<label
-  className="css-1v0xqcf"
->
-  <input
-    checked={true}
-    className="css-kfehg9"
-    name="am-furry"
-    type="checkbox"
-  />
-  /􏿼􏿸񵴏
+  bind
 </label>
 `;
 
 exports[`Checkbox renders correctly 20`] = `
 <label
-  className="css-1v0xqcf"
+  className="css-4rm6ig"
 >
   <input
-    checked={true}
+    checked={false}
     className="css-kfehg9"
     name="am-furry"
     type="checkbox"
   />
-  󾲳󒟽􃄂򡝴򲅍􌽑󄱗
+  򯀯1򡝴򲅍􌽑󄱗􇡫
 </label>
 `;

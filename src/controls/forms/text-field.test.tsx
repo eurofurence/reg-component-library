@@ -26,7 +26,7 @@ describe('TextField', () => {
 		expect(queryByLabelText('Username')).toBeTruthy()
 	})
 
-	it('enters focus when clicked directly', () => {
+	it('enters focus when clicked directly', async () => {
 		const { getByRole } = render(
 			<TextField name="username" label="Username" placeholder=""/>,
 		)
@@ -35,12 +35,12 @@ describe('TextField', () => {
 
 		expect(textField).not.toHaveFocus()
 
-		userEvent.click(textField)
+		await userEvent.click(textField)
 
 		expect(textField).toHaveFocus()
 	})
 
-	it('enters focus when clicked through label', () => {
+	it('enters focus when clicked through label', async () => {
 		const { getByRole, getByText } = render(
 			<TextField name="username" label="Username" placeholder=""/>,
 		)
@@ -50,13 +50,13 @@ describe('TextField', () => {
 
 		expect(textField).not.toHaveFocus()
 
-		userEvent.click(label)
+		await userEvent.click(label)
 
 		expect(textField).toHaveFocus()
 	})
 
-	it('can handle unicode input', () => {
-		fc.assert(fc.property(fc.fullUnicodeString({ minLength: 1 }), (input) => {
+	it('can handle unicode input', async () => {
+		await fc.assert(fc.asyncProperty(fc.fullUnicodeString({ minLength: 1 }), async (input) => {
 			const onChange = jest.fn() as jest.MockedFunction<ChangeEventHandler<HTMLInputElement>>
 			const { getByRole } = render(
 				<TextField name="username" label="Username" placeholder="" onChange={onChange}/>,
@@ -64,14 +64,14 @@ describe('TextField', () => {
 
 			const textField = getByRole('textbox')
 
-			userEvent.type(textField, input)
+			await userEvent.type(textField, input)
 
 			expect(onChange.mock.calls[onChange.mock.calls.length - 1]![0].target.value).toEqual(input)
 		}))
-	})
+	}, 30000)
 
-	it('can display unicode', () => {
-		fc.assert(fc.property(fc.fullUnicodeString({ minLength: 1 }), (input) => {
+	it('can display unicode', async () => {
+		await fc.assert(fc.asyncProperty(fc.fullUnicodeString({ minLength: 1 }), async (input) => {
 			const onChange = jest.fn() as jest.MockedFunction<ChangeEventHandler<HTMLInputElement>>
 			const { getByRole } = render(
 				<TextField name="username" label="Username" placeholder="" value={input} onChange={onChange}/>,
@@ -79,14 +79,14 @@ describe('TextField', () => {
 
 			const textField = getByRole('textbox')
 
-			userEvent.type(textField, input)
+			await userEvent.type(textField, input)
 
 			expect(textField).toHaveValue(input)
 		}))
-	})
+	}, 30000)
 
 	describe('when controlled', () => {
-		it('reflects the input value at all times (true)', () => {
+		it('reflects the input value at all times', async () => {
 			const onChange = jest.fn() as jest.MockedFunction<ChangeEventHandler<HTMLInputElement>>
 			const { getByRole } = render(
 				<TextField name="username" label="Username" value="test" placeholder="" onChange={onChange}/>,
@@ -96,12 +96,12 @@ describe('TextField', () => {
 
 			expect(textField).toHaveValue('test')
 
-			userEvent.type(textField, 'john-doe')
+			await userEvent.type(textField, 'john-doe')
 
 			expect(textField).toHaveValue('test')
 		})
 
-		it('raises onChange events when typed in', () => {
+		it('raises onChange events when typed in', async () => {
 			const onChange = jest.fn() as jest.MockedFunction<ChangeEventHandler<HTMLInputElement>>
 			const { getByRole } = render(
 				<TextField name="username" label="Username" value="test" placeholder="" onChange={onChange}/>,
@@ -109,33 +109,33 @@ describe('TextField', () => {
 
 			const textField = getByRole('textbox')
 
-			userEvent.type(textField, 'john-doe')
+			await userEvent.type(textField, 'john-doe')
 
 			expect(onChange).toHaveBeenCalled()
 		})
 
-		it('supports readOnly fields', () => {
+		it('supports readOnly fields', async () => {
 			const { getByRole } = render(
 				<TextField name="username" label="Username" value="test" placeholder="" readOnly/>,
 			)
 
 			const textField = getByRole('textbox')
 
-			userEvent.type(textField, 'john-doe')
+			await userEvent.type(textField, 'john-doe')
 
 			expect(textField).toHaveValue('test')
 		})
 	})
 
 	describe('when uncontrolled', () => {
-		it('reflects the typed value', () => {
+		it('reflects the typed value', async () => {
 			const { getByRole } = render(
 				<TextField name="username" label="Username" placeholder=""/>,
 			)
 
 			const textField = getByRole('textbox')
 
-			userEvent.type(textField, 'john-doe')
+			await userEvent.type(textField, 'john-doe')
 
 			expect(textField).toHaveValue('john-doe')
 		})
@@ -148,7 +148,7 @@ describe('TextField', () => {
 			expect(getByRole('textbox')).toHaveValue('uwu')
 		})
 
-		it('raises onChange events when typed in', () => {
+		it('raises onChange events when typed in', async () => {
 			const onChange = jest.fn() as jest.MockedFunction<ChangeEventHandler<HTMLInputElement>>
 			const { getByRole } = render(
 				<TextField name="username" label="Username" placeholder="" onChange={onChange}/>,
@@ -156,7 +156,7 @@ describe('TextField', () => {
 
 			const textField = getByRole('textbox')
 
-			userEvent.type(textField, 'john-doe')
+			await userEvent.type(textField, 'john-doe')
 
 			expect(onChange).toHaveBeenCalled()
 		})

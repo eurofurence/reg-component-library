@@ -2,15 +2,13 @@
 
 exports[`TextArea renders correctly 1`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
-  >
-    
-  </div>
+  />
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
     placeholder="񹇁򆙳"
   />
@@ -19,75 +17,71 @@ exports[`TextArea renders correctly 1`] = `
 
 exports[`TextArea renders correctly 2`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
   >
-    񱧄'񁠓,
+    /򫘍𘅮񆐭
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="1󲸽"
+    placeholder="󲸽r"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 3`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
-  >
-    
-  </div>
+  />
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="+0"
+    placeholder=""
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 4`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
-  >
-    
-  </div>
+  />
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="𬋍񜩢򜲜򤭯癠􀎶󰹉"
+    placeholder="񜩢"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 5`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
   >
-    􏿱
+    􏿼
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="󠫫"
+    placeholder="񧽋㋔񍂶򑳲"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 6`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
@@ -95,58 +89,52 @@ exports[`TextArea renders correctly 6`] = `
     娱񹮗𛗃𳟁
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="𘓃"
+    placeholder="񆠟"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 7`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
-  >
-    
-  </div>
+  />
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="񬩹񐮋򤓞񽴂"
+    placeholder="valueOf"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 8`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
-  >
-    
-  </div>
+  />
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="򌺛􂂿𴩈𯰤򽰺𦜘𬸀"
+    placeholder="l"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 9`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
-  >
-    
-  </div>
+  />
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
     placeholder="򭮀񯧠򷉄򚣙򜜼󷒛񊂳"
   />
@@ -155,32 +143,30 @@ exports[`TextArea renders correctly 9`] = `
 
 exports[`TextArea renders correctly 10`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
   >
-    􏿵
+    "
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder=""
+    placeholder="괫󂟥񪽿񷄎񃶟𺸬𩢍"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 11`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
-  >
-    
-  </div>
+  />
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
     placeholder="𮙊񢛬󯨦򷗸󺳍𚡆𤶮򉸋"
   />
@@ -189,24 +175,24 @@ exports[`TextArea renders correctly 11`] = `
 
 exports[`TextArea renders correctly 12`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
   >
-    ,񠠳𩿥 򡀴􏿳򋑟򄬢􃑖
+    __proto__
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="񭕽𧔤򛖱􏿿񬵂򡷢􍬵"
+    placeholder="󒸺𩿥񌇉笉󳖷񴥶򡀴󘥄𝹑"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 13`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
@@ -214,7 +200,7 @@ exports[`TextArea renders correctly 13`] = `
     񈯾
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
     placeholder="󐶻Ի󢙟򛪰󇍨"
   />
@@ -223,24 +209,24 @@ exports[`TextArea renders correctly 13`] = `
 
 exports[`TextArea renders correctly 14`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
   >
-    )􏿽󱝤!𧻴񐩷􌡙􏿴*򺡘
+    argumentsr
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder=""
+    placeholder="󤈍􏿺"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 15`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
@@ -248,16 +234,16 @@ exports[`TextArea renders correctly 15`] = `
     򭺩󄌄󺨚󁒲󬁀񠩹ㄝ󚛈򃋮󇉠
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="򛣩𧶏%*"
+    placeholder="𽏵󿃂􏿺𺃎"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 16`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
@@ -265,7 +251,7 @@ exports[`TextArea renders correctly 16`] = `
     ﳽ򔬞󯦱򿯑𷍘򘃵򷥹򏸍󂒏󗰟
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
     placeholder=""
   />
@@ -274,24 +260,24 @@ exports[`TextArea renders correctly 16`] = `
 
 exports[`TextArea renders correctly 17`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
   >
-    􏿳$
+    $􏿷
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="󖭒򠔗𩩯𹪙񋽢򸗭񥕆􂶛󌤋"
+    placeholder="񋽢򸗭񥕆􂶛󌤋"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 18`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
@@ -299,16 +285,16 @@ exports[`TextArea renders correctly 18`] = `
     񣧺򧕾𓞆󷣄𴚏񮋟𙽮򳭆
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="񗧫􏿺'񡩧􉌲򔭋􆓀񺍎񅇡"
+    placeholder="񁸴󌓍'񡩧􉌲򔭋􆓀񺍎񅇡"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 19`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
@@ -316,16 +302,16 @@ exports[`TextArea renders correctly 19`] = `
     󫂄񂺛
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
-    placeholder="􏿼"
+    placeholder="􏿸"
   />
 </label>
 `;
 
 exports[`TextArea renders correctly 20`] = `
 <label
-  className="css-1kmqlxg"
+  className="css-1k6lc2c"
 >
   <div
     className="css-1wds400"
@@ -333,7 +319,7 @@ exports[`TextArea renders correctly 20`] = `
     󕚱󤐀𔖢󾲳򯀯󒟽򾄢􃄂񂑟򡝴
   </div>
   <textarea
-    className="css-jxx9sy"
+    className="css-w13f35"
     name="comments"
     placeholder="򊞄􌽑򷔫󄱗𸝩􇡫􎶊𯴏"
   />

@@ -40,7 +40,7 @@ describe('RadioItem', () => {
 	})
 
 	describe('when controlled', () => {
-		it('reflects the input value at all times (true)', () => {
+		it('reflects the input value at all times (true)', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<RadioGroup name="popularity-contest">
@@ -52,12 +52,12 @@ describe('RadioItem', () => {
 
 			expect(radio).toBeChecked()
 
-			userEvent.click(radio)
+			await userEvent.click(radio)
 
 			expect(radio).toBeChecked()
 		})
 
-		it('reflects the input value at all times (false)', () => {
+		it('reflects the input value at all times (false)', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<RadioGroup name="popularity-contest">
@@ -69,12 +69,12 @@ describe('RadioItem', () => {
 
 			expect(radio).not.toBeChecked()
 
-			userEvent.click(radio)
+			await userEvent.click(radio)
 
 			expect(radio).not.toBeChecked()
 		})
 
-		it('raises onChange events when clicked directly', () => {
+		it('raises onChange events when clicked directly', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<RadioGroup name="popularity-contest">
@@ -84,12 +84,12 @@ describe('RadioItem', () => {
 
 			const radio = getByRole('radio')
 
-			userEvent.click(radio)
+			await userEvent.click(radio)
 
 			expect(onChange).toHaveBeenCalled()
 		})
 
-		it('raises onChange events when clicked indirectly', () => {
+		it('raises onChange events when clicked indirectly', async () => {
 			const onChange = jest.fn()
 			const { getByText } = render(
 				<RadioGroup name="popularity-contest">
@@ -99,14 +99,14 @@ describe('RadioItem', () => {
 
 			const radio = getByText('Nick Wilde')
 
-			userEvent.click(radio)
+			await userEvent.click(radio)
 
 			expect(onChange).toHaveBeenCalled()
 		})
 	})
 
 	describe('when uncontrolled', () => {
-		it('toggles when clicked directly', () => {
+		it('toggles when clicked directly', async () => {
 			const { getByRole } = render(
 				<RadioGroup name="popularity-contest">
 					<RadioItem value="nick-wilde" label="Nick Wilde"/>
@@ -117,12 +117,12 @@ describe('RadioItem', () => {
 
 			expect(radio).not.toBeChecked()
 
-			userEvent.click(radio)
+			await userEvent.click(radio)
 
 			expect(radio).toBeChecked()
 		})
 
-		it('toggles when clicked through label', () => {
+		it('toggles when clicked through label', async () => {
 			const { getByRole, getByText } = render(
 				<RadioGroup name="popularity-contest">
 					<RadioItem value="nick-wilde" label="Nick Wilde"/>
@@ -134,7 +134,7 @@ describe('RadioItem', () => {
 
 			expect(radio).not.toBeChecked()
 
-			userEvent.click(label)
+			await userEvent.click(label)
 
 			expect(radio).toBeChecked()
 		})
@@ -160,7 +160,7 @@ describe('RadioItem', () => {
 			expect(getByRole('radio')).not.toBeChecked()
 		})
 
-		it('raises onChange events when toggled directly', () => {
+		it('raises onChange events when toggled directly', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<RadioGroup name="popularity-contest">
@@ -170,12 +170,12 @@ describe('RadioItem', () => {
 
 			const radio = getByRole('radio')
 
-			userEvent.click(radio)
+			await userEvent.click(radio)
 
 			expect(onChange).toHaveBeenCalled()
 		})
 
-		it('raises onChange events when toggled indirectly', () => {
+		it('raises onChange events when toggled indirectly', async () => {
 			const onChange = jest.fn()
 			const { getByText } = render(
 				<RadioGroup name="popularity-contest">
@@ -185,7 +185,7 @@ describe('RadioItem', () => {
 
 			const radio = getByText('Nick Wilde')
 
-			userEvent.click(radio)
+			await userEvent.click(radio)
 
 			expect(onChange).toHaveBeenCalled()
 		})
@@ -193,7 +193,7 @@ describe('RadioItem', () => {
 })
 
 describe('RadioGroup', () => {
-	it('groups radio buttons together', () => {
+	it('groups radio buttons together', async () => {
 		const onChange = jest.fn()
 		const { getByLabelText } = render(
 			<RadioGroup name="popularity-contest">
@@ -206,18 +206,18 @@ describe('RadioGroup', () => {
 		const robinHood = getByLabelText('Robin Hood')
 		const nickWilde = getByLabelText('Nick Wilde')
 
-		userEvent.click(robinHood)
+		await userEvent.click(robinHood)
 
 		expect(robinHood).toBeChecked()
 
-		userEvent.click(nickWilde)
+		await userEvent.click(nickWilde)
 
 		expect(robinHood).not.toBeChecked()
 	})
 })
 
 describe('RadioSet', () => {
-	it('groups radio buttons together', () => {
+	it('groups radio buttons together', async () => {
 		const onChange = jest.fn()
 		const { getByLabelText } = render(
 			<RadioSet name="popularity-contest" legend="Who is best fox?">
@@ -230,11 +230,11 @@ describe('RadioSet', () => {
 		const robinHood = getByLabelText('Robin Hood')
 		const nickWilde = getByLabelText('Nick Wilde')
 
-		userEvent.click(robinHood)
+		await userEvent.click(robinHood)
 
 		expect(robinHood).toBeChecked()
 
-		userEvent.click(nickWilde)
+		await userEvent.click(nickWilde)
 
 		expect(robinHood).not.toBeChecked()
 	})

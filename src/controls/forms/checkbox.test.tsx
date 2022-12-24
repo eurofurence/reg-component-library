@@ -34,7 +34,7 @@ describe('Checkbox', () => {
 	})
 
 	describe('when controlled', () => {
-		it('reflects the input value at all times (true)', () => {
+		it('reflects the input value at all times (true)', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<Checkbox name="am-furry" label="I am a furry" checked={true} onChange={onChange}/>,
@@ -44,12 +44,12 @@ describe('Checkbox', () => {
 
 			expect(checkbox).toBeChecked()
 
-			userEvent.click(checkbox)
+			await userEvent.click(checkbox)
 
 			expect(checkbox).toBeChecked()
 		})
 
-		it('reflects the input value at all times (false)', () => {
+		it('reflects the input value at all times (false)', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<Checkbox name="am-furry" label="I am a furry" checked={false} onChange={onChange}/>,
@@ -59,12 +59,12 @@ describe('Checkbox', () => {
 
 			expect(checkbox).not.toBeChecked()
 
-			userEvent.click(checkbox)
+			await userEvent.click(checkbox)
 
 			expect(checkbox).not.toBeChecked()
 		})
 
-		it('raises onChange events when clicked directly', () => {
+		it('raises onChange events when clicked directly', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<Checkbox name="am-furry" label="I am a furry" checked={false} onChange={onChange}/>,
@@ -72,12 +72,12 @@ describe('Checkbox', () => {
 
 			const checkbox = getByRole('checkbox')
 
-			userEvent.click(checkbox)
+			await userEvent.click(checkbox)
 
 			expect(onChange).toHaveBeenCalled()
 		})
 
-		it('raises onChange events when clicked indirectly', () => {
+		it('raises onChange events when clicked indirectly', async () => {
 			const onChange = jest.fn()
 			const { getByText } = render(
 				<Checkbox name="am-furry" label="I am a furry" checked={false} onChange={onChange}/>,
@@ -85,14 +85,14 @@ describe('Checkbox', () => {
 
 			const checkbox = getByText('I am a furry')
 
-			userEvent.click(checkbox)
+			await userEvent.click(checkbox)
 
 			expect(onChange).toHaveBeenCalled()
 		})
 	})
 
 	describe('when uncontrolled', () => {
-		it('toggles when clicked directly', () => {
+		it('toggles when clicked directly', async () => {
 			const { getByRole } = render(
 				<Checkbox name="am-furry" label="I am a furry"/>,
 			)
@@ -101,12 +101,12 @@ describe('Checkbox', () => {
 
 			expect(checkbox).not.toBeChecked()
 
-			userEvent.click(checkbox)
+			await userEvent.click(checkbox)
 
 			expect(checkbox).toBeChecked()
 		})
 
-		it('toggles when clicked through label', () => {
+		it('toggles when clicked through label', async () => {
 			const { getByRole, getByText } = render(
 				<Checkbox name="am-furry" label="I am a furry"/>,
 			)
@@ -116,7 +116,7 @@ describe('Checkbox', () => {
 
 			expect(checkbox).not.toBeChecked()
 
-			userEvent.click(label)
+			await userEvent.click(label)
 
 			expect(checkbox).toBeChecked()
 		})
@@ -138,7 +138,7 @@ describe('Checkbox', () => {
 			expect(getByRole('checkbox')).not.toBeChecked()
 		})
 
-		it('raises onChange events when toggled directly', () => {
+		it('raises onChange events when toggled directly', async () => {
 			const onChange = jest.fn()
 			const { getByRole } = render(
 				<Checkbox name="am-furry" label="I am a furry" onChange={onChange}/>,
@@ -146,12 +146,12 @@ describe('Checkbox', () => {
 
 			const checkbox = getByRole('checkbox')
 
-			userEvent.click(checkbox)
+			await userEvent.click(checkbox)
 
 			expect(onChange).toHaveBeenCalled()
 		})
 
-		it('raises onChange events when toggled indirectly', () => {
+		it('raises onChange events when toggled indirectly', async () => {
 			const onChange = jest.fn()
 			const { getByText } = render(
 				<Checkbox name="am-furry" label="I am a furry" onChange={onChange}/>,
@@ -159,7 +159,7 @@ describe('Checkbox', () => {
 
 			const checkbox = getByText('I am a furry')
 
-			userEvent.click(checkbox)
+			await userEvent.click(checkbox)
 
 			expect(onChange).toHaveBeenCalled()
 		})
