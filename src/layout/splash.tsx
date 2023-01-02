@@ -32,6 +32,28 @@ const Image = styled.img`
 `
 
 const Content = styled.article`
+	h1 {
+		color: var(--color-brand-2-400);
+
+		&:not(:first-child) {
+			margin-top: 1em;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 1em;
+		}
+	}
+
+	h2 {
+		&:not(:first-child) {
+			margin-top: 0.66666667em;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 0.66666667em;
+		}
+	}
+
 	@media (min-width: 1260px) {
 		grid-column: 9 / span 6;
 	}
