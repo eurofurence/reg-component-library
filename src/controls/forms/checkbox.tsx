@@ -22,6 +22,7 @@ interface PlainCheckboxProps {
 	readonly defaultChecked?: boolean
 	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 	readonly readOnly?: boolean
+	readonly disabled?: boolean
 }
 
 export type CheckboxProps = WithFormLabelProps<PlainCheckboxProps>
