@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
-import { ReactNode } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { DeepReadonly } from 'ts-essentials'
 
 export interface SplashProps {
-	readonly image: string
+	readonly image: DeepReadonly<ReactElement>
 	readonly children: DeepReadonly<ReactNode>
 }
 
@@ -23,7 +23,7 @@ const Container = styled.main`
 	}
 `
 
-const Image = styled.img`
+const Image = styled.figure`
 	width: 100%;
 
 	@media (min-width: 1260px) {
@@ -60,7 +60,9 @@ const Content = styled.article`
 `
 
 const Splash = ({ image, children }: SplashProps) => <Container>
-	<Image src={image}/>
+	<Image>
+		{image}
+	</Image>
 	<Content>
 		{children}
 	</Content>
