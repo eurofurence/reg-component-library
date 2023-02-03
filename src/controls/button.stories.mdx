@@ -1,5 +1,6 @@
 import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs/blocks'
 import Button from './button'
+import Card from '../surfaces/card'
 
 <Meta title="Controls/Button" component={Button} argTypes={{ onClick: {} }}/>
 
@@ -18,3 +19,22 @@ A button.
 </Canvas>
 
 <ArgsTable story="Baseline"/>
+
+## Inverted
+
+There is an inverted version for use in inverted cards:
+
+<Canvas>
+	<Story name="Inverted" args={{
+		content: 'Click me!',
+	}}>
+		{args => <Card inverted={true}>
+			<header>A card</header>
+			<section>
+				<Button inverted={true}>Click me!</Button>
+			</section>
+		</Card>}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Inverted"/>
