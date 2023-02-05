@@ -39,6 +39,14 @@ body h3 {
 	letter-spacing: 0.0125em;
 }
 
+body h3:not(:first-child) {
+	margin-top: 1.5em;
+}
+
+body h3:not(:last-child) {
+	margin-bottom: 1.33333em;
+}
+
 body h4 {
 	color: var(--color-grays-500);
 
