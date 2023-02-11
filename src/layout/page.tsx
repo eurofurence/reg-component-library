@@ -5,7 +5,7 @@ export default styled.main`
 	display: block;
 	padding: 3em 0em;
 
-	@media not ${desktop} {
+	@media not all and ${desktop} {
 		margin: 0em 2.4rem;
 	}
 

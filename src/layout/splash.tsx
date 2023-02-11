@@ -15,7 +15,7 @@ const Container = styled.main`
 
 	padding: 3em 0em;
 
-	@media not ${desktop} {
+	@media not all and ${desktop} {
 		margin: 0em 1.5em;
 	}
 
@@ -28,7 +28,7 @@ const Container = styled.main`
 		grid: auto-flow / 1fr;
 	}
 
-	@media not ${phone} {
+	@media not all and ${phone} {
 		grid: auto-flow / repeat(14, 1fr);
 	}
 `
@@ -36,7 +36,7 @@ const Container = styled.main`
 const Image = styled.figure`
 	width: 100%;
 
-	@media not ${phone} {
+	@media not all and ${phone} {
 		grid-column: 1 / span 7;
 	}
 `
@@ -64,7 +64,7 @@ const Content = styled.article`
 		}
 	}
 
-	@media not ${phone} {
+	@media not all and ${phone} {
 		grid-column: 9 / span 6;
 	}
 `

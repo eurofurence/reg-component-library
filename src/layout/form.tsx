@@ -8,7 +8,7 @@ export default styled.form`
 	column-gap: 24px;
 	row-gap: 24px;
 
-	@media not ${phone} {
+	@media not all and ${phone} {
 		grid-template-columns: repeat(${COLUMN_COUNT}, 1fr);
 
 		> * {
