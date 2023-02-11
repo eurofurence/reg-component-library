@@ -2,7 +2,7 @@
 
 exports[`RadioItem renders correctly 1`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -17,7 +17,7 @@ exports[`RadioItem renders correctly 1`] = `
 
 exports[`RadioItem renders correctly 2`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -31,7 +31,7 @@ exports[`RadioItem renders correctly 2`] = `
 
 exports[`RadioItem renders correctly 3`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -45,7 +45,7 @@ exports[`RadioItem renders correctly 3`] = `
 
 exports[`RadioItem renders correctly 4`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -60,7 +60,7 @@ exports[`RadioItem renders correctly 4`] = `
 
 exports[`RadioItem renders correctly 5`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -75,7 +75,7 @@ exports[`RadioItem renders correctly 5`] = `
 
 exports[`RadioItem renders correctly 6`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -90,7 +90,7 @@ exports[`RadioItem renders correctly 6`] = `
 
 exports[`RadioItem renders correctly 7`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -104,7 +104,7 @@ exports[`RadioItem renders correctly 7`] = `
 
 exports[`RadioItem renders correctly 8`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -118,7 +118,7 @@ exports[`RadioItem renders correctly 8`] = `
 
 exports[`RadioItem renders correctly 9`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -133,7 +133,7 @@ exports[`RadioItem renders correctly 9`] = `
 
 exports[`RadioItem renders correctly 10`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -148,7 +148,7 @@ exports[`RadioItem renders correctly 10`] = `
 
 exports[`RadioItem renders correctly 11`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -163,7 +163,7 @@ exports[`RadioItem renders correctly 11`] = `
 
 exports[`RadioItem renders correctly 12`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -178,7 +178,7 @@ exports[`RadioItem renders correctly 12`] = `
 
 exports[`RadioItem renders correctly 13`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -193,7 +193,7 @@ exports[`RadioItem renders correctly 13`] = `
 
 exports[`RadioItem renders correctly 14`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -207,7 +207,7 @@ exports[`RadioItem renders correctly 14`] = `
 
 exports[`RadioItem renders correctly 15`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -221,7 +221,7 @@ exports[`RadioItem renders correctly 15`] = `
 
 exports[`RadioItem renders correctly 16`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -236,7 +236,7 @@ exports[`RadioItem renders correctly 16`] = `
 
 exports[`RadioItem renders correctly 17`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -251,7 +251,7 @@ exports[`RadioItem renders correctly 17`] = `
 
 exports[`RadioItem renders correctly 18`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={true}
@@ -266,7 +266,7 @@ exports[`RadioItem renders correctly 18`] = `
 
 exports[`RadioItem renders correctly 19`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
@@ -281,7 +281,7 @@ exports[`RadioItem renders correctly 19`] = `
 
 exports[`RadioItem renders correctly 20`] = `
 <label
-  className="css-4rm6ig"
+  className="css-xe5sb9"
 >
   <input
     checked={false}
