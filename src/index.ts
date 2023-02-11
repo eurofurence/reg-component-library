@@ -3,6 +3,8 @@ import './stylesheets/colors.css'
 import './stylesheets/typography.css'
 import './stylesheets/globals.css'
 
+export * as MediaQueries from './media-queries'
+
 export { default as Form } from './layout/form'
 export { default as Page } from './layout/page'
 export { default as Splash } from './layout/splash'

@@ -4,14 +4,14 @@ import styled from '@emotion/styled'
 import { ComponentProps, ReactNode, useState } from 'react'
 import { useDetectClickOutside } from 'react-detect-click-outside'
 import { DeepReadonly } from 'ts-essentials'
-import { desktop, mobile } from '../media-queries'
+import { desktop, phone, tablet, laptop } from '../media-queries'
 
 const Hamburger = styled.button`
 	line-height: 0em;
 	height: 64px;
 	width: 64px;
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		display: none;
 	}
 `
@@ -29,17 +29,22 @@ export const NavBar = styled.header`
 	font-size: 1.6rem;
 	line-height: 1.5;
 
-	${mobile} {
+	a {
+		text-decoration: none;
+		color: unset;
+	}
+
+	@media ${phone}, ${tablet} {
 		height: 64px;
 		position: relative;
 		grid: "left right" auto
-		      / auto min-content;
+		      / auto max-content;
 	}
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		height: 110px;
 		grid: "left center right" auto
-		      / 1fr 1fr 1fr;
+		      / 1fr max-content 1fr;
 	}
 `
 
@@ -56,12 +61,12 @@ export const NavBarTitle = styled(NavBarSection)`
 	font-family: Manrope;
 	font-weight: 600;
 
-	${mobile} {
+	@media ${phone}, ${tablet} {
 		padding-left: 24px;
 		font-size: 2.4rem;
 	}
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		padding-left: 32px;
 		font-size: 3.6rem;
 	}
@@ -76,19 +81,19 @@ const NavBarRightBase = styled(NavBarSection)`
 	grid-area: right;
 	justify-self: end;
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		padding-right: 32px;
 	}
 `
 
 export const NavBarRight = styled(NavBarRightBase)`
-	${mobile} {
+	@media ${phone}, ${tablet} {
 		padding-right: 24px;
 	}
 `
 
 const NavBarMenuContainer = styled.menu<{ readonly isOpen: boolean }>`
-	${mobile} {
+	@media ${phone}, ${tablet} {
 		display: ${({ isOpen }) => isOpen ? 'unset' : 'none'};
 		position: absolute;
 		left: 0px;
@@ -97,7 +102,7 @@ const NavBarMenuContainer = styled.menu<{ readonly isOpen: boolean }>`
 		width: 100%;
 	}
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		display: flex;
 		align-items: center;
 		gap: 1em;
@@ -105,30 +110,33 @@ const NavBarMenuContainer = styled.menu<{ readonly isOpen: boolean }>`
 `
 
 const NavBarSubMenuContainer = styled.menu<{ readonly isOpen: boolean }>`
-	${mobile} {
+	@media ${phone}, ${tablet} {
 		display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
 		flex-direction: column;
 		align-items: stretch;
 		margin-left: 1em;
 	}
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		position: absolute;
-		top: 100%;
+		top: calc(100% - 2px);
 		right: 0px;
+		min-width: 100%;
 		display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
 		flex-direction: column;
 		align-items: stretch;
 		background-color: var(--color-brand-2-900);
 		border: solid 2px var(--color-grays-300);
 		border-radius: 3px;
+		border-top-right-radius: 0px;
+		border-top-left-radius: 0px;
 	}
 `
 
 const NavBarMenuItemContainer = styled.li`
 	display: block;
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		position: relative;
 
 		header > section > menu > li > menu & {
@@ -155,11 +163,11 @@ const NavBarMenuItemLinkContainer = styled.a<{ readonly showArrow: boolean }>`
 		}
 	`}
 
-	${mobile} {
+	@media ${phone}, ${tablet} {
 		padding: 0em 1.5em;
 	}
 
-	${desktop} {
+	@media ${laptop}, ${desktop} {
 		padding: 0em 1em;
 
 		header > section > menu > li > & {

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { phone } from '../media-queries'
 
 export const COLUMN_COUNT = 10
 
@@ -7,7 +8,7 @@ export default styled.form`
 	column-gap: 24px;
 	row-gap: 24px;
 
-	@media (min-width: 1260px) {
+	@media not ${phone} {
 		grid-template-columns: repeat(${COLUMN_COUNT}, 1fr);
 
 		> * {

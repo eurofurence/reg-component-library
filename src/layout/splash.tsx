@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { ReactElement, ReactNode } from 'react'
 import { DeepReadonly } from 'ts-essentials'
+import { desktop, phone } from '../media-queries'
 
 export interface SplashProps {
 	readonly image: DeepReadonly<ReactElement>
@@ -9,24 +10,33 @@ export interface SplashProps {
 
 const Container = styled.main`
 	display: grid;
-	grid: auto-flow / 1fr;
 	gap: 24px;
 	align-items: center;
 
 	padding: 3em 0em;
-	margin: 0em 1.5em;
 
-	@media (min-width: 1260px) {
-		grid: auto-flow / repeat(14, 1fr);
-		width: 1260px;
+	@media not ${desktop} {
+		margin: 0em 1.5em;
+	}
+
+	@media ${desktop} {
+		width: 1075px;
 		margin: 0em auto;
+	}
+
+	@media ${phone} {
+		grid: auto-flow / 1fr;
+	}
+
+	@media not ${phone} {
+		grid: auto-flow / repeat(14, 1fr);
 	}
 `
 
 const Image = styled.figure`
 	width: 100%;
 
-	@media (min-width: 1260px) {
+	@media not ${phone} {
 		grid-column: 1 / span 7;
 	}
 `
@@ -54,7 +64,7 @@ const Content = styled.article`
 		}
 	}
 
-	@media (min-width: 1260px) {
+	@media not ${phone} {
 		grid-column: 9 / span 6;
 	}
 `

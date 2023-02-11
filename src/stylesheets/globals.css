@@ -57,7 +57,7 @@ body h4 {
 	letter-spacing: 0.0125em;
 }
 
-@media (min-width: 1260px) {
+@media (min-width: 800px) {
 	body h1 {
 		font-size: 3em;
 	}

@@ -11,10 +11,10 @@ const Container = styled.div`
 const Background = styled.footer`
 	background-color: var(--color-brand-3-100);
 	color: var(--color-brand-2-500);
-	height: 100px;
+	min-height: 100px;
 	display: flex;
 	align-items: center;
-	padding: 0em 2.7em;
+	padding: 3em 2.7em;
 
 	font-family: Roboto;
 	font-weight: 400;
