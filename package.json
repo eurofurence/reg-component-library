@@ -1,6 +1,6 @@
 {
   "name": "@eurofurence/reg-component-library",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "React UI components for the Eurofurence registration tools.",
   "author": "Eurofurence Registration Team",
   "license": "MIT",
