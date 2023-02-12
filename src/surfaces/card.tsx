@@ -90,6 +90,10 @@ export default styled.article<CardProps>`
 		h1 {
 			color: unset;
 		}
+
+		a {
+			color: unset;
+		}
 	`}
 
 	${({ width = 'unset' }) => ({ width })}
