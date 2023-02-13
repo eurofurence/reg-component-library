@@ -38,7 +38,9 @@ const Input = styled.input<{ readonly invalid?: boolean }>`
 	}
 `
 
-type PlainRadioItemProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'size' | 'defaultValue' | 'radioGroup' | 'children'>
+type PlainRadioItemProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'size' | 'defaultValue' | 'radioGroup' | 'children'> & {
+	readonly invalid?: boolean
+}
 
 export type RadioItemProps = WithFormLabelProps<PlainRadioItemProps>
 
