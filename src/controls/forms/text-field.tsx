@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEventHandler, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { withFormHeaderLabel, WithFormHeaderLabelProps, WithFormHeaderLabelWrappedComponentProps } from './form-header-label'
@@ -27,21 +27,15 @@ const Input = styled.input<{ readonly invalid?: boolean }>`
 	}
 `
 
-type PlainTextFieldProps = {
-	readonly name: string
+type PlainTextFieldProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'checked' | 'size' | 'defaultChecked' | 'radioGroup' | 'children'> & {
 	readonly type?: 'date' | 'datetime' | 'datetime-local' | 'email' | 'month' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week'
-	readonly placeholder: string
-	readonly value?: string
-	readonly defaultValue?: string
-	readonly onChange?: ChangeEventHandler<HTMLInputElement>
-	readonly readOnly?: boolean
 }
 
 export type TextFieldProps = WithFormHeaderLabelProps<PlainTextFieldProps>
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const InnerTextField = withFormHeaderLabel<HTMLInputElement, TextFieldProps>(forwardRef<HTMLInputElement, WithFormHeaderLabelWrappedComponentProps<TextFieldProps>>((props, ref) =>
+const TextField = withFormHeaderLabel<HTMLInputElement, TextFieldProps>(forwardRef<HTMLInputElement, WithFormHeaderLabelWrappedComponentProps<TextFieldProps>>((props, ref) =>
 	<Input {...props} ref={ref}/>,
 ))
 
-export default InnerTextField
+export default TextField

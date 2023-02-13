@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 /* eslint-disable max-len */
 
-import { ChangeEventHandler, forwardRef, ForwardedRef, useRef, useCallback, MutableRefObject } from 'react'
+import { forwardRef, ForwardedRef, useRef, useCallback, MutableRefObject, ComponentPropsWithoutRef } from 'react'
 import styled from '@emotion/styled'
 import { withFormHeaderLabel, WithFormHeaderLabelProps } from './form-header-label'
 
@@ -37,14 +37,7 @@ const Control = styled.button<{ side: 'left' | 'right' }>`
 	justify-content: space-around;
 `
 
-interface PlainSpinnerProps {
-	readonly name: string
-	readonly placeholder: string
-	readonly value?: string
-	readonly defaultValue?: string
-	readonly onChange?: ChangeEventHandler<HTMLInputElement>
-	readonly readOnly?: boolean
-}
+type PlainSpinnerProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'checked' | 'size' | 'defaultChecked' | 'radioGroup' | 'children'>
 
 // If someone knows a better way feel free to change because I feel dirty writing this...
 // eslint-disable-next-line func-style,@typescript-eslint/prefer-readonly-parameter-types

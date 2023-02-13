@@ -1,15 +1,20 @@
 /** @jsxImportSource @emotion/react */
 
-import { Fragment, ReactNode, createContext, useContext, ChangeEventHandler, forwardRef } from 'react'
+import { Fragment, ReactNode, createContext, useContext, forwardRef, ComponentPropsWithoutRef } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { withFormLabel, WithFormLabelProps } from './form-label'
-import FieldSet from './field-set'
+import FieldSet, { FieldSetProps } from './field-set'
 import type { DeepReadonly } from 'ts-essentials'
 
-const NameContext = createContext<{ readonly name: string, readonly invalid: boolean }>({ name: 'unknown', invalid: false })
+interface ContextProps {
+	readonly name?: string
+	readonly invalid?: boolean
+}
 
-const Input = styled.input<{ readonly invalid: boolean }>`
+const RadioGroupContext = createContext<ContextProps>({})
+
+const Input = styled.input<{ readonly invalid?: boolean }>`
 	// TODO: Probably scale padding and border along.
 
 	width: 1.25em;
@@ -33,45 +38,32 @@ const Input = styled.input<{ readonly invalid: boolean }>`
 	}
 `
 
-interface PlainRadioItemProps {
-	readonly value: string
-	readonly checked?: boolean
-	readonly defaultChecked?: boolean
-	readonly onChange?: ChangeEventHandler<HTMLInputElement>
-	readonly readOnly?: boolean
-}
+type PlainRadioItemProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'size' | 'defaultValue' | 'radioGroup' | 'children'>
 
 export type RadioItemProps = WithFormLabelProps<PlainRadioItemProps>
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export const RadioItem = withFormLabel<HTMLInputElement, PlainRadioItemProps>(forwardRef<HTMLInputElement, PlainRadioItemProps>((props, ref) => {
-	const { name, invalid } = useContext(NameContext)
+	const ctx = useContext(RadioGroupContext)
 
-	return <Input {...props} name={name} type="radio" invalid={invalid} ref={ref}/>
+	return <Input {...ctx} {...props} type="radio" ref={ref}/>
 }))
 
-export interface RadioGroupProps {
-	readonly name: string
-	readonly invalid?: boolean
+export type RadioGroupProps = ContextProps & {
 	readonly children: DeepReadonly<ReactNode>
 }
 
-export const RadioGroup = ({ name, invalid = false, children }: RadioGroupProps) => <Fragment>
-	<NameContext.Provider value={{ name, invalid }}>
+export const RadioGroup = ({ children, ...ctx }: RadioGroupProps) => <Fragment>
+	<RadioGroupContext.Provider value={ctx}>
 		{children}
-	</NameContext.Provider>
+	</RadioGroupContext.Provider>
 </Fragment>
 
-export interface RadioSetProps {
-	readonly name: string
-	readonly gridSpan?: number
-	readonly legend: string
-	readonly error?: string
-	readonly children: DeepReadonly<ReactNode>
-}
+export type RadioSetProps = FieldSetProps
 
-export const RadioSet = ({ name, gridSpan, legend, error, children }: RadioSetProps) => <FieldSet legend={legend} gridSpan={gridSpan} error={error}>
-	<RadioGroup name={name} invalid={Boolean(error)}>
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+export const RadioSet = ({ name, children, ...fieldSetProps }: RadioSetProps) => <FieldSet {...fieldSetProps}>
+	<RadioGroup name={name} invalid={Boolean(fieldSetProps.error)}>
 		{children}
 	</RadioGroup>
 </FieldSet>

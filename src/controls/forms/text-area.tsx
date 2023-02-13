@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEventHandler, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { withFormHeaderLabel, WithFormHeaderLabelProps, WithFormHeaderLabelWrappedComponentProps } from './form-header-label'
@@ -28,14 +28,8 @@ const TArea = styled.textarea<{ readonly height?: string, readonly invalid?: boo
 	}
 `
 
-interface PlainTextAreaProps {
-	readonly name: string
+type PlainTextAreaProps = Omit<Readonly<ComponentPropsWithoutRef<'textarea'>>, 'cols' | 'rows' | 'wrap' | 'defaultChecked' | 'radioGroup' | 'children'> & {
 	readonly height?: string
-	readonly placeholder: string
-	readonly value?: string
-	readonly defaultValue?: string
-	readonly onChange?: ChangeEventHandler<HTMLTextAreaElement>
-	readonly readOnly?: boolean
 }
 
 export type TextAreaProps = WithFormHeaderLabelProps<PlainTextAreaProps>

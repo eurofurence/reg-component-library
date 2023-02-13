@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import { ChangeEventHandler, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 import styled from '@emotion/styled'
 import { withFormLabel, WithFormLabelProps } from './form-label'
 
@@ -16,14 +16,7 @@ const Input = styled.input`
 	}
 `
 
-interface PlainCheckboxProps {
-	readonly name: string
-	readonly checked?: boolean
-	readonly defaultChecked?: boolean
-	readonly onChange?: ChangeEventHandler<HTMLInputElement>
-	readonly readOnly?: boolean
-	readonly disabled?: boolean
-}
+type PlainCheckboxProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'size' | 'defaultValue' | 'radioGroup' | 'children'>
 
 export type CheckboxProps = WithFormLabelProps<PlainCheckboxProps>
 

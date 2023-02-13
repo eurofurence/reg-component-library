@@ -1,24 +1,23 @@
 /** @jsxImportSource @emotion/react */
 
 import styled from '@emotion/styled'
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 import formControlStyle from './form-control'
 import FormHeader from './form-header'
 import ErrorMessage from './error-message'
-import type { DeepReadonly } from 'ts-essentials'
 
 const FSet = styled.fieldset`
 	${formControlStyle}
 `
 
-export interface FieldSetProps {
+export type FieldSetProps = Omit<Readonly<ComponentPropsWithoutRef<'fieldset'>>, 'defaultValue' | 'defaultChecked' | 'radioGroup'> & {
 	readonly legend?: string
 	readonly gridSpan?: number
 	readonly error?: string
-	readonly children: DeepReadonly<ReactNode>
 }
 
-const FieldSet = ({ legend, gridSpan, error, children }: FieldSetProps) => <FSet gridSpan={gridSpan}>
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const FieldSet = ({ legend, gridSpan, error, children, ...props }: FieldSetProps) => <FSet {...props} gridSpan={gridSpan}>
 	{legend == null ? null : <FormHeader as="legend">{legend}</FormHeader>}
 	{children}
 	{error === undefined ? undefined : <ErrorMessage>{error}</ErrorMessage>}
