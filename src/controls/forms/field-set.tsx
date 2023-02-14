@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
 import styled from '@emotion/styled'
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentProps } from 'react'
 import formControlStyle from './form-control'
 import FormHeader from './form-header'
 import ErrorMessage from './error-message'
@@ -10,7 +10,7 @@ const FSet = styled.fieldset`
 	${formControlStyle}
 `
 
-export type FieldSetProps = Omit<Readonly<ComponentPropsWithoutRef<'fieldset'>>, 'defaultValue' | 'defaultChecked' | 'radioGroup'> & {
+export type FieldSetProps = Omit<ComponentProps<'fieldset'>, 'defaultValue' | 'defaultChecked' | 'radioGroup'> & {
 	readonly legend?: string
 	readonly gridSpan?: number
 	readonly error?: string

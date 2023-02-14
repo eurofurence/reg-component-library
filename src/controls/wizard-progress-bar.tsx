@@ -50,7 +50,7 @@ export interface WizardProgressBarProps {
 }
 
 const WizardProgressBar = ({ steps, currentStep }: WizardProgressBarProps) => <section>
-	<IndicatorsContainer>
+	<IndicatorsContainer role="presentation">
 		{times(i => <Indicator key={i} state="completed" />, currentStep)}
 		<Indicator state="current"/>
 		{times(i => <Indicator key={i} state="remaining" />, steps.length - currentStep - 1)}

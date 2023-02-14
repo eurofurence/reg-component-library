@@ -6,6 +6,7 @@ import { css } from '@emotion/react'
 import Card, { CardProps } from '../../surfaces/card'
 import { RadioItem } from './radio-button'
 import type { DeepReadonly } from 'ts-essentials'
+import { pick } from 'ramda'
 
 export interface RadioCardProps extends CardProps {
 	readonly label?: string
@@ -81,17 +82,17 @@ const RadioCard = forwardRef(({ label, children, checked, defaultChecked, height
 			cardRef.current!.closest('form')!.addEventListener('change', e => setInputChecked(e.target === inputRef.current!))
 		}, [])
 
-		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} width={width} height={height} layout={layout} ref={cardRef}>
+		return <CheckableCard as="label" {...inputChecked ? { 'data-checked': '' } : {}} {...pick(['aria-description', 'aria-describedby', 'aria-details'], rest)} width={width} height={height} layout={layout} ref={cardRef}>
 			<Header>
-				<RadioItem {...rest} defaultChecked={defaultChecked} ref={inputRef}/>
+				<RadioItem aria-label={label} {...rest} defaultChecked={defaultChecked} ref={inputRef}/>
 				<Label>{label}</Label>
 			</Header>
 			{children}
 		</CheckableCard>
 	} else {
-		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} width={width} height={height} layout={layout}>
+		return <CheckableCard as="label" {...checked ? { 'data-checked': '' } : {}} {...pick(['aria-description', 'aria-describedby', 'aria-details'], rest)} width={width} height={height} layout={layout}>
 			<Header>
-				<RadioItem {...rest} checked={checked} defaultChecked={defaultChecked} ref={ref}/>
+				<RadioItem aria-label={label} {...rest} checked={checked} defaultChecked={defaultChecked} ref={ref}/>
 				<Label>{label}</Label>
 			</Header>
 			{children}

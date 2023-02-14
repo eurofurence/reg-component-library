@@ -37,7 +37,7 @@ const Control = styled.button<{ side: 'left' | 'right' }>`
 	justify-content: space-around;
 `
 
-type PlainSpinnerProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'checked' | 'size' | 'defaultChecked' | 'radioGroup' | 'children'>
+type PlainSpinnerProps = Omit<ComponentPropsWithoutRef<'input'>, 'type' | 'height' | 'width' | 'checked' | 'size' | 'defaultChecked' | 'radioGroup' | 'children'>
 
 // If someone knows a better way feel free to change because I feel dirty writing this...
 // eslint-disable-next-line func-style,@typescript-eslint/prefer-readonly-parameter-types

@@ -24,13 +24,17 @@ const FormHeaderLabel = ({ label, gridSpan, children }: FormHeaderLabelProps) =>
 
 export default FormHeaderLabel
 
-export type WithFormHeaderLabelWrappedComponentProps<P> = Omit<P, 'label' | 'gridSpan' | 'error'> & {
+export type WithFormHeaderLabelWrappedComponentProps<P> = Omit<P, 'label' | 'gridSpan' | 'warning' | 'error' | 'id'> & {
+	readonly warn?: boolean
 	readonly invalid?: boolean
+	readonly id?: string
 }
 
 export type WithFormHeaderLabelProps<P> = {
+	readonly warning?: string
 	readonly error?: string
 } & (P | P & {
+	readonly id: string
 	readonly label: string
 	readonly gridSpan?: number
 })
@@ -38,16 +42,25 @@ export type WithFormHeaderLabelProps<P> = {
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
 export const withFormHeaderLabel = <T, P>(ChildComponent: FC<WithFormHeaderLabelWrappedComponentProps<P>>) => forwardRef<T, WithFormHeaderLabelProps<P>>((props, ref) => {
 	if ('label' in props) {
-		const { label, gridSpan, error, ...rest } = props
+		const { id, label, gridSpan, warning, error, ...rest } = props
 
 		return <FormHeaderLabel label={label} gridSpan={gridSpan}>
-			<ChildComponent invalid={Boolean(error)} {...rest} ref={ref}/>
-			{error === undefined ? undefined : <ErrorMessage>{error}</ErrorMessage>}
+			<ChildComponent
+				{...rest}
+				id={id}
+				warn={warning !== undefined}
+				invalid={error !== undefined}
+				aria-invalid={error !== undefined ? 'true' : 'false'}
+				aria-errormessage={`${id}-error-message`}
+				ref={ref}
+			/>
+			{'error' in props ? <ErrorMessage id={`${id}-error-message`}>{error}</ErrorMessage> : undefined}
+			{'warning' in props ? <ErrorMessage severity="warning">{warning}</ErrorMessage> : undefined}
 		</FormHeaderLabel>
 	} else {
-		const { error, ...rest } = props
+		const { warning, error, ...rest } = props
 
 		// @ts-expect-error There is a problem here because 'label' and 'gridSpan' are removed in WithFormHeaderLabelWrappedComponentProps. Should fix later.
-		return <ChildComponent invalid={Boolean(error)} {...rest} ref={ref}/>
+		return <ChildComponent {...rest} warn={warning !== undefined} invalid={error !== undefined} ref={ref}/>
 	}
 })

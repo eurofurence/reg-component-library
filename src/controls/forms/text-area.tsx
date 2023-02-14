@@ -1,23 +1,18 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentPropsWithoutRef, forwardRef } from 'react'
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { withFormHeaderLabel, WithFormHeaderLabelProps, WithFormHeaderLabelWrappedComponentProps } from './form-header-label'
 
-const TArea = styled.textarea<{ readonly height?: string, readonly invalid?: boolean }>`
+const TArea = styled.textarea<{ readonly height?: string, readonly warn?: boolean, readonly invalid?: boolean }>`
 	min-width: 100%;
 	max-width: 100%;
 	height: ${({ height }) => height != null ? height : '6.25em'};
-	border: 2px solid var(--color-grays-300);
+	border: 2px solid ${({ invalid = false, warn = false }) => invalid ? 'var(--color-semantic-error)' : warn ? 'var(--color-semantic-warning)' : 'var(--color-grays-300)'};
 	border-radius: 0.1875em;
 	padding: 0.75em 1em 1em 1em;
 
 	color: var(--color-grays-900);
-
-	${({ invalid = false }) => !invalid ? css`` : css`
-		border-color: var(--color-semantic-error);
-	`}
 
 	&::placeholder {
 		color: var(--color-grays-300);
@@ -26,9 +21,17 @@ const TArea = styled.textarea<{ readonly height?: string, readonly invalid?: boo
 	&:invalid {
 		border-color: var(--color-semantic-error);
 	}
+
+	&:disabled {
+		background-color: var(--color-grays-200);
+	}
+
+	&:focus {
+		border-width: 3px;
+	}
 `
 
-type PlainTextAreaProps = Omit<Readonly<ComponentPropsWithoutRef<'textarea'>>, 'cols' | 'rows' | 'wrap' | 'defaultChecked' | 'radioGroup' | 'children'> & {
+type PlainTextAreaProps = Omit<ComponentPropsWithoutRef<'textarea'>, 'cols' | 'rows' | 'wrap' | 'defaultChecked' | 'radioGroup' | 'children'> & {
 	readonly height?: string
 }
 

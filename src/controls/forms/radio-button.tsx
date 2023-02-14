@@ -2,7 +2,6 @@
 
 import { Fragment, ReactNode, createContext, useContext, forwardRef, ComponentPropsWithoutRef } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
 import { withFormLabel, WithFormLabelProps } from './form-label'
 import FieldSet, { FieldSetProps } from './field-set'
 import type { DeepReadonly } from 'ts-essentials'
@@ -14,31 +13,32 @@ interface ContextProps {
 
 const RadioGroupContext = createContext<ContextProps>({})
 
-const Input = styled.input<{ readonly invalid?: boolean }>`
+const Input = styled.input<{ readonly warn?: boolean, readonly invalid?: boolean }>`
 	// TODO: Probably scale padding and border along.
 
 	width: 1.25em;
 	height: 1.25em;
-	border: 2px solid var(--color-grays-300);
+	border: 2px solid ${({ invalid = false, warn = false }) => invalid ? 'var(--color-semantic-error)' : warn ? 'var(--color-semantic-warning)' : 'var(--color-grays-300)'};
 	border-radius: 0.625em;
 
 	&:checked {
 		background-color: var(--color-semantic-info);
-		border-color: var(--color-semantic-info);
+		border-color: ${({ invalid = false, warn = false }) => invalid ? 'var(--color-semantic-error)' : warn ? 'var(--color-semantic-warning)' : 'var(--color-semantic-info)'};
 		background-clip: content-box;
 		padding: 3px;
 	}
 
-	${({ invalid = false }) => !invalid ? css`` : css`
-		border-color: var(--color-semantic-error);
-	`}
-
 	&:invalid {
 		border-color: var(--color-semantic-error);
 	}
+
+	&:focus {
+		border-width: 3px;
+	}
 `
 
-type PlainRadioItemProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'size' | 'defaultValue' | 'radioGroup' | 'children'> & {
+type PlainRadioItemProps = Omit<ComponentPropsWithoutRef<'input'>, 'type' | 'height' | 'width' | 'size' | 'defaultValue' | 'radioGroup' | 'children'> & {
+	readonly warn?: boolean
 	readonly invalid?: boolean
 }
 

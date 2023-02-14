@@ -8,6 +8,7 @@ type PassthroughProps
 	| 'options'
 	| 'isMulti'
 	| 'isSearchable'
+	| 'isDisabled'
 	| 'inputValue'
 	| 'onBlur'
 	| 'onChange'
@@ -24,7 +25,7 @@ type PassthroughProps
 type PlainSelectProps<Option, IsMulti extends boolean = false> = Readonly<Pick<Props<Option, IsMulti>, PassthroughProps>>
 
 // eslint-disable-next-line func-style
-function BaseSelect<Option = unknown, IsMulti extends boolean = false>({ invalid = false, ...props }: WithFormHeaderLabelWrappedComponentProps<PlainSelectProps<Option, IsMulti>>) {
+function BaseSelect<Option = unknown, IsMulti extends boolean = false>({ warn = false, invalid = false, ...props }: WithFormHeaderLabelWrappedComponentProps<PlainSelectProps<Option, IsMulti>>) {
 	return <ReactSelect
 		{...props}
 		isClearable={false}
@@ -36,8 +37,8 @@ function BaseSelect<Option = unknown, IsMulti extends boolean = false>({ invalid
 				...defs,
 				borderRadius: state.menuIsOpen ? '3px 3px 0px 0px' : '3px',
 				borderWidth: '2px',
-				borderColor: invalid ? 'var(--color-semantic-error)' : 'var(--color-grays-300)',
-				backgroundColor: 'var(--color-grays-000)',
+				borderColor: invalid ? 'var(--color-semantic-error)' : warn ? 'var(--color-semantic-warning)' : 'var(--color-grays-300)',
+				backgroundColor: props.isDisabled ?? false ? 'var(--color-grays-200)' : 'var(--color-grays-000)',
 				minHeight: '3em',
 			}),
 			valueContainer: ({ padding, ...defs }) => ({

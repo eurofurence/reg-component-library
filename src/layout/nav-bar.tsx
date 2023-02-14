@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define,max-len */
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { ComponentProps, ReactNode, useState } from 'react'
+import { ComponentProps, KeyboardEventHandler, ReactNode, useState } from 'react'
 import { useDetectClickOutside } from 'react-detect-click-outside'
 import { DeepReadonly } from 'ts-essentials'
 import { desktop, phone, tablet, laptop } from '../media-queries'
@@ -183,7 +183,7 @@ type NavBarMenuItemLinkProps = ComponentProps<typeof NavBarMenuItemLinkContainer
 }
 
 // eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
-const NavBarMenuItemLink = ({ icon, label, ...rest }: NavBarMenuItemLinkProps) => <NavBarMenuItemLinkContainer {...rest}>
+const NavBarMenuItemLink = ({ icon, label, ...rest }: NavBarMenuItemLinkProps) => <NavBarMenuItemLinkContainer role="menuitem" {...rest}>
 	{icon === undefined ? undefined : <img src={icon}/>}
 	{label}
 </NavBarMenuItemLinkContainer>
@@ -211,8 +211,8 @@ export const NavBarSubMenu = ({ icon, label, children }: NavBarSubMenuProps) => 
 	})
 
 	return <NavBarMenuItemContainer ref={insideRef}>
-		<NavBarMenuItemLink icon={icon} label={label} showArrow={true} onClick={() => setIsOpen(!isOpen)}/>
-		<NavBarSubMenuContainer isOpen={isOpen}>
+		<NavBarMenuItemLink aria-haspopup="menu" icon={icon} label={label} showArrow={true} onClick={() => setIsOpen(!isOpen)}/>
+		<NavBarSubMenuContainer role="menu" aria-label={label} isOpen={isOpen}>
 			{children}
 		</NavBarSubMenuContainer>
 	</NavBarMenuItemContainer>
@@ -229,9 +229,29 @@ export const NavBarMenu = ({ children }: NavBarMenuProps) => {
 		onTriggered: () => setIsOpen(false),
 	})
 
-	return <NavBarRightBase ref={insideRef}>
-		<Hamburger onClick={() => setIsOpen(!isOpen)}><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAgMlYwSDBWMkgyMFpNMjAgNlY4SDBWNkgyMFpNMjAgMTJWMTRIMFYxMkgyMFoiIGZpbGw9IndoaXRlIi8+DQo8L3N2Zz4="/></Hamburger>
-		<NavBarMenuContainer isOpen={isOpen}>
+	const onToggleKeyDown: KeyboardEventHandler = event => {
+		switch (event.key) {
+			case 'ArrowDown':
+				setIsOpen(true)
+				break
+			default:
+				break
+		}
+	}
+
+	const onMenuKeyDown: KeyboardEventHandler = event => {
+		switch (event.key) {
+			case 'Escape':
+				setIsOpen(false)
+				break
+			default:
+				break
+		}
+	}
+
+	return <NavBarRightBase role="menubar" ref={insideRef}>
+		<Hamburger role="menuitem" aria-label="Hamburger" aria-haspopup="menu" onClick={() => setIsOpen(!isOpen)} onKeyDown={onToggleKeyDown}><img src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAyMCAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAgMlYwSDBWMkgyMFpNMjAgNlY4SDBWNkgyMFpNMjAgMTJWMTRIMFYxMkgyMFoiIGZpbGw9IndoaXRlIi8+DQo8L3N2Zz4="/></Hamburger>
+		<NavBarMenuContainer role="menu" aria-label="Hamburger" isOpen={isOpen} onKeyDown={onMenuKeyDown}>
 			{children}
 		</NavBarMenuContainer>
 	</NavBarRightBase>

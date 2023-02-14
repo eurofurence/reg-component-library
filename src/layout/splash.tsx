@@ -1,12 +1,7 @@
 import styled from '@emotion/styled'
-import { ReactElement, ReactNode } from 'react'
+import { ComponentProps, ReactElement } from 'react'
 import { DeepReadonly } from 'ts-essentials'
 import { desktop, phone } from '../media-queries'
-
-export interface SplashProps {
-	readonly image: DeepReadonly<ReactElement>
-	readonly children: DeepReadonly<ReactNode>
-}
 
 const Container = styled.main`
 	display: grid;
@@ -69,13 +64,16 @@ const Content = styled.article`
 	}
 `
 
-const Splash = ({ image, children }: SplashProps) => <Container>
-	<Image>
+export type SplashProps = ComponentProps<typeof Content> & {
+	readonly image: DeepReadonly<ReactElement>
+}
+
+// eslint-disable-next-line @typescript-eslint/prefer-readonly-parameter-types
+const Splash = ({ image, ...props }: SplashProps) => <Container>
+	<Image role="presentation">
 		{image}
 	</Image>
-	<Content>
-		{children}
-	</Content>
+	<Content {...props}/>
 </Container>
 
 export default Splash

@@ -1,22 +1,17 @@
 /** @jsxImportSource @emotion/react */
 
 import { ComponentPropsWithoutRef, forwardRef } from 'react'
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { withFormHeaderLabel, WithFormHeaderLabelProps, WithFormHeaderLabelWrappedComponentProps } from './form-header-label'
 
-const Input = styled.input<{ readonly invalid?: boolean }>`
+const Input = styled.input<{ readonly warn?: boolean, readonly invalid?: boolean }>`
 	width: 100%;
 	height: 3em;
-	border: 2px solid var(--color-grays-300);
+	border: 2px solid ${({ invalid = false, warn = false }) => invalid ? 'var(--color-semantic-error)' : warn ? 'var(--color-semantic-warning)' : 'var(--color-grays-300)'};
 	border-radius: 0.1875em;
 	padding: 0.75em 1em;
 
 	color: var(--color-grays-900);
-
-	${({ invalid = false }) => !invalid ? css`` : css`
-		border-color: var(--color-semantic-error);
-	`}
 
 	&::placeholder {
 		color: var(--color-grays-300);
@@ -25,9 +20,17 @@ const Input = styled.input<{ readonly invalid?: boolean }>`
 	&:invalid {
 		border-color: var(--color-semantic-error);
 	}
+
+	&:disabled {
+		background-color: var(--color-grays-200);
+	}
+
+	&:focus {
+		border-width: 3px;
+	}
 `
 
-type PlainTextFieldProps = Omit<Readonly<ComponentPropsWithoutRef<'input'>>, 'type' | 'height' | 'width' | 'checked' | 'size' | 'defaultChecked' | 'radioGroup' | 'children'> & {
+type PlainTextFieldProps = Omit<ComponentPropsWithoutRef<'input'>, 'type' | 'height' | 'width' | 'checked' | 'size' | 'defaultChecked' | 'radioGroup' | 'children'> & {
 	readonly type?: 'date' | 'datetime' | 'datetime-local' | 'email' | 'month' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week'
 }
 
