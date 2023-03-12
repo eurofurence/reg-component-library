@@ -233,7 +233,7 @@ rules:
   '@typescript-eslint/no-invalid-void-type': off
   '@typescript-eslint/no-loop-func': warn
   '@typescript-eslint/no-loss-of-precision': warn
-  '@typescript-eslint/no-magic-numbers': [warn, { ignore: [2, 1, 0, -1, 100, 200, 300, 400, 500, 600, 700, 800, 900], enforceConst: true }]
+  '@typescript-eslint/no-magic-numbers': [warn, { ignore: [2, 1, 0, -1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 90, 180, 270, 360], enforceConst: true }]
   '@typescript-eslint/no-misused-new': error
   '@typescript-eslint/no-misused-promises':
     - error
